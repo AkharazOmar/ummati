@@ -64,5 +64,8 @@
   "today": "Today",
   "hijriDate": "Hijri Date",
   "bismillah": "In the name of Allah, the Most Gracious, the Most Merciful",
-  "aboutDesc": "Free Islamic app with no ads"
+  "aboutDesc": "Free Islamic app with no ads",
+  "noCompass": "Compass sensor not available on this device",
+  "calibrateCompass": "Calibrate by moving your phone in a figure-8 pattern",
+  "qiblaAligned": "You are facing the Qibla ✓"
 }

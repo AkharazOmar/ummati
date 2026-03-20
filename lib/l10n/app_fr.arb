@@ -64,5 +64,8 @@
   "today": "Aujourd'hui",
   "hijriDate": "Date hégirien",
   "bismillah": "Au nom d'Allah, le Tout Miséricordieux, le Très Miséricordieux",
-  "aboutDesc": "Application islamique gratuite et sans publicité"
+  "aboutDesc": "Application islamique gratuite et sans publicité",
+  "noCompass": "Capteur de boussole non disponible sur cet appareil",
+  "calibrateCompass": "Calibrez la boussole en faisant un 8 avec votre téléphone",
+  "qiblaAligned": "Vous êtes orienté vers la Qibla ✓"
 }
