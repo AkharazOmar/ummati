@@ -67,12 +67,12 @@ class PrayerTimesScreen extends ConsumerWidget {
   }
 
   Widget _buildContent(
-      BuildContext context, AppLocalizations l10n, DailyPrayerTimes data) {
+      BuildContext context, WidgetRef ref, AppLocalizations l10n, DailyPrayerTimes data) {
     final next = data.nextPrayer;
 
     return RefreshIndicator(
       color: UmmatiTheme.primaryGreen,
-      onRefresh: () async {},
+      onRefresh: () => ref.read(prayerTimesProvider.notifier).refresh(),
       child: ListView(
         padding: const EdgeInsets.all(16),
         children: [

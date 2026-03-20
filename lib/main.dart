@@ -4,6 +4,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 
 import 'app/app.dart';
 import 'features/settings/settings_provider.dart';
+import 'features/prayer_times/prayer_times_provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -11,6 +12,7 @@ void main() async {
   // Initialize Hive
   await Hive.initFlutter();
   await initSettingsBox();
+  await initPrayerCacheBox();
 
   runApp(
     const ProviderScope(

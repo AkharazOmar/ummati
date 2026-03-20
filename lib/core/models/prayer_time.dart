@@ -8,14 +8,26 @@ class PrayerTime {
   });
 
   factory PrayerTime.fromJson(String name, String timeStr, DateTime date) {
-    final parts = timeStr.split(':');
+    // Aladhan returns "HH:mm (TZ)" — strip timezone part
+    final cleaned = timeStr.split(' ').first;
+    final parts = cleaned.split(':');
     final hour = int.parse(parts[0]);
-    final minute = int.parse(parts[1].split(' ')[0]);
+    final minute = int.parse(parts[1]);
     return PrayerTime(
       name: name,
       time: DateTime(date.year, date.month, date.day, hour, minute),
     );
   }
+
+  Map<String, dynamic> toJson() => {
+        'name': name,
+        'time': time.toIso8601String(),
+      };
+
+  factory PrayerTime.fromCacheJson(Map<String, dynamic> json) => PrayerTime(
+        name: json['name'] as String,
+        time: DateTime.parse(json['time'] as String),
+      );
 }
 
 class DailyPrayerTimes {
@@ -41,6 +53,7 @@ class DailyPrayerTimes {
 
   List<PrayerTime> get all => [fajr, sunrise, dhuhr, asr, maghrib, isha];
 
+  /// Returns the next upcoming prayer, or null if all prayers have passed.
   PrayerTime? get nextPrayer {
     final now = DateTime.now();
     for (final prayer in all) {
@@ -66,7 +79,8 @@ class DailyPrayerTimes {
     );
 
     final hijriDay = hijri['day'] as String;
-    final hijriMonth = (hijri['month'] as Map<String, dynamic>)['en'] as String;
+    final hijriMonth =
+        (hijri['month'] as Map<String, dynamic>)['en'] as String;
     final hijriYear = hijri['year'] as String;
     final hijriDateStr = '$hijriDay $hijriMonth $hijriYear';
 
@@ -81,6 +95,34 @@ class DailyPrayerTimes {
       maghrib:
           PrayerTime.fromJson('Maghrib', timings['Maghrib'] as String, date),
       isha: PrayerTime.fromJson('Isha', timings['Isha'] as String, date),
+    );
+  }
+
+  /// Serialize for Hive cache.
+  Map<String, dynamic> toCacheJson(int method) => {
+        'method': method,
+        'date': date.toIso8601String(),
+        'hijriDate': hijriDate,
+        'fajr': fajr.toJson(),
+        'sunrise': sunrise.toJson(),
+        'dhuhr': dhuhr.toJson(),
+        'asr': asr.toJson(),
+        'maghrib': maghrib.toJson(),
+        'isha': isha.toJson(),
+      };
+
+  factory DailyPrayerTimes.fromCacheJson(Map<String, dynamic> json) {
+    return DailyPrayerTimes(
+      date: DateTime.parse(json['date'] as String),
+      hijriDate: json['hijriDate'] as String,
+      fajr: PrayerTime.fromCacheJson(json['fajr'] as Map<String, dynamic>),
+      sunrise:
+          PrayerTime.fromCacheJson(json['sunrise'] as Map<String, dynamic>),
+      dhuhr: PrayerTime.fromCacheJson(json['dhuhr'] as Map<String, dynamic>),
+      asr: PrayerTime.fromCacheJson(json['asr'] as Map<String, dynamic>),
+      maghrib:
+          PrayerTime.fromCacheJson(json['maghrib'] as Map<String, dynamic>),
+      isha: PrayerTime.fromCacheJson(json['isha'] as Map<String, dynamic>),
     );
   }
 }
