@@ -1,0 +1,68 @@
+{
+  "@@locale": "en",
+  "appTitle": "Ummati",
+  "prayerTimes": "Prayer Times",
+  "qibla": "Qibla",
+  "quran": "Quran",
+  "settings": "Settings",
+  "fajr": "Fajr",
+  "sunrise": "Sunrise",
+  "dhuhr": "Dhuhr",
+  "asr": "Asr",
+  "maghrib": "Maghrib",
+  "isha": "Isha",
+  "nextPrayer": "Next prayer",
+  "inTime": "in {time}",
+  "@inTime": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "qiblaDirection": "Qibla Direction",
+  "qiblaDescription": "Point your phone towards the Qibla",
+  "degreesFromNorth": "{degrees}° from North",
+  "@degreesFromNorth": {
+    "placeholders": {
+      "degrees": {
+        "type": "String"
+      }
+    }
+  },
+  "surahList": "Surah List",
+  "verses": "{count} verses",
+  "@verses": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "meccan": "Meccan",
+  "medinan": "Medinan",
+  "language": "Language",
+  "theme": "Theme",
+  "notifications": "Notifications",
+  "prayerNotifications": "Prayer Notifications",
+  "prayerNotificationsDesc": "Receive a notification before each prayer",
+  "calculationMethod": "Calculation Method",
+  "about": "About",
+  "version": "Version {version}",
+  "@version": {
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "locationPermissionRequired": "Location permission is required",
+  "enableLocation": "Enable Location",
+  "loading": "Loading...",
+  "errorLoading": "Error loading data",
+  "retry": "Retry",
+  "today": "Today",
+  "hijriDate": "Hijri Date",
+  "bismillah": "In the name of Allah, the Most Gracious, the Most Merciful",
+  "aboutDesc": "Free Islamic app with no ads"
+}

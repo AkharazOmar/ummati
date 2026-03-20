@@ -1,0 +1,68 @@
+{
+  "@@locale": "fr",
+  "appTitle": "Ummati",
+  "prayerTimes": "Horaires de prière",
+  "qibla": "Qibla",
+  "quran": "Coran",
+  "settings": "Paramètres",
+  "fajr": "Fajr",
+  "sunrise": "Lever du soleil",
+  "dhuhr": "Dhuhr",
+  "asr": "Asr",
+  "maghrib": "Maghrib",
+  "isha": "Isha",
+  "nextPrayer": "Prochaine prière",
+  "inTime": "dans {time}",
+  "@inTime": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "qiblaDirection": "Direction de la Qibla",
+  "qiblaDescription": "Pointez votre téléphone vers la Qibla",
+  "degreesFromNorth": "{degrees}° du Nord",
+  "@degreesFromNorth": {
+    "placeholders": {
+      "degrees": {
+        "type": "String"
+      }
+    }
+  },
+  "surahList": "Liste des sourates",
+  "verses": "{count} versets",
+  "@verses": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "meccan": "Mecquoise",
+  "medinan": "Médinoise",
+  "language": "Langue",
+  "theme": "Thème",
+  "notifications": "Notifications",
+  "prayerNotifications": "Notifications de prière",
+  "prayerNotificationsDesc": "Recevoir une notification avant chaque prière",
+  "calculationMethod": "Méthode de calcul",
+  "about": "À propos",
+  "version": "Version {version}",
+  "@version": {
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "locationPermissionRequired": "La permission de localisation est requise",
+  "enableLocation": "Activer la localisation",
+  "loading": "Chargement...",
+  "errorLoading": "Erreur lors du chargement",
+  "retry": "Réessayer",
+  "today": "Aujourd'hui",
+  "hijriDate": "Date hégirien",
+  "bismillah": "Au nom d'Allah, le Tout Miséricordieux, le Très Miséricordieux",
+  "aboutDesc": "Application islamique gratuite et sans publicité"
+}

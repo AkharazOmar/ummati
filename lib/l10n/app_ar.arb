@@ -1,0 +1,68 @@
+{
+  "@@locale": "ar",
+  "appTitle": "أمّتي",
+  "prayerTimes": "مواقيت الصلاة",
+  "qibla": "القبلة",
+  "quran": "القرآن",
+  "settings": "الإعدادات",
+  "fajr": "الفجر",
+  "sunrise": "الشروق",
+  "dhuhr": "الظهر",
+  "asr": "العصر",
+  "maghrib": "المغرب",
+  "isha": "العشاء",
+  "nextPrayer": "الصلاة القادمة",
+  "inTime": "بعد {time}",
+  "@inTime": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "qiblaDirection": "اتجاه القبلة",
+  "qiblaDescription": "وجّه هاتفك نحو القبلة",
+  "degreesFromNorth": "{degrees}° من الشمال",
+  "@degreesFromNorth": {
+    "placeholders": {
+      "degrees": {
+        "type": "String"
+      }
+    }
+  },
+  "surahList": "قائمة السور",
+  "verses": "{count} آيات",
+  "@verses": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "meccan": "مكّيّة",
+  "medinan": "مدنيّة",
+  "language": "اللغة",
+  "theme": "المظهر",
+  "notifications": "الإشعارات",
+  "prayerNotifications": "إشعارات الصلاة",
+  "prayerNotificationsDesc": "تلقّي إشعار قبل كل صلاة",
+  "calculationMethod": "طريقة الحساب",
+  "about": "حول التطبيق",
+  "version": "الإصدار {version}",
+  "@version": {
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "locationPermissionRequired": "إذن الموقع مطلوب",
+  "enableLocation": "تفعيل الموقع",
+  "loading": "جاري التحميل...",
+  "errorLoading": "خطأ في تحميل البيانات",
+  "retry": "إعادة المحاولة",
+  "today": "اليوم",
+  "hijriDate": "التاريخ الهجري",
+  "bismillah": "بسم الله الرحمن الرحيم",
+  "aboutDesc": "تطبيق إسلامي مجاني بدون إعلانات"
+}
