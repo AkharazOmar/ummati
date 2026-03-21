@@ -140,4 +140,4 @@ analyze-and-test (ubuntu)
 
 ## Licence
 
-A definir.
+Tous droits reserves. Voir [LICENSE](LICENSE).
