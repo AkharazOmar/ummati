@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:go_router/go_router.dart';
 
@@ -15,8 +16,9 @@ class LocationPermissionScreen extends StatefulWidget {
 
 class _LocationPermissionScreenState extends State<LocationPermissionScreen> {
   bool _requesting = false;
+  _PermissionStep _step = _PermissionStep.location;
 
-  Future<void> _requestPermission() async {
+  Future<void> _requestLocationPermission() async {
     setState(() => _requesting = true);
 
     LocationPermission permission = await Geolocator.checkPermission();
@@ -25,26 +27,75 @@ class _LocationPermissionScreenState extends State<LocationPermissionScreen> {
       permission = await Geolocator.requestPermission();
     }
 
-    if (permission == LocationPermission.deniedForever) {
-      if (mounted) {
-        await Geolocator.openAppSettings();
-      }
+    if (permission == LocationPermission.deniedForever && mounted) {
+      await Geolocator.openAppSettings();
     }
 
     if (mounted) {
-      // Navigate to main app regardless of result —
-      // features handle missing permission gracefully already.
+      setState(() {
+        _requesting = false;
+        _step = _PermissionStep.notification;
+      });
+    }
+  }
+
+  Future<void> _requestNotificationPermission() async {
+    setState(() => _requesting = true);
+
+    final plugin = FlutterLocalNotificationsPlugin();
+
+    // Android 13+ (API 33) requires POST_NOTIFICATIONS permission
+    final androidPlugin =
+        plugin.resolvePlatformSpecificImplementation<
+            AndroidFlutterLocalNotificationsPlugin>();
+    if (androidPlugin != null) {
+      await androidPlugin.requestNotificationsPermission();
+    }
+
+    // iOS
+    final iosPlugin =
+        plugin.resolvePlatformSpecificImplementation<
+            IOSFlutterLocalNotificationsPlugin>();
+    if (iosPlugin != null) {
+      await iosPlugin.requestPermissions(
+        alert: true,
+        badge: true,
+        sound: true,
+      );
+    }
+
+    if (mounted) {
       context.go('/prayer-times');
     }
   }
 
   void _skip() {
-    context.go('/prayer-times');
+    if (_step == _PermissionStep.location) {
+      setState(() => _step = _PermissionStep.notification);
+    } else {
+      context.go('/prayer-times');
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
+
+    final icon = _step == _PermissionStep.location
+        ? Icons.location_on_rounded
+        : Icons.notifications_active_rounded;
+    final title = _step == _PermissionStep.location
+        ? l10n.locationPermissionTitle
+        : l10n.notificationPermissionTitle;
+    final description = _step == _PermissionStep.location
+        ? l10n.locationPermissionDescription
+        : l10n.notificationPermissionDescription;
+    final buttonLabel = _step == _PermissionStep.location
+        ? l10n.allowLocation
+        : l10n.allowNotifications;
+    final onPressed = _step == _PermissionStep.location
+        ? _requestLocationPermission
+        : _requestNotificationPermission;
 
     return Scaffold(
       body: SafeArea(
@@ -54,6 +105,18 @@ class _LocationPermissionScreenState extends State<LocationPermissionScreen> {
             children: [
               const Spacer(flex: 2),
 
+              // Step indicator
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  _StepDot(active: _step == _PermissionStep.location),
+                  const SizedBox(width: 8),
+                  _StepDot(active: _step == _PermissionStep.notification),
+                ],
+              ),
+
+              const SizedBox(height: 32),
+
               // Icon
               Container(
                 width: 120,
@@ -62,8 +125,8 @@ class _LocationPermissionScreenState extends State<LocationPermissionScreen> {
                   color: UmmatiTheme.primaryGreen.withValues(alpha: 0.1),
                   shape: BoxShape.circle,
                 ),
-                child: const Icon(
-                  Icons.location_on_rounded,
+                child: Icon(
+                  icon,
                   size: 56,
                   color: UmmatiTheme.primaryGreen,
                 ),
@@ -73,7 +136,7 @@ class _LocationPermissionScreenState extends State<LocationPermissionScreen> {
 
               // Title
               Text(
-                l10n.locationPermissionTitle,
+                title,
                 style: Theme.of(context).textTheme.headlineSmall?.copyWith(
                       fontWeight: FontWeight.bold,
                       color: UmmatiTheme.darkText,
@@ -85,7 +148,7 @@ class _LocationPermissionScreenState extends State<LocationPermissionScreen> {
 
               // Description
               Text(
-                l10n.locationPermissionDescription,
+                description,
                 style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                       color: UmmatiTheme.darkText.withValues(alpha: 0.7),
                       height: 1.5,
@@ -100,7 +163,7 @@ class _LocationPermissionScreenState extends State<LocationPermissionScreen> {
                 width: double.infinity,
                 height: 52,
                 child: ElevatedButton(
-                  onPressed: _requesting ? null : _requestPermission,
+                  onPressed: _requesting ? null : onPressed,
                   style: ElevatedButton.styleFrom(
                     backgroundColor: UmmatiTheme.primaryGreen,
                     foregroundColor: Colors.white,
@@ -121,7 +184,7 @@ class _LocationPermissionScreenState extends State<LocationPermissionScreen> {
                             color: Colors.white,
                           ),
                         )
-                      : Text(l10n.allowLocation),
+                      : Text(buttonLabel),
                 ),
               ),
 
@@ -143,6 +206,25 @@ class _LocationPermissionScreenState extends State<LocationPermissionScreen> {
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+enum _PermissionStep { location, notification }
+
+class _StepDot extends StatelessWidget {
+  final bool active;
+  const _StepDot({required this.active});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: active ? 24 : 8,
+      height: 8,
+      decoration: BoxDecoration(
+        color: active ? UmmatiTheme.primaryGreen : Colors.grey[300],
+        borderRadius: BorderRadius.circular(4),
       ),
     );
   }

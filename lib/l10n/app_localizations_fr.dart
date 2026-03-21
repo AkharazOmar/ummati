@@ -179,6 +179,35 @@ class AppLocalizationsFr extends AppLocalizations {
   String get bookmarkSaved => 'Marque-page sauvegardé';
 
   @override
+  String get notifOff => 'Désactivé';
+
+  @override
+  String get notifBeep => 'Bip';
+
+  @override
+  String get notifAdhanMakkah => 'Adhan La Mecque';
+
+  @override
+  String get notifAdhanMadinah => 'Adhan Médine';
+
+  @override
+  String get notifAdhanAlaqsa => 'Adhan Al-Aqsa';
+
+  @override
+  String get notifAdhanSection => 'Adhan';
+
+  @override
+  String get notifyBefore => 'Notifier avant';
+
+  @override
+  String get atPrayerTime => 'À l\'heure de la prière';
+
+  @override
+  String minutesBefore(int minutes) {
+    return '$minutes min avant';
+  }
+
+  @override
   String get monthlySchedule => 'Horaires du mois';
 
   @override
@@ -216,6 +245,16 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get allowLocation => 'Autoriser la localisation';
+
+  @override
+  String get notificationPermissionTitle => 'Notifications';
+
+  @override
+  String get notificationPermissionDescription =>
+      'Autorisez Ummati à vous envoyer des notifications pour ne jamais manquer une prière.';
+
+  @override
+  String get allowNotifications => 'Autoriser les notifications';
 
   @override
   String get skipForNow => 'Passer pour le moment';

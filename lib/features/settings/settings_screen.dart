@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:just_audio/just_audio.dart';
 
+import '../../app/theme.dart';
 import '../../l10n/app_localizations.dart';
 import 'settings_provider.dart';
 
@@ -8,17 +10,18 @@ class SettingsScreen extends ConsumerWidget {
   const SettingsScreen({super.key});
 
   static const _calculationMethods = {
-    1: 'University of Islamic Sciences, Karachi',
-    2: 'Islamic Society of North America (ISNA)',
+    99: '🇲🇦 Maroc (Ministère des Habous)',
+    12: '🇫🇷 Union Organization Islamic de France',
+    4: '🇸🇦 Umm Al-Qura University, Makkah',
+    5: '🇪🇬 Egyptian General Authority of Survey',
     3: 'Muslim World League (MWL)',
-    4: 'Umm Al-Qura University, Makkah',
-    5: 'Egyptian General Authority of Survey',
+    2: 'Islamic Society of North America (ISNA)',
+    1: 'University of Islamic Sciences, Karachi',
     7: 'Institute of Geophysics, University of Tehran',
     8: 'Gulf Region',
     9: 'Kuwait',
     10: 'Qatar',
     11: 'Majlis Ugama Islam Singapura',
-    12: 'Union Organization Islamic de France',
     13: 'Diyanet İşleri Başkanlığı, Turkey',
     14: 'Spiritual Administration of Muslims of Russia',
     15: 'Moonsighting Committee Worldwide',
@@ -28,7 +31,9 @@ class SettingsScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final l10n = AppLocalizations.of(context)!;
     final locale = ref.watch(localeProvider);
-    final notificationsEnabled = ref.watch(notificationsEnabledProvider);
+    final notifSettings = ref.watch(prayerNotificationSettingsProvider);
+    final notifOffsets = ref.watch(prayerNotificationOffsetsProvider);
+    final availableSounds = ref.watch(availableSoundsProvider);
     final calculationMethod = ref.watch(calculationMethodProvider);
     final locationMode = ref.watch(locationModeProvider);
     final manualLocation = ref.watch(manualLocationProvider);
@@ -102,14 +107,34 @@ class SettingsScreen extends ConsumerWidget {
 
           // --- Notifications ---
           _SectionHeader(title: l10n.notifications),
-          SwitchListTile(
-            title: Text(l10n.prayerNotifications),
-            subtitle: Text(l10n.prayerNotificationsDesc),
-            value: notificationsEnabled,
-            activeThumbColor: Theme.of(context).colorScheme.primary,
-            onChanged: (_) =>
-                ref.read(notificationsEnabledProvider.notifier).toggle(),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+            child: Text(
+              l10n.prayerNotificationsDesc,
+              style: Theme.of(context).textTheme.bodySmall,
+            ),
           ),
+          ...prayerKeys.map((prayer) {
+            final soundId = notifSettings[prayer] ?? 'adhan_makkah';
+            final offset = notifOffsets[prayer] ?? 0;
+            final sounds = availableSounds.valueOrNull ?? [];
+            return _PrayerNotificationTile(
+              prayerName: _localizedPrayerName(l10n, prayer),
+              soundId: soundId,
+              offsetMinutes: offset,
+              sounds: sounds,
+              onSoundChanged: (newSoundId) {
+                ref
+                    .read(prayerNotificationSettingsProvider.notifier)
+                    .setSound(prayer, newSoundId);
+              },
+              onOffsetChanged: (newOffset) {
+                ref
+                    .read(prayerNotificationOffsetsProvider.notifier)
+                    .setOffset(prayer, newOffset);
+              },
+            );
+          }),
           const Divider(),
 
           // --- Calculation Method ---
@@ -148,6 +173,23 @@ class SettingsScreen extends ConsumerWidget {
         ],
       ),
     );
+  }
+
+  String _localizedPrayerName(AppLocalizations l10n, String name) {
+    switch (name) {
+      case 'Fajr':
+        return l10n.fajr;
+      case 'Dhuhr':
+        return l10n.dhuhr;
+      case 'Asr':
+        return l10n.asr;
+      case 'Maghrib':
+        return l10n.maghrib;
+      case 'Isha':
+        return l10n.isha;
+      default:
+        return name;
+    }
   }
 
   void _showCityPicker(
@@ -330,6 +372,281 @@ class _CityPickerSheetState extends State<_CityPickerSheet> {
           ),
         ],
       ),
+    );
+  }
+}
+
+class _PrayerNotificationTile extends StatelessWidget {
+  final String prayerName;
+  final String soundId;
+  final int offsetMinutes;
+  final List<NotificationSound> sounds;
+  final ValueChanged<String> onSoundChanged;
+  final ValueChanged<int> onOffsetChanged;
+
+  const _PrayerNotificationTile({
+    required this.prayerName,
+    required this.soundId,
+    required this.offsetMinutes,
+    required this.sounds,
+    required this.onSoundChanged,
+    required this.onOffsetChanged,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+    final sound = soundById(soundId, sounds);
+    final soundLabel = _displayLabel(l10n, sound);
+    final offsetLabel = offsetMinutes == 0
+        ? l10n.atPrayerTime
+        : l10n.minutesBefore(offsetMinutes);
+
+    return ListTile(
+      contentPadding: const EdgeInsets.symmetric(horizontal: 16),
+      title: Text(prayerName),
+      subtitle: Text(
+        sound.isSilent ? soundLabel : '$soundLabel · $offsetLabel',
+        style: TextStyle(
+          color: sound.isSilent
+              ? UmmatiTheme.darkText.withValues(alpha: 0.4)
+              : UmmatiTheme.primaryGreen,
+          fontSize: 13,
+        ),
+      ),
+      trailing: const Icon(Icons.chevron_right),
+      onTap: () {
+        showModalBottomSheet(
+          context: context,
+          isScrollControlled: true,
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
+          ),
+          builder: (ctx) => _SoundPickerSheet(
+            currentSoundId: soundId,
+            currentOffset: offsetMinutes,
+            prayerName: prayerName,
+            sounds: sounds,
+            onSelected: (id) {
+              onSoundChanged(id);
+              Navigator.pop(ctx);
+            },
+            onOffsetChanged: (offset) {
+              onOffsetChanged(offset);
+            },
+          ),
+        );
+      },
+    );
+  }
+
+  /// Display label: use l10n for fixed sounds, displayName for adhans.
+  static String _displayLabel(AppLocalizations l10n, NotificationSound sound) {
+    if (sound.id == 'none') return l10n.notifOff;
+    if (sound.id == 'beep') return l10n.notifBeep;
+    if (sound.isAdhan) return '🕌 ${sound.displayName}';
+    return sound.displayName;
+  }
+}
+
+class _SoundPickerSheet extends StatefulWidget {
+  final String currentSoundId;
+  final int currentOffset;
+  final String prayerName;
+  final List<NotificationSound> sounds;
+  final ValueChanged<String> onSelected;
+  final ValueChanged<int> onOffsetChanged;
+
+  const _SoundPickerSheet({
+    required this.currentSoundId,
+    required this.currentOffset,
+    required this.prayerName,
+    required this.sounds,
+    required this.onSelected,
+    required this.onOffsetChanged,
+  });
+
+  @override
+  State<_SoundPickerSheet> createState() => _SoundPickerSheetState();
+}
+
+class _SoundPickerSheetState extends State<_SoundPickerSheet> {
+  final AudioPlayer _player = AudioPlayer();
+  String? _playingSoundId;
+  late int _selectedOffset;
+
+  @override
+  void initState() {
+    super.initState();
+    _selectedOffset = widget.currentOffset;
+  }
+
+  @override
+  void dispose() {
+    _player.dispose();
+    super.dispose();
+  }
+
+  Future<void> _playPreview(NotificationSound sound) async {
+    if (sound.assetPath == null) return;
+
+    if (_playingSoundId == sound.id) {
+      await _player.stop();
+      setState(() => _playingSoundId = null);
+      return;
+    }
+
+    setState(() => _playingSoundId = sound.id);
+    try {
+      await _player.setAsset(sound.assetPath!);
+      await _player.play();
+      _player.playerStateStream.listen((state) {
+        if (state.processingState == ProcessingState.completed) {
+          if (mounted) setState(() => _playingSoundId = null);
+        }
+      });
+    } catch (_) {
+      if (mounted) setState(() => _playingSoundId = null);
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+
+    // Separate fixed sounds and adhans
+    final fixedSounds = widget.sounds.where((s) => !s.isAdhan).toList();
+    final adhanSounds = widget.sounds.where((s) => s.isAdhan).toList();
+
+    return SafeArea(
+      child: DraggableScrollableSheet(
+        initialChildSize: 0.5,
+        minChildSize: 0.3,
+        maxChildSize: 0.8,
+        expand: false,
+        builder: (context, scrollController) => Column(
+          children: [
+            const SizedBox(height: 8),
+            Container(
+              width: 40,
+              height: 4,
+              decoration: BoxDecoration(
+                color: Colors.grey[300],
+                borderRadius: BorderRadius.circular(2),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(16),
+              child: Text(
+                widget.prayerName,
+                style: Theme.of(context).textTheme.titleLarge,
+              ),
+            ),
+            Expanded(
+              child: ListView(
+                controller: scrollController,
+                children: [
+                  // Fixed sounds (Off, Beep)
+                  ...fixedSounds.map((sound) => _buildSoundTile(l10n, sound)),
+
+                  // Adhan section
+                  if (adhanSounds.isNotEmpty) ...[
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(16, 16, 16, 8),
+                      child: Text(
+                        l10n.notifAdhanSection,
+                        style: const TextStyle(
+                          fontSize: 13,
+                          fontWeight: FontWeight.w600,
+                          color: UmmatiTheme.primaryGreen,
+                        ),
+                      ),
+                    ),
+                    ...adhanSounds
+                        .map((sound) => _buildSoundTile(l10n, sound)),
+                  ],
+
+                  // Offset selector
+                  if (widget.currentSoundId != 'none') ...[
+                    const Divider(height: 24),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(16, 0, 16, 8),
+                      child: Text(
+                        l10n.notifyBefore,
+                        style: const TextStyle(
+                          fontSize: 13,
+                          fontWeight: FontWeight.w600,
+                          color: UmmatiTheme.primaryGreen,
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16),
+                      child: Wrap(
+                        spacing: 8,
+                        children: notificationOffsetOptions.map((minutes) {
+                          final isSelected = _selectedOffset == minutes;
+                          final label = minutes == 0
+                              ? l10n.atPrayerTime
+                              : l10n.minutesBefore(minutes);
+                          return ChoiceChip(
+                            label: Text(label),
+                            selected: isSelected,
+                            selectedColor: UmmatiTheme.primaryGreen,
+                            labelStyle: TextStyle(
+                              color: isSelected ? Colors.white : UmmatiTheme.darkText,
+                              fontSize: 13,
+                            ),
+                            onSelected: (_) {
+                              setState(() => _selectedOffset = minutes);
+                              widget.onOffsetChanged(minutes);
+                            },
+                          );
+                        }).toList(),
+                      ),
+                    ),
+                  ],
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildSoundTile(AppLocalizations l10n, NotificationSound sound) {
+    final isSelected = sound.id == widget.currentSoundId;
+    final isPlaying = _playingSoundId == sound.id;
+    final label = _PrayerNotificationTile._displayLabel(l10n, sound);
+
+    return ListTile(
+      leading: sound.assetPath != null
+          ? IconButton(
+              icon: Icon(
+                isPlaying ? Icons.stop_circle : Icons.play_circle,
+                color: UmmatiTheme.primaryGreen,
+                size: 32,
+              ),
+              onPressed: () => _playPreview(sound),
+            )
+          : const SizedBox(
+              width: 48,
+              child: Icon(Icons.notifications_off, color: Colors.grey),
+            ),
+      title: Text(
+        label,
+        style: TextStyle(
+          fontWeight: isSelected ? FontWeight.w600 : FontWeight.normal,
+        ),
+      ),
+      trailing: isSelected
+          ? const Icon(Icons.check_circle, color: UmmatiTheme.primaryGreen)
+          : null,
+      onTap: () {
+        _player.stop();
+        widget.onSelected(sound.id);
+      },
     );
   }
 }

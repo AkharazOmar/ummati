@@ -40,6 +40,9 @@ dependencies:
   # Internationalization
   intl: ^0.20.2
   scrollable_positioned_list: ^0.3.8
+  timezone: ^0.11.0
+  just_audio: ^0.10.5
+  geocoding: ^4.0.0
 
 dev_dependencies:
   flutter_test:
@@ -58,6 +61,8 @@ flutter:
   assets:
     - assets/images/
     - assets/data/
+    - assets/sounds/
+    - assets/sounds/adhan/
 
   fonts:
     - family: Amiri

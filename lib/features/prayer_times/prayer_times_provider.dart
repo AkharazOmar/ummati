@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:geocoding/geocoding.dart' as geocoding;
 import 'package:hive_flutter/hive_flutter.dart';
 
 import '../../core/models/prayer_time.dart';
@@ -15,6 +16,32 @@ final prayerApiServiceProvider = Provider<PrayerApiService>((ref) {
 
 final locationServiceProvider = Provider<LocationService>((ref) {
   return LocationService();
+});
+
+/// Provides the current city name based on location mode.
+final cityNameProvider = FutureProvider<String>((ref) async {
+  final locationMode = ref.watch(locationModeProvider);
+  final manualLocation = ref.watch(manualLocationProvider);
+
+  if (locationMode == 'manual' && manualLocation != null) {
+    return manualLocation.cityName;
+  }
+
+  try {
+    final locationService = ref.read(locationServiceProvider);
+    final position = await locationService.getCurrentPosition();
+    final placemarks = await geocoding.placemarkFromCoordinates(
+      position.latitude,
+      position.longitude,
+    );
+    if (placemarks.isNotEmpty) {
+      final place = placemarks.first;
+      return place.locality ?? place.subAdministrativeArea ?? place.administrativeArea ?? '';
+    }
+  } catch (_) {
+    // Geocoding failed — return empty
+  }
+  return '';
 });
 
 final _prayerCacheBoxProvider = Provider<Box>((ref) {
@@ -91,7 +118,7 @@ class PrayerTimesNotifier extends AsyncNotifier<DailyPrayerTimes> {
   }
 
   Future<DailyPrayerTimes> _fetchPrayerTimes({
-    int method = 2,
+    int method = 3,
     String locationMode = 'auto',
     ManualLocation? manualLocation,
   }) async {
@@ -163,28 +190,23 @@ class PrayerTimesNotifier extends AsyncNotifier<DailyPrayerTimes> {
 
   Future<void> _scheduleNotifications(DailyPrayerTimes data) async {
     try {
+      final notifSettings = ref.read(prayerNotificationSettingsProvider);
+      final notifOffsets = ref.read(prayerNotificationOffsetsProvider);
+
       final notifService = NotificationService();
       await notifService.initialize();
-      await notifService.cancelAll();
 
-      final prayers = [
-        data.fajr,
-        data.dhuhr,
-        data.asr,
-        data.maghrib,
-        data.isha,
-      ];
-
-      for (var i = 0; i < prayers.length; i++) {
-        final prayer = prayers[i];
-        if (prayer.time.isAfter(DateTime.now())) {
-          await notifService.schedulePrayerNotification(
-            id: i,
-            prayerName: prayer.name,
-            scheduledTime: prayer.time,
-          );
-        }
-      }
+      await notifService.scheduleAllPrayerNotifications(
+        prayerTimes: {
+          'Fajr': data.fajr.time,
+          'Dhuhr': data.dhuhr.time,
+          'Asr': data.asr.time,
+          'Maghrib': data.maghrib.time,
+          'Isha': data.isha.time,
+        },
+        settings: notifSettings,
+        offsets: notifOffsets,
+      );
     } catch (_) {
       // Notifications are best-effort
     }

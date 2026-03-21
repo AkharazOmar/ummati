@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
@@ -32,25 +35,164 @@ class LocaleNotifier extends StateNotifier<Locale> {
   }
 }
 
-// --- Notifications toggle ---
+// --- Notifications per prayer ---
 
-final notificationsEnabledProvider =
-    StateNotifierProvider<NotificationsNotifier, bool>((ref) {
-  final box = ref.read(settingsBoxProvider);
-  return NotificationsNotifier(box);
+/// The five configurable prayers.
+const prayerKeys = ['Fajr', 'Dhuhr', 'Asr', 'Maghrib', 'Isha'];
+
+/// A notification sound option.
+class NotificationSound {
+  final String id;
+  final String displayName;
+  final String? androidRaw;
+  final String? iosFile;
+  final String? assetPath;
+
+  const NotificationSound({
+    required this.id,
+    required this.displayName,
+    this.androidRaw,
+    this.iosFile,
+    this.assetPath,
+  });
+
+  bool get isSilent => androidRaw == null;
+  bool get isAdhan => id.startsWith('adhan_');
+}
+
+/// Fixed sounds (off + beep), always available.
+const _fixedSounds = [
+  NotificationSound(id: 'none', displayName: 'Off'),
+  NotificationSound(
+    id: 'beep',
+    displayName: 'Beep',
+    androidRaw: 'beep',
+    iosFile: 'beep.mp3',
+    assetPath: 'assets/sounds/beep.mp3',
+  ),
+];
+
+/// Provider that loads available sounds: fixed + adhans from adhan_list.json.
+final availableSoundsProvider = FutureProvider<List<NotificationSound>>((ref) async {
+  final adhans = await _loadAdhanList();
+  return [..._fixedSounds, ...adhans];
 });
 
-class NotificationsNotifier extends StateNotifier<bool> {
-  final Box _box;
-
-  NotificationsNotifier(this._box)
-      : super(_box.get('notifications', defaultValue: true) as bool);
-
-  void toggle() {
-    state = !state;
-    _box.put('notifications', state);
+Future<List<NotificationSound>> _loadAdhanList() async {
+  try {
+    final jsonStr = await rootBundle.loadString('assets/data/adhan_list.json');
+    final list = jsonDecode(jsonStr) as List;
+    return list.map((item) {
+      final map = item as Map<String, dynamic>;
+      final id = map['id'] as String;
+      final name = map['name'] as String;
+      final file = map['file'] as String;
+      final androidRaw = map['androidRaw'] as String;
+      // Format display name: capitalize first letter
+      final displayName = '${name[0].toUpperCase()}${name.substring(1)}';
+      return NotificationSound(
+        id: id,
+        displayName: displayName,
+        androidRaw: androidRaw,
+        iosFile: '$androidRaw.mp3',
+        assetPath: 'assets/sounds/adhan/$file',
+      );
+    }).toList();
+  } catch (_) {
+    return [];
   }
 }
+
+/// Synchronous lookup — searches fixed sounds then falls back to id-based construction.
+NotificationSound soundById(String id, [List<NotificationSound>? allSounds]) {
+  if (allSounds != null) {
+    return allSounds.firstWhere(
+      (s) => s.id == id,
+      orElse: () => allSounds.length > 2 ? allSounds[2] : _fixedSounds[0],
+    );
+  }
+  // Fallback for notification service (no async)
+  final fixed = _fixedSounds.where((s) => s.id == id);
+  if (fixed.isNotEmpty) return fixed.first;
+  // Construct from id for adhan sounds
+  return NotificationSound(
+    id: id,
+    displayName: id.replaceFirst('adhan_', ''),
+    androidRaw: id,
+    iosFile: '$id.mp3',
+    assetPath: 'assets/sounds/adhan/${id.replaceFirst('adhan_', '')}.mp3',
+  );
+}
+
+/// State: a map of prayer name → sound id.
+typedef PrayerNotificationSettings = Map<String, String>;
+
+final prayerNotificationSettingsProvider = StateNotifierProvider<
+    PrayerNotificationSettingsNotifier, PrayerNotificationSettings>((ref) {
+  final box = ref.read(settingsBoxProvider);
+  return PrayerNotificationSettingsNotifier(box);
+});
+
+class PrayerNotificationSettingsNotifier
+    extends StateNotifier<PrayerNotificationSettings> {
+  final Box _box;
+
+  PrayerNotificationSettingsNotifier(this._box) : super(_loadFromBox(_box));
+
+  static PrayerNotificationSettings _loadFromBox(Box box) {
+    final result = <String, String>{};
+    for (final key in prayerKeys) {
+      result[key] =
+          box.get('notif_$key', defaultValue: 'adhan_makkah') as String;
+    }
+    return result;
+  }
+
+  void setSound(String prayer, String soundId) {
+    _box.put('notif_$prayer', soundId);
+    state = {...state, prayer: soundId};
+  }
+}
+
+// --- Notification offset (minutes before prayer) ---
+
+/// Available offset options in minutes.
+const notificationOffsetOptions = [0, 5, 10, 15, 20, 30];
+
+/// State: a map of prayer name → offset in minutes.
+typedef PrayerNotificationOffsets = Map<String, int>;
+
+final prayerNotificationOffsetsProvider = StateNotifierProvider<
+    PrayerNotificationOffsetsNotifier, PrayerNotificationOffsets>((ref) {
+  final box = ref.read(settingsBoxProvider);
+  return PrayerNotificationOffsetsNotifier(box);
+});
+
+class PrayerNotificationOffsetsNotifier
+    extends StateNotifier<PrayerNotificationOffsets> {
+  final Box _box;
+
+  PrayerNotificationOffsetsNotifier(this._box) : super(_loadFromBox(_box));
+
+  static PrayerNotificationOffsets _loadFromBox(Box box) {
+    final result = <String, int>{};
+    for (final key in prayerKeys) {
+      result[key] = box.get('notifOffset_$key', defaultValue: 0) as int;
+    }
+    return result;
+  }
+
+  void setOffset(String prayer, int minutes) {
+    _box.put('notifOffset_$prayer', minutes);
+    state = {...state, prayer: minutes};
+  }
+}
+
+// Returns true if any prayer has notifications enabled
+final notificationsEnabledProvider = Provider<bool>((ref) {
+  final settings = ref.watch(prayerNotificationSettingsProvider);
+  return settings.values.any((id) => id != 'none');
+});
 
 // --- Location mode ---
 
@@ -138,7 +280,7 @@ class CalculationMethodNotifier extends StateNotifier<int> {
   final Box _box;
 
   CalculationMethodNotifier(this._box)
-      : super(_box.get('calculationMethod', defaultValue: 2) as int);
+      : super(_box.get('calculationMethod', defaultValue: 3) as int);
 
   void setMethod(int method) {
     _box.put('calculationMethod', method);

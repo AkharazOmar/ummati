@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:intl/intl.dart';
 
 import '../../app/theme.dart';
 import '../../core/models/prayer_time.dart';
@@ -76,6 +77,11 @@ class PrayerTimesScreen extends ConsumerWidget {
   Widget _buildContent(BuildContext context, WidgetRef ref,
       AppLocalizations l10n, DailyPrayerTimes data) {
     final next = data.nextPrayer;
+    final cityAsync = ref.watch(cityNameProvider);
+    final cityName = cityAsync.valueOrNull ?? '';
+    final gregorianDate = DateFormat.yMMMMd(
+      Localizations.localeOf(context).languageCode,
+    ).format(data.date);
 
     return RefreshIndicator(
       color: UmmatiTheme.primaryGreen,
@@ -83,12 +89,36 @@ class PrayerTimesScreen extends ConsumerWidget {
       child: ListView(
         padding: const EdgeInsets.all(16),
         children: [
-          // Hijri date header
+          // City name
+          if (cityName.isNotEmpty)
+            Padding(
+              padding: const EdgeInsets.only(bottom: 8),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Icon(
+                    Icons.location_on,
+                    size: 16,
+                    color: UmmatiTheme.primaryGreen,
+                  ),
+                  const SizedBox(width: 4),
+                  Text(
+                    cityName,
+                    style: Theme.of(context).textTheme.titleSmall?.copyWith(
+                          color: UmmatiTheme.primaryGreen,
+                          fontWeight: FontWeight.w600,
+                        ),
+                  ),
+                ],
+              ),
+            ),
+
+          // Date header
           IslamicCard(
             child: Column(
               children: [
                 Text(
-                  l10n.today,
+                  gregorianDate,
                   style: Theme.of(context).textTheme.bodyMedium,
                 ),
                 const SizedBox(height: 4),

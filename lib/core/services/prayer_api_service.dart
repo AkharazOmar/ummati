@@ -16,6 +16,12 @@ class PrayerApiService {
               receiveTimeout: const Duration(seconds: 10),
             ));
 
+  /// Custom method ID used by Aladhan for user-defined parameters.
+  static const int customMethodId = 99;
+
+  /// Moroccan method: Fajr 19°, Isha 17° (Ministère des Habous).
+  static const String moroccanMethodSettings = '19,null,17';
+
   /// Fetch prayer times for a given location and date.
   ///
   /// [method] is the calculation method ID (default 2 = ISNA).
@@ -29,13 +35,18 @@ class PrayerApiService {
     final dateStr =
         '${d.day.toString().padLeft(2, '0')}-${d.month.toString().padLeft(2, '0')}-${d.year}';
 
+    final params = <String, dynamic>{
+      'latitude': latitude,
+      'longitude': longitude,
+      'method': method,
+    };
+    if (method == customMethodId) {
+      params['methodSettings'] = moroccanMethodSettings;
+    }
+
     final response = await _dio.get(
       '$_aladhanBaseUrl/timings/$dateStr',
-      queryParameters: {
-        'latitude': latitude,
-        'longitude': longitude,
-        'method': method,
-      },
+      queryParameters: params,
     );
 
     final data = response.data['data'] as Map<String, dynamic>;
@@ -50,13 +61,18 @@ class PrayerApiService {
     required int month,
     int method = 2,
   }) async {
+    final params = <String, dynamic>{
+      'latitude': latitude,
+      'longitude': longitude,
+      'method': method,
+    };
+    if (method == customMethodId) {
+      params['methodSettings'] = moroccanMethodSettings;
+    }
+
     final response = await _dio.get(
       '$_aladhanBaseUrl/calendar/$year/$month',
-      queryParameters: {
-        'latitude': latitude,
-        'longitude': longitude,
-        'method': method,
-      },
+      queryParameters: params,
     );
 
     final days = response.data['data'] as List;

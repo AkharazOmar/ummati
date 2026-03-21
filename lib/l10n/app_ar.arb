@@ -87,6 +87,22 @@
   "resumeReading": "متابعة القراءة",
   "saveBookmark": "حفظ العلامة",
   "bookmarkSaved": "تم حفظ العلامة",
+  "notifOff": "إيقاف",
+  "notifBeep": "تنبيه",
+  "notifAdhanMakkah": "أذان مكة",
+  "notifAdhanMadinah": "أذان المدينة",
+  "notifAdhanAlaqsa": "أذان الأقصى",
+  "notifAdhanSection": "الأذان",
+  "notifyBefore": "التنبيه قبل",
+  "atPrayerTime": "عند وقت الصلاة",
+  "minutesBefore": "قبل {minutes} دقيقة",
+  "@minutesBefore": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
   "monthlySchedule": "جدول الشهر",
   "dayColumn": "التاريخ",
   "monthName": "{month, select, january{يناير} february{فبراير} march{مارس} april{أبريل} may{مايو} june{يونيو} july{يوليو} august{أغسطس} september{سبتمبر} october{أكتوبر} november{نوفمبر} december{ديسمبر} other{}}",
@@ -100,6 +116,9 @@
   "locationPermissionTitle": "الوصول إلى الموقع",
   "locationPermissionDescription": "يحتاج أمّتي إلى موقعك لحساب مواقيت الصلاة واتجاه القبلة بدقة في منطقتك.",
   "allowLocation": "السماح بالوصول إلى الموقع",
+  "notificationPermissionTitle": "الإشعارات",
+  "notificationPermissionDescription": "اسمح لأمّتي بإرسال إشعارات حتى لا تفوتك أي صلاة.",
+  "allowNotifications": "السماح بالإشعارات",
   "skipForNow": "تخطي الآن",
   "verseNumber": "الآية {number}",
   "@verseNumber": {

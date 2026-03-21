@@ -412,6 +412,60 @@ abstract class AppLocalizations {
   /// **'Bookmark saved'**
   String get bookmarkSaved;
 
+  /// No description provided for @notifOff.
+  ///
+  /// In en, this message translates to:
+  /// **'Off'**
+  String get notifOff;
+
+  /// No description provided for @notifBeep.
+  ///
+  /// In en, this message translates to:
+  /// **'Beep'**
+  String get notifBeep;
+
+  /// No description provided for @notifAdhanMakkah.
+  ///
+  /// In en, this message translates to:
+  /// **'Adhan Makkah'**
+  String get notifAdhanMakkah;
+
+  /// No description provided for @notifAdhanMadinah.
+  ///
+  /// In en, this message translates to:
+  /// **'Adhan Madinah'**
+  String get notifAdhanMadinah;
+
+  /// No description provided for @notifAdhanAlaqsa.
+  ///
+  /// In en, this message translates to:
+  /// **'Adhan Al-Aqsa'**
+  String get notifAdhanAlaqsa;
+
+  /// No description provided for @notifAdhanSection.
+  ///
+  /// In en, this message translates to:
+  /// **'Adhan'**
+  String get notifAdhanSection;
+
+  /// No description provided for @notifyBefore.
+  ///
+  /// In en, this message translates to:
+  /// **'Notify before'**
+  String get notifyBefore;
+
+  /// No description provided for @atPrayerTime.
+  ///
+  /// In en, this message translates to:
+  /// **'At prayer time'**
+  String get atPrayerTime;
+
+  /// No description provided for @minutesBefore.
+  ///
+  /// In en, this message translates to:
+  /// **'{minutes} min before'**
+  String minutesBefore(int minutes);
+
   /// No description provided for @monthlySchedule.
   ///
   /// In en, this message translates to:
@@ -447,6 +501,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Allow Location Access'**
   String get allowLocation;
+
+  /// No description provided for @notificationPermissionTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Notifications'**
+  String get notificationPermissionTitle;
+
+  /// No description provided for @notificationPermissionDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Allow Ummati to send you notifications so you never miss a prayer time.'**
+  String get notificationPermissionDescription;
+
+  /// No description provided for @allowNotifications.
+  ///
+  /// In en, this message translates to:
+  /// **'Allow Notifications'**
+  String get allowNotifications;
 
   /// No description provided for @skipForNow.
   ///

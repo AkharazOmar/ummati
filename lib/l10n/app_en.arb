@@ -87,6 +87,22 @@
   "resumeReading": "Resume reading",
   "saveBookmark": "Save bookmark",
   "bookmarkSaved": "Bookmark saved",
+  "notifOff": "Off",
+  "notifBeep": "Beep",
+  "notifAdhanMakkah": "Adhan Makkah",
+  "notifAdhanMadinah": "Adhan Madinah",
+  "notifAdhanAlaqsa": "Adhan Al-Aqsa",
+  "notifAdhanSection": "Adhan",
+  "notifyBefore": "Notify before",
+  "atPrayerTime": "At prayer time",
+  "minutesBefore": "{minutes} min before",
+  "@minutesBefore": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
   "monthlySchedule": "Monthly Schedule",
   "dayColumn": "Date",
   "monthName": "{month, select, january{January} february{February} march{March} april{April} may{May} june{June} july{July} august{August} september{September} october{October} november{November} december{December} other{}}",
@@ -100,6 +116,9 @@
   "locationPermissionTitle": "Location Access",
   "locationPermissionDescription": "Ummati needs your location to calculate accurate prayer times and Qibla direction for your area.",
   "allowLocation": "Allow Location Access",
+  "notificationPermissionTitle": "Notifications",
+  "notificationPermissionDescription": "Allow Ummati to send you notifications so you never miss a prayer time.",
+  "allowNotifications": "Allow Notifications",
   "skipForNow": "Skip for now",
   "verseNumber": "Verse {number}",
   "@verseNumber": {

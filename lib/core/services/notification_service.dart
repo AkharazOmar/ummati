@@ -1,4 +1,8 @@
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:timezone/data/latest_all.dart' as tz;
+import 'package:timezone/timezone.dart' as tz;
+
+import '../../features/settings/settings_provider.dart';
 
 @pragma('vm:entry-point')
 void _onBackgroundNotificationResponse(NotificationResponse response) {
@@ -18,6 +22,8 @@ class NotificationService {
   Future<void> initialize() async {
     if (_initialized) return;
 
+    tz.initializeTimeZones();
+
     const androidSettings =
         AndroidInitializationSettings('@mipmap/ic_launcher');
     const iosSettings = DarwinInitializationSettings(
@@ -34,7 +40,7 @@ class NotificationService {
     await _plugin.initialize(
       settings: settings,
       onDidReceiveNotificationResponse: (NotificationResponse response) {
-        // TODO: handle notification tap (e.g. navigate to prayer times screen)
+        // TODO: handle notification tap
       },
       onDidReceiveBackgroundNotificationResponse:
           _onBackgroundNotificationResponse,
@@ -42,52 +48,86 @@ class NotificationService {
     _initialized = true;
   }
 
+  /// Schedule a prayer notification with the chosen sound.
   Future<void> schedulePrayerNotification({
     required int id,
     required String prayerName,
     required DateTime scheduledTime,
+    required NotificationSound sound,
   }) async {
-    // Schedule exact notification
-    // Note: on Android 12+, exact alarms require SCHEDULE_EXACT_ALARM permission
-    const androidDetails = AndroidNotificationDetails(
-      'prayer_times',
-      'Prayer Times',
-      channelDescription: 'Notifications for prayer times',
+    if (sound.isSilent) return;
+
+    final now = DateTime.now();
+    if (scheduledTime.isBefore(now)) return;
+
+    final androidDetails = AndroidNotificationDetails(
+      'prayer_${sound.id}',
+      'Prayer Times (${sound.id})',
+      channelDescription: 'Prayer time notifications',
       importance: Importance.high,
       priority: Priority.high,
       playSound: true,
+      sound: RawResourceAndroidNotificationSound(sound.androidRaw!),
       enableVibration: true,
       category: AndroidNotificationCategory.reminder,
     );
 
-    const iosDetails = DarwinNotificationDetails(
+    final iosDetails = DarwinNotificationDetails(
       presentAlert: true,
       presentBadge: true,
       presentSound: true,
+      sound: sound.iosFile,
     );
 
-    const details = NotificationDetails(
+    final details = NotificationDetails(
       android: androidDetails,
       iOS: iosDetails,
     );
 
-    // Use show() for immediate testing; for production, use zonedSchedule()
-    // with the timezone package for exact scheduling.
-    final now = DateTime.now();
-    final delay = scheduledTime.difference(now);
+    final tzScheduledTime = tz.TZDateTime.from(scheduledTime, tz.local);
 
-    if (delay.isNegative) return;
+    await _plugin.zonedSchedule(
+      id: id,
+      title: '🕌 $prayerName',
+      body: "It's time for $prayerName prayer",
+      scheduledDate: tzScheduledTime,
+      notificationDetails: details,
+      androidScheduleMode: AndroidScheduleMode.inexactAllowWhileIdle,
+    );
+  }
 
-    // For V1, we schedule via Future.delayed + show
-    // TODO: migrate to zonedSchedule with timezone package for reliability
-    Future.delayed(delay, () {
-      _plugin.show(
-        id: id,
-        title: '🕌 $prayerName',
-        body: 'It\'s time for $prayerName prayer',
-        notificationDetails: details,
+  /// Schedule notifications for all prayers based on per-prayer settings.
+  Future<void> scheduleAllPrayerNotifications({
+    required Map<String, DateTime> prayerTimes,
+    required PrayerNotificationSettings settings,
+    required PrayerNotificationOffsets offsets,
+  }) async {
+    await cancelAll();
+
+    const prayerIds = {
+      'Fajr': 0,
+      'Dhuhr': 1,
+      'Asr': 2,
+      'Maghrib': 3,
+      'Isha': 4,
+    };
+
+    for (final entry in prayerIds.entries) {
+      final soundId = settings[entry.key] ?? 'adhan_makkah';
+      final sound = soundById(soundId);
+      final time = prayerTimes[entry.key];
+      if (time == null) continue;
+
+      final offsetMinutes = offsets[entry.key] ?? 0;
+      final scheduledTime = time.subtract(Duration(minutes: offsetMinutes));
+
+      await schedulePrayerNotification(
+        id: entry.value,
+        prayerName: entry.key,
+        scheduledTime: scheduledTime,
+        sound: sound,
       );
-    });
+    }
   }
 
   Future<void> cancelAll() async {

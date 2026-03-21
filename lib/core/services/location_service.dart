@@ -23,10 +23,17 @@ class LocationService {
       );
     }
 
+    // 1. Try last known position first (instant, no GPS needed)
+    final lastKnown = await Geolocator.getLastKnownPosition();
+    if (lastKnown != null) {
+      return lastKnown;
+    }
+
+    // 2. No cached position — get a fresh fix with low accuracy (fast)
     return await Geolocator.getCurrentPosition(
       locationSettings: const LocationSettings(
-        accuracy: LocationAccuracy.high,
-        timeLimit: Duration(seconds: 15),
+        accuracy: LocationAccuracy.low,
+        timeLimit: Duration(seconds: 30),
       ),
     );
   }

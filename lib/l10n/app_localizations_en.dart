@@ -178,6 +178,35 @@ class AppLocalizationsEn extends AppLocalizations {
   String get bookmarkSaved => 'Bookmark saved';
 
   @override
+  String get notifOff => 'Off';
+
+  @override
+  String get notifBeep => 'Beep';
+
+  @override
+  String get notifAdhanMakkah => 'Adhan Makkah';
+
+  @override
+  String get notifAdhanMadinah => 'Adhan Madinah';
+
+  @override
+  String get notifAdhanAlaqsa => 'Adhan Al-Aqsa';
+
+  @override
+  String get notifAdhanSection => 'Adhan';
+
+  @override
+  String get notifyBefore => 'Notify before';
+
+  @override
+  String get atPrayerTime => 'At prayer time';
+
+  @override
+  String minutesBefore(int minutes) {
+    return '$minutes min before';
+  }
+
+  @override
   String get monthlySchedule => 'Monthly Schedule';
 
   @override
@@ -215,6 +244,16 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get allowLocation => 'Allow Location Access';
+
+  @override
+  String get notificationPermissionTitle => 'Notifications';
+
+  @override
+  String get notificationPermissionDescription =>
+      'Allow Ummati to send you notifications so you never miss a prayer time.';
+
+  @override
+  String get allowNotifications => 'Allow Notifications';
 
   @override
   String get skipForNow => 'Skip for now';

@@ -176,6 +176,35 @@ class AppLocalizationsAr extends AppLocalizations {
   String get bookmarkSaved => 'تم حفظ العلامة';
 
   @override
+  String get notifOff => 'إيقاف';
+
+  @override
+  String get notifBeep => 'تنبيه';
+
+  @override
+  String get notifAdhanMakkah => 'أذان مكة';
+
+  @override
+  String get notifAdhanMadinah => 'أذان المدينة';
+
+  @override
+  String get notifAdhanAlaqsa => 'أذان الأقصى';
+
+  @override
+  String get notifAdhanSection => 'الأذان';
+
+  @override
+  String get notifyBefore => 'التنبيه قبل';
+
+  @override
+  String get atPrayerTime => 'عند وقت الصلاة';
+
+  @override
+  String minutesBefore(int minutes) {
+    return 'قبل $minutes دقيقة';
+  }
+
+  @override
   String get monthlySchedule => 'جدول الشهر';
 
   @override
@@ -213,6 +242,16 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get allowLocation => 'السماح بالوصول إلى الموقع';
+
+  @override
+  String get notificationPermissionTitle => 'الإشعارات';
+
+  @override
+  String get notificationPermissionDescription =>
+      'اسمح لأمّتي بإرسال إشعارات حتى لا تفوتك أي صلاة.';
+
+  @override
+  String get allowNotifications => 'السماح بالإشعارات';
 
   @override
   String get skipForNow => 'تخطي الآن';
