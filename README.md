@@ -150,4 +150,4 @@ analyze-and-test (ubuntu)
 
 ## Licence
 
-Tous droits reserves. Voir [LICENSE](LICENSE).
+Ce projet est sous licence [GNU Affero General Public License v3.0](LICENSE).
