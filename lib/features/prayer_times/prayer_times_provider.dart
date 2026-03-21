@@ -3,11 +3,14 @@ import 'dart:convert';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:geocoding/geocoding.dart' as geocoding;
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:home_widget/home_widget.dart';
+import 'package:intl/intl.dart';
 
 import '../../core/models/prayer_time.dart';
 import '../../core/services/prayer_api_service.dart';
 import '../../core/services/location_service.dart';
 import '../../core/services/notification_service.dart';
+import '../../core/utils/date_utils.dart';
 import '../settings/settings_provider.dart';
 
 final prayerApiServiceProvider = Provider<PrayerApiService>((ref) {
@@ -175,6 +178,9 @@ class PrayerTimesNotifier extends AsyncNotifier<DailyPrayerTimes> {
     // Schedule notifications
     await _scheduleNotifications(data);
 
+    // Update home screen widget
+    await _updateWidget(data);
+
     return data;
   }
 
@@ -209,6 +215,46 @@ class PrayerTimesNotifier extends AsyncNotifier<DailyPrayerTimes> {
       );
     } catch (_) {
       // Notifications are best-effort
+    }
+  }
+
+  Future<void> _updateWidget(DailyPrayerTimes data) async {
+    try {
+      final locationMode = ref.read(locationModeProvider);
+      final manualLocation = ref.read(manualLocationProvider);
+
+      String city = '';
+      if (locationMode == 'manual' && manualLocation != null) {
+        city = manualLocation.cityName;
+      } else {
+        try {
+          final locationService = ref.read(locationServiceProvider);
+          final position = await locationService.getCurrentPosition();
+          final placemarks = await geocoding.placemarkFromCoordinates(
+            position.latitude,
+            position.longitude,
+          );
+          if (placemarks.isNotEmpty) {
+            final place = placemarks.first;
+            city = place.locality ?? place.subAdministrativeArea ?? '';
+          }
+        } catch (_) {}
+      }
+
+      final dateStr = DateFormat('dd/MM').format(data.date);
+
+      await HomeWidget.saveWidgetData('city', city);
+      await HomeWidget.saveWidgetData('date', dateStr);
+      await HomeWidget.saveWidgetData('fajr', HijriDateUtils.formatTime(data.fajr.time));
+      await HomeWidget.saveWidgetData('dhuhr', HijriDateUtils.formatTime(data.dhuhr.time));
+      await HomeWidget.saveWidgetData('asr', HijriDateUtils.formatTime(data.asr.time));
+      await HomeWidget.saveWidgetData('maghrib', HijriDateUtils.formatTime(data.maghrib.time));
+      await HomeWidget.saveWidgetData('isha', HijriDateUtils.formatTime(data.isha.time));
+      await HomeWidget.updateWidget(
+        androidName: 'PrayerTimesWidget',
+      );
+    } catch (_) {
+      // Widget update is best-effort
     }
   }
 

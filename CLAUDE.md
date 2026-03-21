@@ -49,6 +49,9 @@ flutter build ios --release --no-codesign
 - Moroccan prayer method uses Aladhan `method=99` with `methodSettings=19,null,17`
 - Location uses `getLastKnownPosition()` first for instant results, then falls back to GPS fix
 - The `android/` directory is in .gitignore except files explicitly force-added
+- Home screen widget uses `home_widget` package (Flutter) + native Kotlin `PrayerTimesWidget` (AppWidgetProvider)
+- Widget data is pushed via `HomeWidget.saveWidgetData()` after prayer times are fetched, then `HomeWidget.updateWidget()` triggers native refresh
+- Widget layout is in `android/.../res/layout/prayer_widget.xml` (RemoteViews XML, not Flutter)
 
 ## Testing
 

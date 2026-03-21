@@ -10,6 +10,7 @@ Application islamique Flutter — gratuite, sans publicite, open source.
 - Tableau mensuel sur 30 jours avec navigation par mois
 - Affichage de la ville, date gregorienne et date hijri
 - Prochaine priere mise en evidence avec compte a rebours
+- **Widget Android** sur l'ecran d'accueil avec les 5 horaires, ville et date
 
 ### Coran
 - Liste des 114 sourates
@@ -46,6 +47,7 @@ Application islamique Flutter — gratuite, sans publicite, open source.
 | Audio | just_audio |
 | Localisation | geolocator + geocoding |
 | Boussole | flutter_compass |
+| Widget ecran d'accueil | home_widget |
 | Polices | Amiri (arabe), Nunito (latin) |
 
 ## Demarrage rapide
@@ -121,6 +123,14 @@ assets/
 
 scripts/
 └── sync_adhan.sh             # Genere le manifeste adhan + sync Android raw
+
+android/.../kotlin/
+└── PrayerTimesWidget.kt      # AppWidgetProvider natif (Kotlin)
+
+android/.../res/
+├── layout/prayer_widget.xml  # Layout du widget ecran d'accueil
+├── xml/prayer_widget_info.xml # Configuration du widget
+└── drawable/widget_background.xml
 ```
 
 ## CI/CD
