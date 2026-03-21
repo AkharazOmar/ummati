@@ -34,17 +34,32 @@ final prayerTimesProvider =
 class PrayerTimesNotifier extends AsyncNotifier<DailyPrayerTimes> {
   @override
   Future<DailyPrayerTimes> build() async {
-    // Watch calculation method — auto-refresh when it changes
+    // Watch calculation method and location — auto-refresh when they change
     final method = ref.watch(calculationMethodProvider);
-    return _fetchPrayerTimes(method: method);
+    final locationMode = ref.watch(locationModeProvider);
+    final manualLocation = ref.watch(manualLocationProvider);
+    return _fetchPrayerTimes(
+      method: method,
+      locationMode: locationMode,
+      manualLocation: manualLocation,
+    );
   }
 
-  Future<DailyPrayerTimes> _fetchPrayerTimes({int method = 2}) async {
+  Future<DailyPrayerTimes> _fetchPrayerTimes({
+    int method = 2,
+    String locationMode = 'auto',
+    ManualLocation? manualLocation,
+  }) async {
     final cacheBox = ref.read(_prayerCacheBoxProvider);
     final today = _todayKey();
 
+    // Build a cache key that includes location mode
+    final cacheKey = locationMode == 'manual' && manualLocation != null
+        ? 'prayers_${today}_manual'
+        : 'prayers_${today}_auto';
+
     // Try cache first
-    final cached = cacheBox.get('prayers_$today');
+    final cached = cacheBox.get(cacheKey);
     if (cached != null) {
       try {
         final json = jsonDecode(cached as String) as Map<String, dynamic>;
@@ -57,19 +72,30 @@ class PrayerTimesNotifier extends AsyncNotifier<DailyPrayerTimes> {
       }
     }
 
-    // Fetch from API
-    final locationService = ref.read(locationServiceProvider);
-    final apiService = ref.read(prayerApiServiceProvider);
+    // Determine coordinates
+    double latitude;
+    double longitude;
 
-    final position = await locationService.getCurrentPosition();
+    if (locationMode == 'manual' && manualLocation != null) {
+      latitude = manualLocation.latitude;
+      longitude = manualLocation.longitude;
+    } else {
+      final locationService = ref.read(locationServiceProvider);
+      final position = await locationService.getCurrentPosition();
+      latitude = position.latitude;
+      longitude = position.longitude;
+    }
+
+    // Fetch from API
+    final apiService = ref.read(prayerApiServiceProvider);
     final data = await apiService.getPrayerTimes(
-      latitude: position.latitude,
-      longitude: position.longitude,
+      latitude: latitude,
+      longitude: longitude,
       method: method,
     );
 
     // Cache result
-    cacheBox.put('prayers_$today', jsonEncode(data.toCacheJson(method)));
+    cacheBox.put(cacheKey, jsonEncode(data.toCacheJson(method)));
 
     // Clean old cache entries
     _cleanOldCache(cacheBox, today);

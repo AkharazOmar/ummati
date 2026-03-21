@@ -67,5 +67,32 @@
   "aboutDesc": "Free Islamic app with no ads",
   "noCompass": "Compass sensor not available on this device",
   "calibrateCompass": "Calibrate by moving your phone in a figure-8 pattern",
-  "qiblaAligned": "You are facing the Qibla ✓"
+  "qiblaAligned": "You are facing the Qibla ✓",
+  "location": "Location",
+  "locationAuto": "Automatic (GPS)",
+  "locationManual": "Manual",
+  "locationAutoDesc": "Use device GPS for prayer times",
+  "locationManualDesc": "Choose a city manually",
+  "selectCity": "Select a city",
+  "currentCity": "Current city: {city}",
+  "@currentCity": {
+    "placeholders": {
+      "city": {
+        "type": "String"
+      }
+    }
+  },
+  "searchCity": "Search for a city...",
+  "noCitySelected": "No city selected",
+  "resumeReading": "Resume reading",
+  "saveBookmark": "Save bookmark",
+  "bookmarkSaved": "Bookmark saved",
+  "verseNumber": "Verse {number}",
+  "@verseNumber": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      }
+    }
+  }
 }

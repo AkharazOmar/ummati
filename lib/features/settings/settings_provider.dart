@@ -52,6 +52,80 @@ class NotificationsNotifier extends StateNotifier<bool> {
   }
 }
 
+// --- Location mode ---
+
+final locationModeProvider =
+    StateNotifierProvider<LocationModeNotifier, String>((ref) {
+  final box = ref.read(settingsBoxProvider);
+  return LocationModeNotifier(box);
+});
+
+class LocationModeNotifier extends StateNotifier<String> {
+  final Box _box;
+
+  LocationModeNotifier(this._box)
+      : super(_box.get('locationMode', defaultValue: 'auto') as String);
+
+  void setMode(String mode) {
+    _box.put('locationMode', mode);
+    state = mode;
+  }
+}
+
+// --- Manual location ---
+
+class ManualLocation {
+  final String cityName;
+  final double latitude;
+  final double longitude;
+
+  const ManualLocation({
+    required this.cityName,
+    required this.latitude,
+    required this.longitude,
+  });
+}
+
+final manualLocationProvider =
+    StateNotifierProvider<ManualLocationNotifier, ManualLocation?>((ref) {
+  final box = ref.read(settingsBoxProvider);
+  return ManualLocationNotifier(box);
+});
+
+class ManualLocationNotifier extends StateNotifier<ManualLocation?> {
+  final Box _box;
+
+  ManualLocationNotifier(this._box) : super(_loadFromBox(_box));
+
+  static ManualLocation? _loadFromBox(Box box) {
+    final city = box.get('manualCity') as String?;
+    final lat = box.get('manualLat') as double?;
+    final lng = box.get('manualLng') as double?;
+    if (city != null && lat != null && lng != null) {
+      return ManualLocation(cityName: city, latitude: lat, longitude: lng);
+    }
+    return null;
+  }
+
+  void setLocation(String cityName, double latitude, double longitude) {
+    _box.put('manualCity', cityName);
+    _box.put('manualLat', latitude);
+    _box.put('manualLng', longitude);
+    state = ManualLocation(
+      cityName: cityName,
+      latitude: latitude,
+      longitude: longitude,
+    );
+  }
+
+  void clear() {
+    _box.delete('manualCity');
+    _box.delete('manualLat');
+    _box.delete('manualLng');
+    state = null;
+  }
+}
+
 // --- Calculation method ---
 
 final calculationMethodProvider =

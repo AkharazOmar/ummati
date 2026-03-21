@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../app/theme.dart';
 import '../../core/models/surah.dart';
+import '../../l10n/app_localizations.dart';
 import 'quran_provider.dart';
 
 class QuranScreen extends ConsumerWidget {
@@ -14,6 +14,7 @@ class QuranScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final l10n = AppLocalizations.of(context)!;
     final surahListAsync = ref.watch(surahListProvider);
+    final bookmark = ref.watch(readingPositionProvider);
 
     return Scaffold(
       appBar: AppBar(
@@ -34,7 +35,86 @@ class QuranScreen extends ConsumerWidget {
             ],
           ),
         ),
-        data: (surahs) => _SurahListView(surahs: surahs),
+        data: (surahs) => Column(
+          children: [
+            // Resume reading banner
+            if (bookmark != null)
+              _ResumeReadingBanner(bookmark: bookmark),
+            Expanded(
+              child: _SurahListView(surahs: surahs),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _ResumeReadingBanner extends StatelessWidget {
+  final ReadingPosition bookmark;
+
+  const _ResumeReadingBanner({required this.bookmark});
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+
+    return GestureDetector(
+      onTap: () {
+        context.go(
+          '/quran/surah/${bookmark.surahNumber}'
+          '?name=${Uri.encodeComponent(bookmark.surahName)}'
+          '&ayah=${bookmark.ayahIndex}',
+        );
+      },
+      child: Container(
+        width: double.infinity,
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+        decoration: BoxDecoration(
+          color: UmmatiTheme.primaryGreen.withValues(alpha: 0.08),
+          border: Border(
+            bottom: BorderSide(
+              color: UmmatiTheme.primaryGreen.withValues(alpha: 0.2),
+            ),
+          ),
+        ),
+        child: Row(
+          children: [
+            const Icon(
+              Icons.bookmark,
+              color: UmmatiTheme.primaryGreen,
+              size: 20,
+            ),
+            const SizedBox(width: 12),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    l10n.resumeReading,
+                    style: const TextStyle(
+                      color: UmmatiTheme.primaryGreen,
+                      fontWeight: FontWeight.w600,
+                      fontSize: 14,
+                    ),
+                  ),
+                  Text(
+                    '${bookmark.surahName} — ${l10n.verseNumber(bookmark.ayahIndex + 1)}',
+                    style: TextStyle(
+                      color: UmmatiTheme.darkText.withValues(alpha: 0.6),
+                      fontSize: 12,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            const Icon(
+              Icons.arrow_forward_ios,
+              color: UmmatiTheme.primaryGreen,
+              size: 16,
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -107,7 +187,7 @@ class _SurahListView extends StatelessWidget {
             padding: const EdgeInsets.only(top: 4),
             child: Text(
               surah.isMeccan ? l10n.meccan : l10n.medinan,
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 12,
                 color: UmmatiTheme.accentGold,
                 fontWeight: FontWeight.w500,

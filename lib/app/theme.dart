@@ -39,7 +39,7 @@ class UmmatiTheme {
           color: Colors.white,
         ),
       ),
-      cardTheme: CardTheme(
+      cardTheme: CardThemeData(
         color: cardWhite,
         elevation: 2,
         shadowColor: primaryGreen.withValues(alpha: 0.1),

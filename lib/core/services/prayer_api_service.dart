@@ -51,14 +51,42 @@ class PrayerApiService {
         .toList();
   }
 
-  /// Fetch the ayahs of a specific surah.
-  Future<List<Ayah>> getSurahAyahs(int surahNumber) async {
-    final response =
-        await _dio.get('$_quranBaseUrl/surah/$surahNumber/ar.alafasy');
-    final data = response.data['data'] as Map<String, dynamic>;
-    final ayahs = data['ayahs'] as List;
-    return ayahs
+  /// Fetch the ayahs of a specific surah with translation.
+  Future<List<Ayah>> getSurahAyahs(int surahNumber, {String? translationEdition}) async {
+    final futures = <Future>[
+      _dio.get('$_quranBaseUrl/surah/$surahNumber/ar.alafasy'),
+      if (translationEdition != null)
+        _dio.get('$_quranBaseUrl/surah/$surahNumber/$translationEdition'),
+    ];
+
+    final responses = await Future.wait(futures);
+
+    final arabicData = responses[0].data['data'] as Map<String, dynamic>;
+    final arabicAyahs = arabicData['ayahs'] as List;
+
+    final ayahs = arabicAyahs
         .map((json) => Ayah.fromJson(json as Map<String, dynamic>))
         .toList();
+
+    if (translationEdition != null && responses.length > 1) {
+      final translationData = responses[1].data['data'] as Map<String, dynamic>;
+      final translationAyahs = translationData['ayahs'] as List;
+      for (var i = 0; i < ayahs.length && i < translationAyahs.length; i++) {
+        final translationText = (translationAyahs[i] as Map<String, dynamic>)['text'] as String;
+        ayahs[i] = ayahs[i].withTranslation(translationText);
+      }
+    }
+
+    return ayahs;
+  }
+
+  /// Map locale code to alquran.cloud translation edition.
+  static String? translationEditionForLocale(String locale) {
+    const editions = {
+      'fr': 'fr.hamidullah',
+      'en': 'en.asad',
+      'ar': null, // No translation needed for Arabic
+    };
+    return editions[locale];
   }
 }

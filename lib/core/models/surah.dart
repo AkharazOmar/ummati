@@ -33,11 +33,13 @@ class Ayah {
   final int number;
   final String text;
   final int numberInSurah;
+  final String? translation;
 
   const Ayah({
     required this.number,
     required this.text,
     required this.numberInSurah,
+    this.translation,
   });
 
   factory Ayah.fromJson(Map<String, dynamic> json) {
@@ -45,6 +47,15 @@ class Ayah {
       number: json['number'] as int,
       text: json['text'] as String,
       numberInSurah: json['numberInSurah'] as int,
+    );
+  }
+
+  Ayah withTranslation(String translation) {
+    return Ayah(
+      number: number,
+      text: text,
+      numberInSurah: numberInSurah,
+      translation: translation,
     );
   }
 }

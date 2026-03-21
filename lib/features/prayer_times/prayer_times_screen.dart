@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../app/theme.dart';
 import '../../core/models/prayer_time.dart';
 import '../../core/utils/date_utils.dart';
+import '../../l10n/app_localizations.dart';
 import '../../shared/widgets/islamic_card.dart';
 import 'prayer_times_provider.dart';
 
@@ -23,21 +23,20 @@ class PrayerTimesScreen extends ConsumerWidget {
       body: prayerTimesAsync.when(
         loading: () => const Center(child: CircularProgressIndicator()),
         error: (error, _) => _buildError(context, ref, l10n, error),
-        data: (prayerTimes) =>
-            _buildContent(context, l10n, prayerTimes),
+        data: (prayerTimes) => _buildContent(context, ref, l10n, prayerTimes),
       ),
     );
   }
 
-  Widget _buildError(
-      BuildContext context, WidgetRef ref, AppLocalizations l10n, Object error) {
+  Widget _buildError(BuildContext context, WidgetRef ref, AppLocalizations l10n,
+      Object error) {
     return Center(
       child: Padding(
         padding: const EdgeInsets.all(24),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(
+            const Icon(
               Icons.error_outline,
               size: 64,
               color: UmmatiTheme.accentGold,
@@ -66,8 +65,8 @@ class PrayerTimesScreen extends ConsumerWidget {
     );
   }
 
-  Widget _buildContent(
-      BuildContext context, WidgetRef ref, AppLocalizations l10n, DailyPrayerTimes data) {
+  Widget _buildContent(BuildContext context, WidgetRef ref,
+      AppLocalizations l10n, DailyPrayerTimes data) {
     final next = data.nextPrayer;
 
     return RefreshIndicator(
@@ -110,11 +109,10 @@ class PrayerTimesScreen extends ConsumerWidget {
                   const SizedBox(height: 8),
                   Text(
                     _localizedPrayerName(l10n, next.name),
-                    style:
-                        Theme.of(context).textTheme.headlineLarge?.copyWith(
-                              color: UmmatiTheme.primaryGreen,
-                              fontWeight: FontWeight.bold,
-                            ),
+                    style: Theme.of(context).textTheme.headlineLarge?.copyWith(
+                          color: UmmatiTheme.primaryGreen,
+                          fontWeight: FontWeight.bold,
+                        ),
                   ),
                   const SizedBox(height: 4),
                   Text(

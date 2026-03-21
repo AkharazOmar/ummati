@@ -1,6 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../core/services/location_service.dart';
 import '../../core/utils/qibla_calculator.dart';
 import '../prayer_times/prayer_times_provider.dart';
 
@@ -27,8 +26,8 @@ class QiblaNotifier extends AsyncNotifier<QiblaState> {
 
     final bearing =
         QiblaCalculator.calculate(position.latitude, position.longitude);
-    final distance = QiblaCalculator.distanceToKaaba(
-        position.latitude, position.longitude);
+    final distance =
+        QiblaCalculator.distanceToKaaba(position.latitude, position.longitude);
 
     return QiblaState(bearing: bearing, distance: distance);
   }

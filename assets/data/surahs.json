@@ -1,0 +1,848 @@
+[
+  {
+    "number": 97,
+    "nameAr": "القدر",
+    "nameEn": "Al-Qadr",
+    "nameFr": "La Destinée",
+    "revelationType": "Meccan",
+    "versesCount": 5,
+    "ayahs": [
+      {
+        "numberInSurah": 1,
+        "textAr": "إِنَّآ أَنزَلْنَـٰهُ فِى لَيْلَةِ ٱلْقَدْرِ",
+        "translationEn": "Indeed, We sent the Quran down during the Night of Decree.",
+        "translationFr": "Nous l'avons certes, fait descendre (le Coran) pendant la nuit d'Al-Qadr."
+      },
+      {
+        "numberInSurah": 2,
+        "textAr": "وَمَآ أَدْرَىٰكَ مَا لَيْلَةُ ٱلْقَدْرِ",
+        "translationEn": "And what can make you know what is the Night of Decree?",
+        "translationFr": "Et qui te dira ce qu'est la nuit d'Al-Qadr?"
+      },
+      {
+        "numberInSurah": 3,
+        "textAr": "لَيْلَةُ ٱلْقَدْرِ خَيْرٌ مِّنْ أَلْفِ شَهْرٍ",
+        "translationEn": "The Night of Decree is better than a thousand months.",
+        "translationFr": "La nuit d'Al-Qadr est meilleure que mille mois."
+      },
+      {
+        "numberInSurah": 4,
+        "textAr": "تَنَزَّلُ ٱلْمَلَـٰٓئِكَةُ وَٱلرُّوحُ فِيهَا بِإِذْنِ رَبِّهِم مِّن كُلِّ أَمْرٍ",
+        "translationEn": "The angels and the Spirit descend therein by permission of their Lord for every matter.",
+        "translationFr": "Durant celle-ci descendent les Anges ainsi que l'Esprit, par permission de leur Seigneur pour tout ordre."
+      },
+      {
+        "numberInSurah": 5,
+        "textAr": "سَلَـٰمٌ هِىَ حَتَّىٰ مَطْلَعِ ٱلْفَجْرِ",
+        "translationEn": "Peace it is until the emergence of dawn.",
+        "translationFr": "Elle est paix et salut jusqu'à l'apparition de l'aube."
+      }
+    ]
+  },
+  {
+    "number": 98,
+    "nameAr": "البيّنة",
+    "nameEn": "Al-Bayyinah",
+    "nameFr": "La Preuve Évidente",
+    "revelationType": "Medinan",
+    "versesCount": 8,
+    "ayahs": [
+      {
+        "numberInSurah": 1,
+        "textAr": "لَمْ يَكُنِ ٱلَّذِينَ كَفَرُوا۟ مِنْ أَهْلِ ٱلْكِتَـٰبِ وَٱلْمُشْرِكِينَ مُنفَكِّينَ حَتَّىٰ تَأْتِيَهُمُ ٱلْبَيِّنَةُ",
+        "translationEn": "Those who disbelieved among the People of the Scripture and the polytheists were not to be parted [from misbelief] until there came to them clear evidence.",
+        "translationFr": "Les infidèles parmi les gens du Livre, ainsi que les Associateurs, ne cesseront pas de mécroire jusqu'à ce que leur vienne la Preuve Évidente."
+      },
+      {
+        "numberInSurah": 2,
+        "textAr": "رَسُولٌ مِّنَ ٱللَّهِ يَتْلُوا۟ صُحُفًا مُّطَهَّرَةً",
+        "translationEn": "A Messenger from Allah, reciting purified scriptures.",
+        "translationFr": "Un Messager de la part d'Allah, leur récitant des feuilles purifiées,"
+      },
+      {
+        "numberInSurah": 3,
+        "textAr": "فِيهَا كُتُبٌ قَيِّمَةٌ",
+        "translationEn": "Within which are correct writings.",
+        "translationFr": "dans lesquelles il y a des prescriptions d'une grande droiture."
+      },
+      {
+        "numberInSurah": 4,
+        "textAr": "وَمَا تَفَرَّقَ ٱلَّذِينَ أُوتُوا۟ ٱلْكِتَـٰبَ إِلَّا مِنۢ بَعْدِ مَا جَآءَتْهُمُ ٱلْبَيِّنَةُ",
+        "translationEn": "Nor did those who were given the Scripture become divided until after there had come to them clear evidence.",
+        "translationFr": "Et ceux à qui le Livre a été donné ne se sont divisés qu'après que la preuve leur fut venue."
+      },
+      {
+        "numberInSurah": 5,
+        "textAr": "وَمَآ أُمِرُوٓا۟ إِلَّا لِيَعْبُدُوا۟ ٱللَّهَ مُخْلِصِينَ لَهُ ٱلدِّينَ حُنَفَآءَ وَيُقِيمُوا۟ ٱلصَّلَوٰةَ وَيُؤْتُوا۟ ٱلزَّكَوٰةَ ۚ وَذَٰلِكَ دِينُ ٱلْقَيِّمَةِ",
+        "translationEn": "And they were not commanded except to worship Allah, [being] sincere to Him in religion, inclining to truth, and to establish prayer and to give zakah. And that is the correct religion.",
+        "translationFr": "Il ne leur a été commandé, cependant, que d'adorer Allah, Lui vouant un culte exclusif, d'accomplir la Salat et d'acquitter la Zakat. Et voilà la religion de droiture."
+      },
+      {
+        "numberInSurah": 6,
+        "textAr": "إِنَّ ٱلَّذِينَ كَفَرُوا۟ مِنْ أَهْلِ ٱلْكِتَـٰبِ وَٱلْمُشْرِكِينَ فِى نَارِ جَهَنَّمَ خَـٰلِدِينَ فِيهَآ ۚ أُو۟لَـٰٓئِكَ هُمْ شَرُّ ٱلْبَرِيَّةِ",
+        "translationEn": "Indeed, they who disbelieved among the People of the Scripture and the polytheists will be in the fire of Hell, abiding eternally therein. Those are the worst of creatures.",
+        "translationFr": "Les infidèles parmi les gens du Livre, ainsi que les Associateurs iront au feu de l'Enfer, pour y demeurer éternellement. De toute la création, ce sont eux les pires."
+      },
+      {
+        "numberInSurah": 7,
+        "textAr": "إِنَّ ٱلَّذِينَ ءَامَنُوا۟ وَعَمِلُوا۟ ٱلصَّـٰلِحَـٰتِ أُو۟لَـٰٓئِكَ هُمْ خَيْرُ ٱلْبَرِيَّةِ",
+        "translationEn": "Indeed, they who have believed and done righteous deeds - those are the best of creatures.",
+        "translationFr": "Quant à ceux qui croient et accomplissent de bonnes œuvres, ce sont les meilleurs de toute la création."
+      },
+      {
+        "numberInSurah": 8,
+        "textAr": "جَزَآؤُهُمْ عِندَ رَبِّهِمْ جَنَّـٰتُ عَدْنٍ تَجْرِى مِن تَحْتِهَا ٱلْأَنْهَـٰرُ خَـٰلِدِينَ فِيهَآ أَبَدًا ۖ رَّضِىَ ٱللَّهُ عَنْهُمْ وَرَضُوا۟ عَنْهُ ۚ ذَٰلِكَ لِمَنْ خَشِىَ رَبَّهُۥ",
+        "translationEn": "Their reward with their Lord will be gardens of perpetual residence beneath which rivers flow, wherein they will abide forever, Allah being pleased with them and they with Him. That is for whoever has feared his Lord.",
+        "translationFr": "Leur récompense auprès de leur Seigneur sera les Jardins de séjour, sous lesquels coulent les ruisseaux, pour y demeurer éternellement. Allah les agrée et ils L'agréent. Telle sera la récompense de celui qui craint son Seigneur."
+      }
+    ]
+  },
+  {
+    "number": 99,
+    "nameAr": "الزلزلة",
+    "nameEn": "Az-Zalzalah",
+    "nameFr": "La Secousse",
+    "revelationType": "Medinan",
+    "versesCount": 8,
+    "ayahs": [
+      {
+        "numberInSurah": 1,
+        "textAr": "إِذَا زُلْزِلَتِ ٱلْأَرْضُ زِلْزَالَهَا",
+        "translationEn": "When the earth is shaken with its [final] earthquake,",
+        "translationFr": "Quand la terre tremblera d'un violent tremblement,"
+      },
+      {
+        "numberInSurah": 2,
+        "textAr": "وَأَخْرَجَتِ ٱلْأَرْضُ أَثْقَالَهَا",
+        "translationEn": "And the earth discharges its burdens,",
+        "translationFr": "et que la terre fera sortir ses fardeaux,"
+      },
+      {
+        "numberInSurah": 3,
+        "textAr": "وَقَالَ ٱلْإِنسَـٰنُ مَا لَهَا",
+        "translationEn": "And man says, \"What is [wrong] with it?\" -",
+        "translationFr": "et que l'homme dira: «Qu'a-t-elle?»"
+      },
+      {
+        "numberInSurah": 4,
+        "textAr": "يَوْمَئِذٍ تُحَدِّثُ أَخْبَارَهَا",
+        "translationEn": "That Day, it will report its news,",
+        "translationFr": "Ce jour-là, elle contera son histoire,"
+      },
+      {
+        "numberInSurah": 5,
+        "textAr": "بِأَنَّ رَبَّكَ أَوْحَىٰ لَهَا",
+        "translationEn": "Because your Lord has commanded it.",
+        "translationFr": "car ton Seigneur le lui aura ordonné."
+      },
+      {
+        "numberInSurah": 6,
+        "textAr": "يَوْمَئِذٍ يَصْدُرُ ٱلنَّاسُ أَشْتَاتًا لِّيُرَوْا۟ أَعْمَـٰلَهُمْ",
+        "translationEn": "That Day, the people will depart separated [into categories] to be shown [the result of] their deeds.",
+        "translationFr": "Ce jour-là, les gens sortiront séparément pour que leur soient montrées leurs œuvres."
+      },
+      {
+        "numberInSurah": 7,
+        "textAr": "فَمَن يَعْمَلْ مِثْقَالَ ذَرَّةٍ خَيْرًا يَرَهُۥ",
+        "translationEn": "So whoever does an atom's weight of good will see it,",
+        "translationFr": "Quiconque fait un bien fût-ce du poids d'un atome, le verra,"
+      },
+      {
+        "numberInSurah": 8,
+        "textAr": "وَمَن يَعْمَلْ مِثْقَالَ ذَرَّةٍ شَرًّا يَرَهُۥ",
+        "translationEn": "And whoever does an atom's weight of evil will see it.",
+        "translationFr": "et quiconque fait un mal fût-ce du poids d'un atome, le verra."
+      }
+    ]
+  },
+  {
+    "number": 100,
+    "nameAr": "العاديات",
+    "nameEn": "Al-Adiyat",
+    "nameFr": "Les Coursiers",
+    "revelationType": "Meccan",
+    "versesCount": 11,
+    "ayahs": [
+      {
+        "numberInSurah": 1,
+        "textAr": "وَٱلْعَـٰدِيَـٰتِ ضَبْحًا",
+        "translationEn": "By the racers, panting,",
+        "translationFr": "Par les coursiers soufflant,"
+      },
+      {
+        "numberInSurah": 2,
+        "textAr": "فَٱلْمُورِيَـٰتِ قَدْحًا",
+        "translationEn": "And the producers of sparks [when] striking,",
+        "translationFr": "qui font jaillir des étincelles,"
+      },
+      {
+        "numberInSurah": 3,
+        "textAr": "فَٱلْمُغِيرَ‌ٰتِ صُبْحًا",
+        "translationEn": "And the chargers at dawn,",
+        "translationFr": "par ceux qui attaquent au matin,"
+      },
+      {
+        "numberInSurah": 4,
+        "textAr": "فَأَثَرْنَ بِهِۦ نَقْعًا",
+        "translationEn": "Stirring up thereby [clouds of] dust,",
+        "translationFr": "et qui soulèvent par là un nuage de poussière,"
+      },
+      {
+        "numberInSurah": 5,
+        "textAr": "فَوَسَطْنَ بِهِۦ جَمْعًا",
+        "translationEn": "Arriving thereby in the center collectively,",
+        "translationFr": "et pénètrent par là au centre de la troupe ennemie..."
+      },
+      {
+        "numberInSurah": 6,
+        "textAr": "إِنَّ ٱلْإِنسَـٰنَ لِرَبِّهِۦ لَكَنُودٌ",
+        "translationEn": "Indeed mankind, to his Lord, is ungrateful.",
+        "translationFr": "L'homme est, certes, ingrat envers son Seigneur;"
+      },
+      {
+        "numberInSurah": 7,
+        "textAr": "وَإِنَّهُۥ عَلَىٰ ذَٰلِكَ لَشَهِيدٌ",
+        "translationEn": "And indeed, he is to that a witness.",
+        "translationFr": "et certes, il est témoin de cela;"
+      },
+      {
+        "numberInSurah": 8,
+        "textAr": "وَإِنَّهُۥ لِحُبِّ ٱلْخَيْرِ لَشَدِيدٌ",
+        "translationEn": "And indeed he is, in love of wealth, intense.",
+        "translationFr": "et certes, pour l'amour des richesses il est ardent."
+      },
+      {
+        "numberInSurah": 9,
+        "textAr": "أَفَلَا يَعْلَمُ إِذَا بُعْثِرَ مَا فِى ٱلْقُبُورِ",
+        "translationEn": "But does he not know that when the contents of the graves are scattered,",
+        "translationFr": "Ne sait-il donc pas? Quand ce qui est dans les tombes sera bouleversé,"
+      },
+      {
+        "numberInSurah": 10,
+        "textAr": "وَحُصِّلَ مَا فِى ٱلصُّدُورِ",
+        "translationEn": "And that within the breasts is obtained,",
+        "translationFr": "et que sera dévoilé ce qui est dans les poitrines,"
+      },
+      {
+        "numberInSurah": 11,
+        "textAr": "إِنَّ رَبَّهُم بِهِمْ يَوْمَئِذٍ لَّخَبِيرٌۢ",
+        "translationEn": "Indeed, their Lord with them, that Day, is [fully] Aware.",
+        "translationFr": "certes, ce jour-là, leur Seigneur sera parfaitement Connaisseur d'eux."
+      }
+    ]
+  },
+  {
+    "number": 101,
+    "nameAr": "القارعة",
+    "nameEn": "Al-Qari'ah",
+    "nameFr": "Le Fracas",
+    "revelationType": "Meccan",
+    "versesCount": 11,
+    "ayahs": [
+      {
+        "numberInSurah": 1,
+        "textAr": "ٱلْقَارِعَةُ",
+        "translationEn": "The Striking Calamity -",
+        "translationFr": "Le Fracas!"
+      },
+      {
+        "numberInSurah": 2,
+        "textAr": "مَا ٱلْقَارِعَةُ",
+        "translationEn": "What is the Striking Calamity?",
+        "translationFr": "Qu'est-ce que le Fracas?"
+      },
+      {
+        "numberInSurah": 3,
+        "textAr": "وَمَآ أَدْرَىٰكَ مَا ٱلْقَارِعَةُ",
+        "translationEn": "And what can make you know what is the Striking Calamity?",
+        "translationFr": "Et qui te dira ce qu'est le Fracas?"
+      },
+      {
+        "numberInSurah": 4,
+        "textAr": "يَوْمَ يَكُونُ ٱلنَّاسُ كَٱلْفَرَاشِ ٱلْمَبْثُوثِ",
+        "translationEn": "It is the Day when people will be like moths, dispersed,",
+        "translationFr": "C'est le jour où les gens seront comme des papillons éparpillés,"
+      },
+      {
+        "numberInSurah": 5,
+        "textAr": "وَتَكُونُ ٱلْجِبَالُ كَٱلْعِهْنِ ٱلْمَنفُوشِ",
+        "translationEn": "And the mountains will be like wool, fluffed up.",
+        "translationFr": "et les montagnes comme de la laine cardée;"
+      },
+      {
+        "numberInSurah": 6,
+        "textAr": "فَأَمَّا مَن ثَقُلَتْ مَوَ‌ٰزِينُهُۥ",
+        "translationEn": "Then as for one whose scales are heavy [with good deeds],",
+        "translationFr": "quant à celui dont la balance sera lourde,"
+      },
+      {
+        "numberInSurah": 7,
+        "textAr": "فَهُوَ فِى عِيشَةٍ رَّاضِيَةٍ",
+        "translationEn": "He will be in a pleasant life.",
+        "translationFr": "il sera dans une vie agréable;"
+      },
+      {
+        "numberInSurah": 8,
+        "textAr": "وَأَمَّا مَنْ خَفَّتْ مَوَ‌ٰزِينُهُۥ",
+        "translationEn": "But as for one whose scales are light,",
+        "translationFr": "et quant à celui dont la balance sera légère,"
+      },
+      {
+        "numberInSurah": 9,
+        "textAr": "فَأُمُّهُۥ هَاوِيَةٌ",
+        "translationEn": "His refuge will be an abyss.",
+        "translationFr": "sa mère [destination] est un abîme très profond."
+      },
+      {
+        "numberInSurah": 10,
+        "textAr": "وَمَآ أَدْرَىٰكَ مَا هِيَهْ",
+        "translationEn": "And what can make you know what that is?",
+        "translationFr": "Et qui te dira ce que c'est?"
+      },
+      {
+        "numberInSurah": 11,
+        "textAr": "نَارٌ حَامِيَةٌۢ",
+        "translationEn": "It is a Fire, intensely hot.",
+        "translationFr": "C'est un Feu ardent."
+      }
+    ]
+  },
+  {
+    "number": 102,
+    "nameAr": "التكاثر",
+    "nameEn": "At-Takathur",
+    "nameFr": "La Course aux Richesses",
+    "revelationType": "Meccan",
+    "versesCount": 8,
+    "ayahs": [
+      {
+        "numberInSurah": 1,
+        "textAr": "أَلْهَىٰكُمُ ٱلتَّكَاثُرُ",
+        "translationEn": "Competition in [worldly] increase diverts you,",
+        "translationFr": "La course aux richesses vous distrait,"
+      },
+      {
+        "numberInSurah": 2,
+        "textAr": "حَتَّىٰ زُرْتُمُ ٱلْمَقَابِرَ",
+        "translationEn": "Until you visit the graveyards.",
+        "translationFr": "jusqu'à ce que vous visitiez les tombes."
+      },
+      {
+        "numberInSurah": 3,
+        "textAr": "كَلَّا سَوْفَ تَعْلَمُونَ",
+        "translationEn": "No! You are going to know.",
+        "translationFr": "Mais non! Vous saurez bientôt!"
+      },
+      {
+        "numberInSurah": 4,
+        "textAr": "ثُمَّ كَلَّا سَوْفَ تَعْلَمُونَ",
+        "translationEn": "Then no! You are going to know.",
+        "translationFr": "Encore une fois! Vous saurez bientôt!"
+      },
+      {
+        "numberInSurah": 5,
+        "textAr": "كَلَّا لَوْ تَعْلَمُونَ عِلْمَ ٱلْيَقِينِ",
+        "translationEn": "No! If you only knew with knowledge of certainty...",
+        "translationFr": "Mais non! Si vous saviez de science certaine..."
+      },
+      {
+        "numberInSurah": 6,
+        "textAr": "لَتَرَوُنَّ ٱلْجَحِيمَ",
+        "translationEn": "You will surely see the Hellfire.",
+        "translationFr": "Vous verrez, certes, la Fournaise."
+      },
+      {
+        "numberInSurah": 7,
+        "textAr": "ثُمَّ لَتَرَوُنَّهَا عَيْنَ ٱلْيَقِينِ",
+        "translationEn": "Then you will surely see it with the eye of certainty.",
+        "translationFr": "Puis, vous la verrez certes, avec l'œil de la certitude."
+      },
+      {
+        "numberInSurah": 8,
+        "textAr": "ثُمَّ لَتُسْـَٔلُنَّ يَوْمَئِذٍ عَنِ ٱلنَّعِيمِ",
+        "translationEn": "Then you will surely be asked that Day about pleasure.",
+        "translationFr": "Puis, assurément, vous serez interrogés, ce jour-là, sur les délices."
+      }
+    ]
+  },
+  {
+    "number": 103,
+    "nameAr": "العصر",
+    "nameEn": "Al-Asr",
+    "nameFr": "Le Temps",
+    "revelationType": "Meccan",
+    "versesCount": 3,
+    "ayahs": [
+      {
+        "numberInSurah": 1,
+        "textAr": "وَٱلْعَصْرِ",
+        "translationEn": "By time,",
+        "translationFr": "Par le Temps!"
+      },
+      {
+        "numberInSurah": 2,
+        "textAr": "إِنَّ ٱلْإِنسَـٰنَ لَفِى خُسْرٍ",
+        "translationEn": "Indeed, mankind is in loss,",
+        "translationFr": "L'homme est certes, en perdition,"
+      },
+      {
+        "numberInSurah": 3,
+        "textAr": "إِلَّا ٱلَّذِينَ ءَامَنُوا۟ وَعَمِلُوا۟ ٱلصَّـٰلِحَـٰتِ وَتَوَاصَوْا۟ بِٱلْحَقِّ وَتَوَاصَوْا۟ بِٱلصَّبْرِ",
+        "translationEn": "Except for those who have believed and done righteous deeds and advised each other to truth and advised each other to patience.",
+        "translationFr": "sauf ceux qui croient et accomplissent les bonnes œuvres, s'enjoignent mutuellement la vérité et s'enjoignent mutuellement l'endurance."
+      }
+    ]
+  },
+  {
+    "number": 104,
+    "nameAr": "الهمزة",
+    "nameEn": "Al-Humazah",
+    "nameFr": "Les Calomniateurs",
+    "revelationType": "Meccan",
+    "versesCount": 9,
+    "ayahs": [
+      {
+        "numberInSurah": 1,
+        "textAr": "وَيْلٌ لِّكُلِّ هُمَزَةٍ لُّمَزَةٍ",
+        "translationEn": "Woe to every scorner and mocker,",
+        "translationFr": "Malheur à tout calomniateur diffamateur,"
+      },
+      {
+        "numberInSurah": 2,
+        "textAr": "ٱلَّذِى جَمَعَ مَالًا وَعَدَّدَهُۥ",
+        "translationEn": "Who collects wealth and [continuously] counts it.",
+        "translationFr": "qui amasse une fortune et la compte,"
+      },
+      {
+        "numberInSurah": 3,
+        "textAr": "يَحْسَبُ أَنَّ مَالَهُۥٓ أَخْلَدَهُۥ",
+        "translationEn": "He thinks that his wealth will make him immortal.",
+        "translationFr": "pensant que sa fortune l'immortalisera."
+      },
+      {
+        "numberInSurah": 4,
+        "textAr": "كَلَّا ۖ لَيُنۢبَذَنَّ فِى ٱلْحُطَمَةِ",
+        "translationEn": "No! He will surely be thrown into the Crusher.",
+        "translationFr": "Mais non! Il sera certes, jeté dans la Hutamah."
+      },
+      {
+        "numberInSurah": 5,
+        "textAr": "وَمَآ أَدْرَىٰكَ مَا ٱلْحُطَمَةُ",
+        "translationEn": "And what can make you know what is the Crusher?",
+        "translationFr": "Et qui te dira ce qu'est la Hutamah?"
+      },
+      {
+        "numberInSurah": 6,
+        "textAr": "نَارُ ٱللَّهِ ٱلْمُوقَدَةُ",
+        "translationEn": "It is the fire of Allah, [eternally] fueled,",
+        "translationFr": "Le Feu attisé d'Allah,"
+      },
+      {
+        "numberInSurah": 7,
+        "textAr": "ٱلَّتِى تَطَّلِعُ عَلَى ٱلْأَفْـِٔدَةِ",
+        "translationEn": "Which mounts directed at the hearts.",
+        "translationFr": "qui monte jusqu'aux cœurs."
+      },
+      {
+        "numberInSurah": 8,
+        "textAr": "إِنَّهَا عَلَيْهِم مُّؤْصَدَةٌ",
+        "translationEn": "Indeed, it [i.e., Hellfire] will be closed down upon them,",
+        "translationFr": "Il se refermera sur eux,"
+      },
+      {
+        "numberInSurah": 9,
+        "textAr": "فِى عَمَدٍ مُّمَدَّدَةٍۭ",
+        "translationEn": "In extended columns.",
+        "translationFr": "en colonnes (de feu) étendues."
+      }
+    ]
+  },
+  {
+    "number": 105,
+    "nameAr": "الفيل",
+    "nameEn": "Al-Fil",
+    "nameFr": "L'Éléphant",
+    "revelationType": "Meccan",
+    "versesCount": 5,
+    "ayahs": [
+      {
+        "numberInSurah": 1,
+        "textAr": "أَلَمْ تَرَ كَيْفَ فَعَلَ رَبُّكَ بِأَصْحَـٰبِ ٱلْفِيلِ",
+        "translationEn": "Have you not considered how your Lord dealt with the companions of the elephant?",
+        "translationFr": "N'as-tu pas vu comment ton Seigneur a agi envers les gens de l'Éléphant?"
+      },
+      {
+        "numberInSurah": 2,
+        "textAr": "أَلَمْ يَجْعَلْ كَيْدَهُمْ فِى تَضْلِيلٍ",
+        "translationEn": "Did He not make their plan into misguidance?",
+        "translationFr": "N'a-t-Il pas rendu leur ruse complètement vaine?"
+      },
+      {
+        "numberInSurah": 3,
+        "textAr": "وَأَرْسَلَ عَلَيْهِمْ طَيْرًا أَبَابِيلَ",
+        "translationEn": "And He sent against them birds in flocks,",
+        "translationFr": "Et envoyé sur eux des oiseaux par volées,"
+      },
+      {
+        "numberInSurah": 4,
+        "textAr": "تَرْمِيهِم بِحِجَارَةٍ مِّن سِجِّيلٍ",
+        "translationEn": "Striking them with stones of hard clay,",
+        "translationFr": "qui leur lançaient des pierres d'argile?"
+      },
+      {
+        "numberInSurah": 5,
+        "textAr": "فَجَعَلَهُمْ كَعَصْفٍ مَّأْكُولٍۭ",
+        "translationEn": "And He made them like eaten straw.",
+        "translationFr": "Et Il les a rendus semblables à une paille mâchée."
+      }
+    ]
+  },
+  {
+    "number": 106,
+    "nameAr": "قريش",
+    "nameEn": "Quraysh",
+    "nameFr": "Quraysh",
+    "revelationType": "Meccan",
+    "versesCount": 4,
+    "ayahs": [
+      {
+        "numberInSurah": 1,
+        "textAr": "لِإِيلَـٰفِ قُرَيْشٍ",
+        "translationEn": "For the accustomed security of the Quraysh -",
+        "translationFr": "À cause du pacte des Quraysh,"
+      },
+      {
+        "numberInSurah": 2,
+        "textAr": "إِۦلَـٰفِهِمْ رِحْلَةَ ٱلشِّتَآءِ وَٱلصَّيْفِ",
+        "translationEn": "Their accustomed security [in] the caravan of winter and summer -",
+        "translationFr": "leur pacte [qui assurait] les voyages d'hiver et d'été,"
+      },
+      {
+        "numberInSurah": 3,
+        "textAr": "فَلْيَعْبُدُوا۟ رَبَّ هَـٰذَا ٱلْبَيْتِ",
+        "translationEn": "Let them worship the Lord of this House,",
+        "translationFr": "qu'ils adorent donc le Seigneur de cette Maison (la Kaaba),"
+      },
+      {
+        "numberInSurah": 4,
+        "textAr": "ٱلَّذِىٓ أَطْعَمَهُم مِّن جُوعٍ وَءَامَنَهُم مِّنْ خَوْفٍۭ",
+        "translationEn": "Who has fed them, [saving them] from hunger and made them safe, [saving them] from fear.",
+        "translationFr": "qui les a nourris contre la faim et rassurés de la crainte!"
+      }
+    ]
+  },
+  {
+    "number": 107,
+    "nameAr": "الماعون",
+    "nameEn": "Al-Ma'un",
+    "nameFr": "L'Ustensile",
+    "revelationType": "Meccan",
+    "versesCount": 7,
+    "ayahs": [
+      {
+        "numberInSurah": 1,
+        "textAr": "أَرَءَيْتَ ٱلَّذِى يُكَذِّبُ بِٱلدِّينِ",
+        "translationEn": "Have you seen the one who denies the Recompense?",
+        "translationFr": "Vois-tu celui qui traite de mensonge la Rétribution?"
+      },
+      {
+        "numberInSurah": 2,
+        "textAr": "فَذَٰلِكَ ٱلَّذِى يَدُعُّ ٱلْيَتِيمَ",
+        "translationEn": "For that is the one who drives away the orphan,",
+        "translationFr": "C'est bien lui qui repousse l'orphelin,"
+      },
+      {
+        "numberInSurah": 3,
+        "textAr": "وَلَا يَحُضُّ عَلَىٰ طَعَامِ ٱلْمِسْكِينِ",
+        "translationEn": "And does not encourage the feeding of the poor.",
+        "translationFr": "et qui n'encourage point la nourriture du pauvre."
+      },
+      {
+        "numberInSurah": 4,
+        "textAr": "فَوَيْلٌ لِّلْمُصَلِّينَ",
+        "translationEn": "So woe to those who pray,",
+        "translationFr": "Malheur donc, à ceux qui prient"
+      },
+      {
+        "numberInSurah": 5,
+        "textAr": "ٱلَّذِينَ هُمْ عَن صَلَاتِهِمْ سَاهُونَ",
+        "translationEn": "[But] who are heedless of their prayer -",
+        "translationFr": "tout en négligeant (et retardant) leur Salat,"
+      },
+      {
+        "numberInSurah": 6,
+        "textAr": "ٱلَّذِينَ هُمْ يُرَآءُونَ",
+        "translationEn": "Those who make show [of their deeds],",
+        "translationFr": "qui sont pleins d'ostentation,"
+      },
+      {
+        "numberInSurah": 7,
+        "textAr": "وَيَمْنَعُونَ ٱلْمَاعُونَ",
+        "translationEn": "And withhold [simple] assistance.",
+        "translationFr": "et refusent l'ustensile (à celui qui en a besoin)."
+      }
+    ]
+  },
+  {
+    "number": 108,
+    "nameAr": "الكوثر",
+    "nameEn": "Al-Kawthar",
+    "nameFr": "L'Abondance",
+    "revelationType": "Meccan",
+    "versesCount": 3,
+    "ayahs": [
+      {
+        "numberInSurah": 1,
+        "textAr": "إِنَّآ أَعْطَيْنَـٰكَ ٱلْكَوْثَرَ",
+        "translationEn": "Indeed, We have granted you al-Kawthar.",
+        "translationFr": "Nous t'avons certes, accordé l'Abondance."
+      },
+      {
+        "numberInSurah": 2,
+        "textAr": "فَصَلِّ لِرَبِّكَ وَٱنْحَرْ",
+        "translationEn": "So pray to your Lord and sacrifice [to Him alone].",
+        "translationFr": "Accomplis la Salat pour ton Seigneur et sacrifie."
+      },
+      {
+        "numberInSurah": 3,
+        "textAr": "إِنَّ شَانِئَكَ هُوَ ٱلْأَبْتَرُ",
+        "translationEn": "Indeed, your enemy is the one cut off.",
+        "translationFr": "Celui qui te hait sera, certes, sans postérité."
+      }
+    ]
+  },
+  {
+    "number": 109,
+    "nameAr": "الكافرون",
+    "nameEn": "Al-Kafirun",
+    "nameFr": "Les Infidèles",
+    "revelationType": "Meccan",
+    "versesCount": 6,
+    "ayahs": [
+      {
+        "numberInSurah": 1,
+        "textAr": "قُلْ يَـٰٓأَيُّهَا ٱلْكَـٰفِرُونَ",
+        "translationEn": "Say, \"O disbelievers,",
+        "translationFr": "Dis: «Ô vous les infidèles!"
+      },
+      {
+        "numberInSurah": 2,
+        "textAr": "لَآ أَعْبُدُ مَا تَعْبُدُونَ",
+        "translationEn": "I do not worship what you worship.",
+        "translationFr": "Je n'adore pas ce que vous adorez."
+      },
+      {
+        "numberInSurah": 3,
+        "textAr": "وَلَآ أَنتُمْ عَـٰبِدُونَ مَآ أَعْبُدُ",
+        "translationEn": "Nor are you worshippers of what I worship.",
+        "translationFr": "Et vous n'êtes pas adorateurs de ce que j'adore."
+      },
+      {
+        "numberInSurah": 4,
+        "textAr": "وَلَآ أَنَا۠ عَابِدٌ مَّا عَبَدتُّمْ",
+        "translationEn": "Nor will I be a worshipper of what you worship.",
+        "translationFr": "Et je ne suis pas adorateur de ce que vous adorez."
+      },
+      {
+        "numberInSurah": 5,
+        "textAr": "وَلَآ أَنتُمْ عَـٰبِدُونَ مَآ أَعْبُدُ",
+        "translationEn": "Nor will you be worshippers of what I worship.",
+        "translationFr": "Et vous n'êtes pas adorateurs de ce que j'adore."
+      },
+      {
+        "numberInSurah": 6,
+        "textAr": "لَكُمْ دِينُكُمْ وَلِىَ دِينِ",
+        "translationEn": "For you is your religion, and for me is my religion.",
+        "translationFr": "À vous votre religion, et à moi ma religion»."
+      }
+    ]
+  },
+  {
+    "number": 110,
+    "nameAr": "النصر",
+    "nameEn": "An-Nasr",
+    "nameFr": "Le Secours",
+    "revelationType": "Medinan",
+    "versesCount": 3,
+    "ayahs": [
+      {
+        "numberInSurah": 1,
+        "textAr": "إِذَا جَآءَ نَصْرُ ٱللَّهِ وَٱلْفَتْحُ",
+        "translationEn": "When the victory of Allah has come and the conquest,",
+        "translationFr": "Lorsque vient le secours d'Allah ainsi que la victoire,"
+      },
+      {
+        "numberInSurah": 2,
+        "textAr": "وَرَأَيْتَ ٱلنَّاسَ يَدْخُلُونَ فِى دِينِ ٱللَّهِ أَفْوَاجًا",
+        "translationEn": "And you see the people entering into the religion of Allah in multitudes,",
+        "translationFr": "et que tu vois les gens entrer en foule dans la religion d'Allah,"
+      },
+      {
+        "numberInSurah": 3,
+        "textAr": "فَسَبِّحْ بِحَمْدِ رَبِّكَ وَٱسْتَغْفِرْهُ ۚ إِنَّهُۥ كَانَ تَوَّابًۢا",
+        "translationEn": "Then exalt [Him] with praise of your Lord and ask forgiveness of Him. Indeed, He is ever Accepting of Repentance.",
+        "translationFr": "alors, par la louange, célèbre la gloire de ton Seigneur et implore Son pardon. Car c'est Lui le grand Accueillant au repentir."
+      }
+    ]
+  },
+  {
+    "number": 111,
+    "nameAr": "المسد",
+    "nameEn": "Al-Masad",
+    "nameFr": "Les Fibres",
+    "revelationType": "Meccan",
+    "versesCount": 5,
+    "ayahs": [
+      {
+        "numberInSurah": 1,
+        "textAr": "تَبَّتْ يَدَآ أَبِى لَهَبٍ وَتَبَّ",
+        "translationEn": "May the hands of Abu Lahab be ruined, and ruined is he.",
+        "translationFr": "Que périssent les deux mains d'Abu Lahab et que lui-même périsse."
+      },
+      {
+        "numberInSurah": 2,
+        "textAr": "مَآ أَغْنَىٰ عَنْهُ مَالُهُۥ وَمَا كَسَبَ",
+        "translationEn": "His wealth will not avail him or that which he gained.",
+        "translationFr": "Sa fortune ne lui sert à rien, ni ce qu'il a acquis."
+      },
+      {
+        "numberInSurah": 3,
+        "textAr": "سَيَصْلَىٰ نَارًا ذَاتَ لَهَبٍ",
+        "translationEn": "He will [enter to] burn in a Fire of [blazing] flame,",
+        "translationFr": "Il sera brûlé dans un Feu plein de flammes,"
+      },
+      {
+        "numberInSurah": 4,
+        "textAr": "وَٱمْرَأَتُهُۥ حَمَّالَةَ ٱلْحَطَبِ",
+        "translationEn": "And his wife [as well] - the carrier of firewood.",
+        "translationFr": "de même sa femme, la porteuse de bois,"
+      },
+      {
+        "numberInSurah": 5,
+        "textAr": "فِى جِيدِهَا حَبْلٌ مِّن مَّسَدٍۭ",
+        "translationEn": "Around her neck is a rope of [twisted] fiber.",
+        "translationFr": "à son cou, une corde de fibres."
+      }
+    ]
+  },
+  {
+    "number": 112,
+    "nameAr": "الإخلاص",
+    "nameEn": "Al-Ikhlas",
+    "nameFr": "Le Monothéisme Pur",
+    "revelationType": "Meccan",
+    "versesCount": 4,
+    "ayahs": [
+      {
+        "numberInSurah": 1,
+        "textAr": "قُلْ هُوَ ٱللَّهُ أَحَدٌ",
+        "translationEn": "Say, \"He is Allah, [who is] One,",
+        "translationFr": "Dis: «Il est Allah, Unique."
+      },
+      {
+        "numberInSurah": 2,
+        "textAr": "ٱللَّهُ ٱلصَّمَدُ",
+        "translationEn": "Allah, the Eternal Refuge.",
+        "translationFr": "Allah, Le Seul à être imploré pour ce que nous désirons."
+      },
+      {
+        "numberInSurah": 3,
+        "textAr": "لَمْ يَلِدْ وَلَمْ يُولَدْ",
+        "translationEn": "He neither begets nor is born,",
+        "translationFr": "Il n'a jamais engendré, n'a pas été engendré."
+      },
+      {
+        "numberInSurah": 4,
+        "textAr": "وَلَمْ يَكُن لَّهُۥ كُفُوًا أَحَدٌۢ",
+        "translationEn": "Nor is there to Him any equivalent.",
+        "translationFr": "Et nul n'est égal à Lui»."
+      }
+    ]
+  },
+  {
+    "number": 113,
+    "nameAr": "الفلق",
+    "nameEn": "Al-Falaq",
+    "nameFr": "L'Aube Naissante",
+    "revelationType": "Meccan",
+    "versesCount": 5,
+    "ayahs": [
+      {
+        "numberInSurah": 1,
+        "textAr": "قُلْ أَعُوذُ بِرَبِّ ٱلْفَلَقِ",
+        "translationEn": "Say, \"I seek refuge in the Lord of daybreak,",
+        "translationFr": "Dis: «Je cherche protection auprès du Seigneur de l'aube naissante,"
+      },
+      {
+        "numberInSurah": 2,
+        "textAr": "مِن شَرِّ مَا خَلَقَ",
+        "translationEn": "From the evil of that which He created,",
+        "translationFr": "contre le mal des êtres qu'Il a créés,"
+      },
+      {
+        "numberInSurah": 3,
+        "textAr": "وَمِن شَرِّ غَاسِقٍ إِذَا وَقَبَ",
+        "translationEn": "And from the evil of darkness when it settles,",
+        "translationFr": "contre le mal de l'obscurité quand elle s'approfondit,"
+      },
+      {
+        "numberInSurah": 4,
+        "textAr": "وَمِن شَرِّ ٱلنَّفَّـٰثَـٰتِ فِى ٱلْعُقَدِ",
+        "translationEn": "And from the evil of the blowers in knots,",
+        "translationFr": "contre le mal de celles qui soufflent sur les nœuds,"
+      },
+      {
+        "numberInSurah": 5,
+        "textAr": "وَمِن شَرِّ حَاسِدٍ إِذَا حَسَدَ",
+        "translationEn": "And from the evil of an envier when he envies.",
+        "translationFr": "et contre le mal de l'envieux quand il envie»."
+      }
+    ]
+  },
+  {
+    "number": 114,
+    "nameAr": "الناس",
+    "nameEn": "An-Nas",
+    "nameFr": "Les Hommes",
+    "revelationType": "Meccan",
+    "versesCount": 6,
+    "ayahs": [
+      {
+        "numberInSurah": 1,
+        "textAr": "قُلْ أَعُوذُ بِرَبِّ ٱلنَّاسِ",
+        "translationEn": "Say, \"I seek refuge in the Lord of mankind,",
+        "translationFr": "Dis: «Je cherche protection auprès du Seigneur des hommes,"
+      },
+      {
+        "numberInSurah": 2,
+        "textAr": "مَلِكِ ٱلنَّاسِ",
+        "translationEn": "The Sovereign of mankind,",
+        "translationFr": "le Souverain des hommes,"
+      },
+      {
+        "numberInSurah": 3,
+        "textAr": "إِلَـٰهِ ٱلنَّاسِ",
+        "translationEn": "The God of mankind,",
+        "translationFr": "Dieu des hommes,"
+      },
+      {
+        "numberInSurah": 4,
+        "textAr": "مِن شَرِّ ٱلْوَسْوَاسِ ٱلْخَنَّاسِ",
+        "translationEn": "From the evil of the retreating whisperer -",
+        "translationFr": "contre le mal du mauvais conseiller, furtif,"
+      },
+      {
+        "numberInSurah": 5,
+        "textAr": "ٱلَّذِى يُوَسْوِسُ فِى صُدُورِ ٱلنَّاسِ",
+        "translationEn": "Who whispers [evil] into the breasts of mankind -",
+        "translationFr": "qui souffle le mal dans les poitrines des hommes,"
+      },
+      {
+        "numberInSurah": 6,
+        "textAr": "مِنَ ٱلْجِنَّةِ وَٱلنَّاسِ",
+        "translationEn": "From among the jinn and mankind.",
+        "translationFr": "qu'il (le conseiller) soit un djinn, ou un être humain»."
+      }
+    ]
+  }
+]

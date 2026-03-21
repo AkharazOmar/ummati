@@ -49,9 +49,13 @@ final GoRouter router = GoRouter(
                         int.parse(state.pathParameters['surahNumber']!);
                     final surahName =
                         state.uri.queryParameters['name'] ?? 'Surah';
+                    final ayahParam = state.uri.queryParameters['ayah'];
+                    final initialAyah =
+                        ayahParam != null ? int.tryParse(ayahParam) : null;
                     return SurahScreen(
                       surahNumber: surahNumber,
                       surahName: surahName,
+                      initialAyah: initialAyah,
                     );
                   },
                 ),

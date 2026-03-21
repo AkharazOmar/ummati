@@ -67,5 +67,32 @@
   "aboutDesc": "تطبيق إسلامي مجاني بدون إعلانات",
   "noCompass": "مستشعر البوصلة غير متوفر على هذا الجهاز",
   "calibrateCompass": "قم بمعايرة البوصلة بتحريك هاتفك على شكل رقم ٨",
-  "qiblaAligned": "أنت متجه نحو القبلة ✓"
+  "qiblaAligned": "أنت متجه نحو القبلة ✓",
+  "location": "الموقع",
+  "locationAuto": "تلقائي (GPS)",
+  "locationManual": "يدوي",
+  "locationAutoDesc": "استخدام GPS للحصول على مواقيت الصلاة",
+  "locationManualDesc": "اختيار مدينة يدوياً",
+  "selectCity": "اختر مدينة",
+  "currentCity": "المدينة الحالية: {city}",
+  "@currentCity": {
+    "placeholders": {
+      "city": {
+        "type": "String"
+      }
+    }
+  },
+  "searchCity": "ابحث عن مدينة...",
+  "noCitySelected": "لم يتم اختيار مدينة",
+  "resumeReading": "متابعة القراءة",
+  "saveBookmark": "حفظ العلامة",
+  "bookmarkSaved": "تم حفظ العلامة",
+  "verseNumber": "الآية {number}",
+  "@verseNumber": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      }
+    }
+  }
 }

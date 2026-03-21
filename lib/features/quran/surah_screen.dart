@@ -1,28 +1,84 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 
 import '../../app/theme.dart';
+import '../../l10n/app_localizations.dart';
+import '../settings/settings_provider.dart';
 import 'quran_provider.dart';
 
-class SurahScreen extends ConsumerWidget {
+class SurahScreen extends ConsumerStatefulWidget {
   final int surahNumber;
   final String surahName;
+  final int? initialAyah;
 
   const SurahScreen({
     super.key,
     required this.surahNumber,
     required this.surahName,
+    this.initialAyah,
   });
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<SurahScreen> createState() => _SurahScreenState();
+}
+
+class _SurahScreenState extends ConsumerState<SurahScreen> {
+  final ItemScrollController _itemScrollController = ItemScrollController();
+  final ItemPositionsListener _itemPositionsListener =
+      ItemPositionsListener.create();
+
+  void _saveBookmark(int ayahIndex) {
+    ref.read(readingPositionProvider.notifier).save(
+          widget.surahNumber,
+          widget.surahName,
+          ayahIndex,
+        );
+  }
+
+  /// Find the ayah index of the first fully or mostly visible item.
+  int _findVisibleAyahIndex() {
+    final positions = _itemPositionsListener.itemPositions.value;
+    if (positions.isEmpty) return 0;
+
+    // Get the item closest to the top of the viewport
+    final sorted = positions.toList()
+      ..sort((a, b) => a.itemLeadingEdge.compareTo(b.itemLeadingEdge));
+    final topItem = sorted.first;
+
+    // Convert list index back to ayah index (offset by 1 if bismillah header)
+    final listIndex = topItem.index;
+    final hasBismillah = widget.surahNumber != 9;
+    if (hasBismillah && listIndex == 0) return 0;
+    return hasBismillah ? listIndex - 1 : listIndex;
+  }
+
+  @override
+  Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
-    final ayahsAsync = ref.watch(surahAyahsProvider(surahNumber));
+    final locale = ref.watch(localeProvider).languageCode;
+    final param = SurahAyahsParam(widget.surahNumber, locale);
+    final ayahsAsync = ref.watch(surahAyahsProvider(param));
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(surahName),
+        title: Text(widget.surahName),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.bookmark_outline),
+            tooltip: l10n.saveBookmark,
+            onPressed: () {
+              final position = _findVisibleAyahIndex();
+              _saveBookmark(position);
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text(l10n.bookmarkSaved),
+                  duration: const Duration(seconds: 2),
+                ),
+              );
+            },
+          ),
+        ],
       ),
       body: ayahsAsync.when(
         loading: () => const Center(child: CircularProgressIndicator()),
@@ -33,75 +89,121 @@ class SurahScreen extends ConsumerWidget {
               Text(l10n.errorLoading),
               const SizedBox(height: 16),
               ElevatedButton(
-                onPressed: () =>
-                    ref.invalidate(surahAyahsProvider(surahNumber)),
+                onPressed: () => ref.invalidate(surahAyahsProvider(param)),
                 child: Text(l10n.retry),
               ),
             ],
           ),
         ),
-        data: (ayahs) => ListView(
-          padding: const EdgeInsets.all(20),
-          children: [
-            // Bismillah header (except for Surah At-Tawbah)
-            if (surahNumber != 9) ...[
-              Center(
-                child: Padding(
+        data: (ayahs) {
+          final hasBismillah = widget.surahNumber != 9;
+          final itemCount = ayahs.length + (hasBismillah ? 1 : 0);
+
+          // Convert ayah index to list index (offset by 1 if bismillah)
+          final initialIndex = widget.initialAyah != null
+              ? widget.initialAyah! + (hasBismillah ? 1 : 0)
+              : 0;
+
+          return ScrollablePositionedList.builder(
+            itemScrollController: _itemScrollController,
+            itemPositionsListener: _itemPositionsListener,
+            initialScrollIndex: initialIndex.clamp(0, itemCount - 1),
+            padding: const EdgeInsets.all(20),
+            itemCount: itemCount,
+            itemBuilder: (context, index) {
+              // Bismillah header (except for Surah At-Tawbah)
+              if (hasBismillah && index == 0) {
+                return Padding(
                   padding: const EdgeInsets.only(bottom: 24),
                   child: Text(
                     l10n.bismillah,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontFamily: UmmatiTheme.fontFamilyArabic,
                       fontSize: 22,
                       color: UmmatiTheme.accentGold,
                     ),
                     textAlign: TextAlign.center,
                   ),
-                ),
-              ),
-            ],
+                );
+              }
 
-            // Ayahs displayed as rich text
-            Directionality(
-              textDirection: TextDirection.rtl,
-              child: RichText(
-                textAlign: TextAlign.justify,
-                text: TextSpan(
-                  style: TextStyle(
-                    fontFamily: UmmatiTheme.fontFamilyArabic,
-                    fontSize: 26,
-                    height: 2.2,
-                    color: UmmatiTheme.darkText,
-                  ),
-                  children: ayahs.map((ayah) {
-                    return TextSpan(
+              final ayahIndex = hasBismillah ? index - 1 : index;
+              final ayah = ayahs[ayahIndex];
+
+              return Container(
+                margin: const EdgeInsets.only(bottom: 24),
+                padding: const EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                  color: ayahIndex.isEven
+                      ? UmmatiTheme.primaryGreen.withValues(alpha: 0.03)
+                      : Colors.transparent,
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    // Verse number badge
+                    Row(
                       children: [
-                        TextSpan(text: ayah.text),
-                        TextSpan(
-                          text: ' \uFD3F${_toArabicNumber(ayah.numberInSurah)}\uFD3E ',
-                          style: TextStyle(
-                            color: UmmatiTheme.primaryGreen,
-                            fontSize: 20,
+                        Container(
+                          width: 36,
+                          height: 36,
+                          decoration: BoxDecoration(
+                            color: UmmatiTheme.primaryGreen
+                                .withValues(alpha: 0.1),
+                            shape: BoxShape.circle,
+                          ),
+                          child: Center(
+                            child: Text(
+                              '${ayah.numberInSurah}',
+                              style: const TextStyle(
+                                color: UmmatiTheme.primaryGreen,
+                                fontWeight: FontWeight.w600,
+                                fontSize: 13,
+                              ),
+                            ),
                           ),
                         ),
                       ],
-                    );
-                  }).toList(),
+                    ),
+                    const SizedBox(height: 12),
+
+                    // Arabic text
+                    Directionality(
+                      textDirection: TextDirection.rtl,
+                      child: Text(
+                        ayah.text,
+                        style: const TextStyle(
+                          fontFamily: UmmatiTheme.fontFamilyArabic,
+                          fontSize: 24,
+                          height: 2.0,
+                          color: UmmatiTheme.darkText,
+                        ),
+                        textAlign: TextAlign.right,
+                      ),
+                    ),
+
+                    // Translation (if available)
+                    if (ayah.translation != null) ...[
+                      const SizedBox(height: 12),
+                      const Divider(height: 1),
+                      const SizedBox(height: 12),
+                      Text(
+                        ayah.translation!,
+                        style: TextStyle(
+                          fontSize: 15,
+                          height: 1.6,
+                          color: UmmatiTheme.darkText.withValues(alpha: 0.7),
+                        ),
+                      ),
+                    ],
+                  ],
                 ),
-              ),
-            ),
-          ],
-        ),
+              );
+            },
+          );
+        },
       ),
     );
-  }
-
-  String _toArabicNumber(int number) {
-    const arabicDigits = ['٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩'];
-    return number
-        .toString()
-        .split('')
-        .map((d) => arabicDigits[int.parse(d)])
-        .join();
   }
 }

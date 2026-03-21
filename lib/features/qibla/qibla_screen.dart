@@ -3,9 +3,9 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_compass/flutter_compass.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../app/theme.dart';
+import '../../l10n/app_localizations.dart';
 import '../../shared/widgets/islamic_card.dart';
 import 'qibla_provider.dart';
 
@@ -109,7 +109,8 @@ class _QiblaCompassState extends State<_QiblaCompass>
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Icon(Icons.sensors_off, size: 64, color: UmmatiTheme.accentGold),
+              const Icon(Icons.sensors_off,
+                  size: 64, color: UmmatiTheme.accentGold),
               const SizedBox(height: 16),
               Text(
                 l10n.noCompass,
@@ -158,8 +159,7 @@ class _QiblaCompassState extends State<_QiblaCompass>
         final qiblaRelative = widget.qiblaBearing - _currentHeading;
         // Check if phone is pointing towards Qibla (±5°)
         final normalizedRelative = ((qiblaRelative % 360) + 360) % 360;
-        final isAligned =
-            normalizedRelative < 5 || normalizedRelative > 355;
+        final isAligned = normalizedRelative < 5 || normalizedRelative > 355;
 
         return Column(
           children: [
@@ -321,11 +321,8 @@ class _QiblaCompassState extends State<_QiblaCompass>
                   isAligned ? l10n.qiblaAligned : l10n.qiblaDescription,
                   key: ValueKey(isAligned),
                   style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                        color: isAligned
-                            ? UmmatiTheme.primaryGreen
-                            : null,
-                        fontWeight:
-                            isAligned ? FontWeight.w600 : null,
+                        color: isAligned ? UmmatiTheme.primaryGreen : null,
+                        fontWeight: isAligned ? FontWeight.w600 : null,
                       ),
                   textAlign: TextAlign.center,
                 ),
@@ -360,8 +357,7 @@ class _QiblaCompassState extends State<_QiblaCompass>
                   color: d.$2 == 'N'
                       ? UmmatiTheme.primaryGreen
                       : UmmatiTheme.lightText,
-                  fontWeight:
-                      d.$2 == 'N' ? FontWeight.bold : FontWeight.w500,
+                  fontWeight: d.$2 == 'N' ? FontWeight.bold : FontWeight.w500,
                   fontSize: d.$2 == 'N' ? 18 : 14,
                 ),
               ),

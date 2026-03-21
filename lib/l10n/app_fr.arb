@@ -67,5 +67,32 @@
   "aboutDesc": "Application islamique gratuite et sans publicité",
   "noCompass": "Capteur de boussole non disponible sur cet appareil",
   "calibrateCompass": "Calibrez la boussole en faisant un 8 avec votre téléphone",
-  "qiblaAligned": "Vous êtes orienté vers la Qibla ✓"
+  "qiblaAligned": "Vous êtes orienté vers la Qibla ✓",
+  "location": "Localisation",
+  "locationAuto": "Automatique (GPS)",
+  "locationManual": "Manuelle",
+  "locationAutoDesc": "Utiliser le GPS pour les horaires de prière",
+  "locationManualDesc": "Choisir une ville manuellement",
+  "selectCity": "Sélectionner une ville",
+  "currentCity": "Ville actuelle : {city}",
+  "@currentCity": {
+    "placeholders": {
+      "city": {
+        "type": "String"
+      }
+    }
+  },
+  "searchCity": "Rechercher une ville...",
+  "noCitySelected": "Aucune ville sélectionnée",
+  "resumeReading": "Reprendre la lecture",
+  "saveBookmark": "Sauvegarder le marque-page",
+  "bookmarkSaved": "Marque-page sauvegardé",
+  "verseNumber": "Verset {number}",
+  "@verseNumber": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      }
+    }
+  }
 }

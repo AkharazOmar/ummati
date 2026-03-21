@@ -5,19 +5,19 @@ class LocationService {
   Future<Position> getCurrentPosition() async {
     bool serviceEnabled = await Geolocator.isLocationServiceEnabled();
     if (!serviceEnabled) {
-      throw LocationException('Location services are disabled.');
+      throw const LocationException('Location services are disabled.');
     }
 
     LocationPermission permission = await Geolocator.checkPermission();
     if (permission == LocationPermission.denied) {
       permission = await Geolocator.requestPermission();
       if (permission == LocationPermission.denied) {
-        throw LocationException('Location permissions are denied.');
+        throw const LocationException('Location permissions are denied.');
       }
     }
 
     if (permission == LocationPermission.deniedForever) {
-      throw LocationException(
+      throw const LocationException(
         'Location permissions are permanently denied. '
         'Please enable them in settings.',
       );

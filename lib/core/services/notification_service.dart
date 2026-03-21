@@ -1,5 +1,10 @@
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
+@pragma('vm:entry-point')
+void _onBackgroundNotificationResponse(NotificationResponse response) {
+  // Handle background notification tap
+}
+
 class NotificationService {
   static final NotificationService _instance = NotificationService._internal();
   factory NotificationService() => _instance;
@@ -26,7 +31,14 @@ class NotificationService {
       iOS: iosSettings,
     );
 
-    await _plugin.initialize(settings);
+    await _plugin.initialize(
+      settings: settings,
+      onDidReceiveNotificationResponse: (NotificationResponse response) {
+        // TODO: handle notification tap (e.g. navigate to prayer times screen)
+      },
+      onDidReceiveBackgroundNotificationResponse:
+          _onBackgroundNotificationResponse,
+    );
     _initialized = true;
   }
 
@@ -37,7 +49,7 @@ class NotificationService {
   }) async {
     // Schedule exact notification
     // Note: on Android 12+, exact alarms require SCHEDULE_EXACT_ALARM permission
-    final androidDetails = AndroidNotificationDetails(
+    const androidDetails = AndroidNotificationDetails(
       'prayer_times',
       'Prayer Times',
       channelDescription: 'Notifications for prayer times',
@@ -54,7 +66,7 @@ class NotificationService {
       presentSound: true,
     );
 
-    final details = NotificationDetails(
+    const details = NotificationDetails(
       android: androidDetails,
       iOS: iosDetails,
     );
@@ -70,10 +82,10 @@ class NotificationService {
     // TODO: migrate to zonedSchedule with timezone package for reliability
     Future.delayed(delay, () {
       _plugin.show(
-        id,
-        '🕌 $prayerName',
-        'It\'s time for $prayerName prayer',
-        details,
+        id: id,
+        title: '🕌 $prayerName',
+        body: 'It\'s time for $prayerName prayer',
+        notificationDetails: details,
       );
     });
   }
@@ -83,6 +95,6 @@ class NotificationService {
   }
 
   Future<void> cancel(int id) async {
-    await _plugin.cancel(id);
+    await _plugin.cancel(id: id);
   }
 }
