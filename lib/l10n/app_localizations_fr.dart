@@ -179,6 +179,48 @@ class AppLocalizationsFr extends AppLocalizations {
   String get bookmarkSaved => 'Marque-page sauvegardé';
 
   @override
+  String get monthlySchedule => 'Horaires du mois';
+
+  @override
+  String get dayColumn => 'Date';
+
+  @override
+  String monthName(String month) {
+    String _temp0 = intl.Intl.selectLogic(
+      month,
+      {
+        'january': 'Janvier',
+        'february': 'Février',
+        'march': 'Mars',
+        'april': 'Avril',
+        'may': 'Mai',
+        'june': 'Juin',
+        'july': 'Juillet',
+        'august': 'Août',
+        'september': 'Septembre',
+        'october': 'Octobre',
+        'november': 'Novembre',
+        'december': 'Décembre',
+        'other': '',
+      },
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get locationPermissionTitle => 'Accès à la localisation';
+
+  @override
+  String get locationPermissionDescription =>
+      'Ummati a besoin de votre position pour calculer les horaires de prière et la direction de la Qibla de votre zone.';
+
+  @override
+  String get allowLocation => 'Autoriser la localisation';
+
+  @override
+  String get skipForNow => 'Passer pour le moment';
+
+  @override
   String verseNumber(int number) {
     return 'Verset $number';
   }

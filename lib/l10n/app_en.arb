@@ -87,6 +87,20 @@
   "resumeReading": "Resume reading",
   "saveBookmark": "Save bookmark",
   "bookmarkSaved": "Bookmark saved",
+  "monthlySchedule": "Monthly Schedule",
+  "dayColumn": "Date",
+  "monthName": "{month, select, january{January} february{February} march{March} april{April} may{May} june{June} july{July} august{August} september{September} october{October} november{November} december{December} other{}}",
+  "@monthName": {
+    "placeholders": {
+      "month": {
+        "type": "String"
+      }
+    }
+  },
+  "locationPermissionTitle": "Location Access",
+  "locationPermissionDescription": "Ummati needs your location to calculate accurate prayer times and Qibla direction for your area.",
+  "allowLocation": "Allow Location Access",
+  "skipForNow": "Skip for now",
   "verseNumber": "Verse {number}",
   "@verseNumber": {
     "placeholders": {

@@ -176,6 +176,48 @@ class AppLocalizationsAr extends AppLocalizations {
   String get bookmarkSaved => 'تم حفظ العلامة';
 
   @override
+  String get monthlySchedule => 'جدول الشهر';
+
+  @override
+  String get dayColumn => 'التاريخ';
+
+  @override
+  String monthName(String month) {
+    String _temp0 = intl.Intl.selectLogic(
+      month,
+      {
+        'january': 'يناير',
+        'february': 'فبراير',
+        'march': 'مارس',
+        'april': 'أبريل',
+        'may': 'مايو',
+        'june': 'يونيو',
+        'july': 'يوليو',
+        'august': 'أغسطس',
+        'september': 'سبتمبر',
+        'october': 'أكتوبر',
+        'november': 'نوفمبر',
+        'december': 'ديسمبر',
+        'other': '',
+      },
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get locationPermissionTitle => 'الوصول إلى الموقع';
+
+  @override
+  String get locationPermissionDescription =>
+      'يحتاج أمّتي إلى موقعك لحساب مواقيت الصلاة واتجاه القبلة بدقة في منطقتك.';
+
+  @override
+  String get allowLocation => 'السماح بالوصول إلى الموقع';
+
+  @override
+  String get skipForNow => 'تخطي الآن';
+
+  @override
   String verseNumber(int number) {
     return 'الآية $number';
   }

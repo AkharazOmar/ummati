@@ -31,6 +31,51 @@ final prayerTimesProvider =
   PrayerTimesNotifier.new,
 );
 
+/// Parameter for monthly prayer times: year + month.
+class MonthlyParam {
+  final int year;
+  final int month;
+
+  const MonthlyParam(this.year, this.month);
+
+  @override
+  bool operator ==(Object other) =>
+      other is MonthlyParam && other.year == year && other.month == month;
+
+  @override
+  int get hashCode => Object.hash(year, month);
+}
+
+final monthlyPrayerTimesProvider = FutureProvider.family<List<DailyPrayerTimes>, MonthlyParam>(
+  (ref, param) async {
+    final method = ref.watch(calculationMethodProvider);
+    final locationMode = ref.watch(locationModeProvider);
+    final manualLocation = ref.watch(manualLocationProvider);
+
+    double latitude;
+    double longitude;
+
+    if (locationMode == 'manual' && manualLocation != null) {
+      latitude = manualLocation.latitude;
+      longitude = manualLocation.longitude;
+    } else {
+      final locationService = ref.read(locationServiceProvider);
+      final position = await locationService.getCurrentPosition();
+      latitude = position.latitude;
+      longitude = position.longitude;
+    }
+
+    final apiService = ref.read(prayerApiServiceProvider);
+    return apiService.getMonthlyPrayerTimes(
+      latitude: latitude,
+      longitude: longitude,
+      year: param.year,
+      month: param.month,
+      method: method,
+    );
+  },
+);
+
 class PrayerTimesNotifier extends AsyncNotifier<DailyPrayerTimes> {
   @override
   Future<DailyPrayerTimes> build() async {

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../app/theme.dart';
 import '../../core/models/prayer_time.dart';
@@ -19,6 +20,13 @@ class PrayerTimesScreen extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(l10n.prayerTimes),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.calendar_month),
+            tooltip: l10n.monthlySchedule,
+            onPressed: () => context.go('/prayer-times/monthly'),
+          ),
+        ],
       ),
       body: prayerTimesAsync.when(
         loading: () => const Center(child: CircularProgressIndicator()),

@@ -87,6 +87,20 @@
   "resumeReading": "Reprendre la lecture",
   "saveBookmark": "Sauvegarder le marque-page",
   "bookmarkSaved": "Marque-page sauvegardé",
+  "monthlySchedule": "Horaires du mois",
+  "dayColumn": "Date",
+  "monthName": "{month, select, january{Janvier} february{Février} march{Mars} april{Avril} may{Mai} june{Juin} july{Juillet} august{Août} september{Septembre} october{Octobre} november{Novembre} december{Décembre} other{}}",
+  "@monthName": {
+    "placeholders": {
+      "month": {
+        "type": "String"
+      }
+    }
+  },
+  "locationPermissionTitle": "Accès à la localisation",
+  "locationPermissionDescription": "Ummati a besoin de votre position pour calculer les horaires de prière et la direction de la Qibla de votre zone.",
+  "allowLocation": "Autoriser la localisation",
+  "skipForNow": "Passer pour le moment",
   "verseNumber": "Verset {number}",
   "@verseNumber": {
     "placeholders": {

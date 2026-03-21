@@ -412,6 +412,48 @@ abstract class AppLocalizations {
   /// **'Bookmark saved'**
   String get bookmarkSaved;
 
+  /// No description provided for @monthlySchedule.
+  ///
+  /// In en, this message translates to:
+  /// **'Monthly Schedule'**
+  String get monthlySchedule;
+
+  /// No description provided for @dayColumn.
+  ///
+  /// In en, this message translates to:
+  /// **'Date'**
+  String get dayColumn;
+
+  /// No description provided for @monthName.
+  ///
+  /// In en, this message translates to:
+  /// **'{month, select, january{January} february{February} march{March} april{April} may{May} june{June} july{July} august{August} september{September} october{October} november{November} december{December} other{}}'**
+  String monthName(String month);
+
+  /// No description provided for @locationPermissionTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Location Access'**
+  String get locationPermissionTitle;
+
+  /// No description provided for @locationPermissionDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Ummati needs your location to calculate accurate prayer times and Qibla direction for your area.'**
+  String get locationPermissionDescription;
+
+  /// No description provided for @allowLocation.
+  ///
+  /// In en, this message translates to:
+  /// **'Allow Location Access'**
+  String get allowLocation;
+
+  /// No description provided for @skipForNow.
+  ///
+  /// In en, this message translates to:
+  /// **'Skip for now'**
+  String get skipForNow;
+
   /// No description provided for @verseNumber.
   ///
   /// In en, this message translates to:

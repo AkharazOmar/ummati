@@ -87,6 +87,20 @@
   "resumeReading": "متابعة القراءة",
   "saveBookmark": "حفظ العلامة",
   "bookmarkSaved": "تم حفظ العلامة",
+  "monthlySchedule": "جدول الشهر",
+  "dayColumn": "التاريخ",
+  "monthName": "{month, select, january{يناير} february{فبراير} march{مارس} april{أبريل} may{مايو} june{يونيو} july{يوليو} august{أغسطس} september{سبتمبر} october{أكتوبر} november{نوفمبر} december{ديسمبر} other{}}",
+  "@monthName": {
+    "placeholders": {
+      "month": {
+        "type": "String"
+      }
+    }
+  },
+  "locationPermissionTitle": "الوصول إلى الموقع",
+  "locationPermissionDescription": "يحتاج أمّتي إلى موقعك لحساب مواقيت الصلاة واتجاه القبلة بدقة في منطقتك.",
+  "allowLocation": "السماح بالوصول إلى الموقع",
+  "skipForNow": "تخطي الآن",
   "verseNumber": "الآية {number}",
   "@verseNumber": {
     "placeholders": {

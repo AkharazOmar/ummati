@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 import 'package:ummati/app/app.dart';
 import 'package:ummati/features/settings/settings_provider.dart';
-import 'package:ummati/l10n/app_localizations.dart';
 
 void main() {
   testWidgets('App smoke test', (WidgetTester tester) async {

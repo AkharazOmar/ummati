@@ -42,6 +42,30 @@ class PrayerApiService {
     return DailyPrayerTimes.fromAladhanJson(data);
   }
 
+  /// Fetch prayer times for an entire month.
+  Future<List<DailyPrayerTimes>> getMonthlyPrayerTimes({
+    required double latitude,
+    required double longitude,
+    required int year,
+    required int month,
+    int method = 2,
+  }) async {
+    final response = await _dio.get(
+      '$_aladhanBaseUrl/calendar/$year/$month',
+      queryParameters: {
+        'latitude': latitude,
+        'longitude': longitude,
+        'method': method,
+      },
+    );
+
+    final days = response.data['data'] as List;
+    return days
+        .map((json) =>
+            DailyPrayerTimes.fromAladhanJson(json as Map<String, dynamic>))
+        .toList();
+  }
+
   /// Fetch the list of all 114 surahs.
   Future<List<Surah>> getSurahList() async {
     final response = await _dio.get('$_quranBaseUrl/surah');

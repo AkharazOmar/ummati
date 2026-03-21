@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:go_router/go_router.dart';
 
+import '../features/onboarding/location_permission_screen.dart';
+import '../features/prayer_times/monthly_prayer_times_screen.dart';
 import '../features/prayer_times/prayer_times_screen.dart';
 import '../features/qibla/qibla_screen.dart';
 import '../features/quran/quran_screen.dart';
@@ -12,8 +15,27 @@ final _rootNavigatorKey = GlobalKey<NavigatorState>();
 
 final GoRouter router = GoRouter(
   navigatorKey: _rootNavigatorKey,
-  initialLocation: '/prayer-times',
+  initialLocation: '/location-permission',
+  redirect: (context, state) async {
+    final onPermissionScreen =
+        state.matchedLocation == '/location-permission';
+
+    final permission = await Geolocator.checkPermission();
+    final hasPermission = permission == LocationPermission.whileInUse ||
+        permission == LocationPermission.always;
+
+    // If already granted, skip the permission screen
+    if (onPermissionScreen && hasPermission) {
+      return '/prayer-times';
+    }
+
+    return null;
+  },
   routes: [
+    GoRoute(
+      path: '/location-permission',
+      builder: (context, state) => const LocationPermissionScreen(),
+    ),
     StatefulShellRoute.indexedStack(
       builder: (context, state, navigationShell) {
         return ScaffoldWithNavBar(navigationShell: navigationShell);
@@ -24,6 +46,14 @@ final GoRouter router = GoRouter(
             GoRoute(
               path: '/prayer-times',
               builder: (context, state) => const PrayerTimesScreen(),
+              routes: [
+                GoRoute(
+                  path: 'monthly',
+                  parentNavigatorKey: _rootNavigatorKey,
+                  builder: (context, state) =>
+                      const MonthlyPrayerTimesScreen(),
+                ),
+              ],
             ),
           ],
         ),

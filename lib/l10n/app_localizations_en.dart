@@ -178,6 +178,48 @@ class AppLocalizationsEn extends AppLocalizations {
   String get bookmarkSaved => 'Bookmark saved';
 
   @override
+  String get monthlySchedule => 'Monthly Schedule';
+
+  @override
+  String get dayColumn => 'Date';
+
+  @override
+  String monthName(String month) {
+    String _temp0 = intl.Intl.selectLogic(
+      month,
+      {
+        'january': 'January',
+        'february': 'February',
+        'march': 'March',
+        'april': 'April',
+        'may': 'May',
+        'june': 'June',
+        'july': 'July',
+        'august': 'August',
+        'september': 'September',
+        'october': 'October',
+        'november': 'November',
+        'december': 'December',
+        'other': '',
+      },
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get locationPermissionTitle => 'Location Access';
+
+  @override
+  String get locationPermissionDescription =>
+      'Ummati needs your location to calculate accurate prayer times and Qibla direction for your area.';
+
+  @override
+  String get allowLocation => 'Allow Location Access';
+
+  @override
+  String get skipForNow => 'Skip for now';
+
+  @override
   String verseNumber(int number) {
     return 'Verse $number';
   }
