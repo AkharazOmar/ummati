@@ -1,8 +1,10 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:just_audio/just_audio.dart';
 
 import '../../app/theme.dart';
+import '../../core/services/notification_service.dart';
 import '../../l10n/app_localizations.dart';
 import 'settings_provider.dart';
 
@@ -169,6 +171,57 @@ class SettingsScreen extends ConsumerWidget {
             title: Text(l10n.version('1.0.0')),
             subtitle: const Text('1.0.0'),
           ),
+          // --- Debug (only in debug mode) ---
+          if (kDebugMode) ...[
+            const Divider(),
+            _SectionHeader(title: 'Debug'),
+            ListTile(
+              leading: Icon(Icons.notifications_active, color: Colors.orange),
+              title: const Text('Test notification (immediate)'),
+              subtitle: const Text('Send a test prayer notification now'),
+              onTap: () async {
+                final notifSettings = ref.read(prayerNotificationSettingsProvider);
+                final soundId = notifSettings['Maghrib'] ?? 'adhan_makkah';
+                final sound = soundById(soundId);
+
+                final service = NotificationService();
+                await service.initialize();
+                await service.showTestNotification(sound: sound);
+
+                if (context.mounted) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(content: Text('Notification envoyee')),
+                  );
+                }
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.timer, color: Colors.orange),
+              title: const Text('Test notification (10s)'),
+              subtitle: const Text('Send a test notification in 10 seconds'),
+              onTap: () async {
+                final notifSettings = ref.read(prayerNotificationSettingsProvider);
+                final soundId = notifSettings['Maghrib'] ?? 'adhan_makkah';
+                final sound = soundById(soundId);
+
+                final service = NotificationService();
+                await service.initialize();
+                await service.schedulePrayerNotification(
+                  id: 98,
+                  prayerName: 'Maghrib',
+                  scheduledTime: DateTime.now().add(const Duration(seconds: 10)),
+                  sound: sound,
+                );
+
+                if (context.mounted) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(content: Text('Notification dans 10 secondes...')),
+                  );
+                }
+              },
+            ),
+          ],
+
           const SizedBox(height: 24),
         ],
       ),

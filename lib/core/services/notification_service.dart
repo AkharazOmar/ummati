@@ -1,13 +1,10 @@
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:timezone/data/latest_all.dart' as tz;
-import 'package:timezone/timezone.dart' as tz;
 
 import '../../features/settings/settings_provider.dart';
 
 @pragma('vm:entry-point')
-void _onBackgroundNotificationResponse(NotificationResponse response) {
-  // Handle background notification tap
-}
+void _onBackgroundNotificationResponse(NotificationResponse response) {}
 
 class NotificationService {
   static final NotificationService _instance = NotificationService._internal();
@@ -39,16 +36,22 @@ class NotificationService {
 
     await _plugin.initialize(
       settings: settings,
-      onDidReceiveNotificationResponse: (NotificationResponse response) {
-        // TODO: handle notification tap
-      },
+      onDidReceiveNotificationResponse: (NotificationResponse response) {},
       onDidReceiveBackgroundNotificationResponse:
           _onBackgroundNotificationResponse,
     );
+
+    // Request notification permission on Android 13+
+    final androidPlugin = _plugin.resolvePlatformSpecificImplementation<
+        AndroidFlutterLocalNotificationsPlugin>();
+    if (androidPlugin != null) {
+      await androidPlugin.requestNotificationsPermission();
+    }
+
     _initialized = true;
   }
 
-  /// Schedule a prayer notification with the chosen sound.
+  /// Schedule a prayer notification using Future.delayed + show().
   Future<void> schedulePrayerNotification({
     required int id,
     required String prayerName,
@@ -60,6 +63,22 @@ class NotificationService {
     final now = DateTime.now();
     if (scheduledTime.isBefore(now)) return;
 
+    final delay = scheduledTime.difference(now);
+
+    Future.delayed(delay, () {
+      _showPrayerNotification(
+        id: id,
+        prayerName: prayerName,
+        sound: sound,
+      );
+    });
+  }
+
+  Future<void> _showPrayerNotification({
+    required int id,
+    required String prayerName,
+    required NotificationSound sound,
+  }) async {
     final androidDetails = AndroidNotificationDetails(
       'prayer_${sound.id}',
       'Prayer Times (${sound.id})',
@@ -84,19 +103,15 @@ class NotificationService {
       iOS: iosDetails,
     );
 
-    final tzScheduledTime = tz.TZDateTime.from(scheduledTime, tz.local);
-
-    await _plugin.zonedSchedule(
+    await _plugin.show(
       id: id,
       title: '🕌 $prayerName',
       body: "It's time for $prayerName prayer",
-      scheduledDate: tzScheduledTime,
       notificationDetails: details,
-      androidScheduleMode: AndroidScheduleMode.inexactAllowWhileIdle,
     );
   }
 
-  /// Schedule notifications for all prayers based on per-prayer settings.
+  /// Schedule notifications for all prayers.
   Future<void> scheduleAllPrayerNotifications({
     required Map<String, DateTime> prayerTimes,
     required PrayerNotificationSettings settings,
@@ -128,6 +143,41 @@ class NotificationService {
         sound: sound,
       );
     }
+  }
+
+  /// Show an immediate test notification (debug only).
+  Future<void> showTestNotification({required NotificationSound sound}) async {
+    final androidDetails = AndroidNotificationDetails(
+      'prayer_test',
+      'Prayer Times (test)',
+      channelDescription: 'Test notification',
+      importance: Importance.high,
+      priority: Priority.high,
+      playSound: sound.androidRaw != null,
+      sound: sound.androidRaw != null
+          ? RawResourceAndroidNotificationSound(sound.androidRaw!)
+          : null,
+      enableVibration: true,
+    );
+
+    final iosDetails = DarwinNotificationDetails(
+      presentAlert: true,
+      presentBadge: true,
+      presentSound: true,
+      sound: sound.iosFile,
+    );
+
+    final details = NotificationDetails(
+      android: androidDetails,
+      iOS: iosDetails,
+    );
+
+    await _plugin.show(
+      id: 99,
+      title: '🕌 Maghrib (test)',
+      body: "It's time for Maghrib prayer",
+      notificationDetails: details,
+    );
   }
 
   Future<void> cancelAll() async {

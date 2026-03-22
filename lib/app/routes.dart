@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:go_router/go_router.dart';
 
@@ -20,12 +23,27 @@ final GoRouter router = GoRouter(
     final onPermissionScreen =
         state.matchedLocation == '/location-permission';
 
-    final permission = await Geolocator.checkPermission();
-    final hasPermission = permission == LocationPermission.whileInUse ||
-        permission == LocationPermission.always;
+    if (!onPermissionScreen) return null;
 
-    // If already granted, skip the permission screen
-    if (onPermissionScreen && hasPermission) {
+    // Check location permission
+    final locationPerm = await Geolocator.checkPermission();
+    final hasLocation = locationPerm == LocationPermission.whileInUse ||
+        locationPerm == LocationPermission.always;
+
+    // Check notification permission (Android 13+)
+    bool hasNotification = true;
+    if (Platform.isAndroid) {
+      final plugin = FlutterLocalNotificationsPlugin();
+      final androidPlugin = plugin.resolvePlatformSpecificImplementation<
+          AndroidFlutterLocalNotificationsPlugin>();
+      if (androidPlugin != null) {
+        hasNotification =
+            await androidPlugin.areNotificationsEnabled() ?? false;
+      }
+    }
+
+    // Skip onboarding only if both permissions are granted
+    if (hasLocation && hasNotification) {
       return '/prayer-times';
     }
 

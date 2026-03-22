@@ -18,6 +18,22 @@ class _LocationPermissionScreenState extends State<LocationPermissionScreen> {
   bool _requesting = false;
   _PermissionStep _step = _PermissionStep.location;
 
+  @override
+  void initState() {
+    super.initState();
+    _checkInitialStep();
+  }
+
+  Future<void> _checkInitialStep() async {
+    final permission = await Geolocator.checkPermission();
+    if (permission == LocationPermission.whileInUse ||
+        permission == LocationPermission.always) {
+      if (mounted) {
+        setState(() => _step = _PermissionStep.notification);
+      }
+    }
+  }
+
   Future<void> _requestLocationPermission() async {
     setState(() => _requesting = true);
 
