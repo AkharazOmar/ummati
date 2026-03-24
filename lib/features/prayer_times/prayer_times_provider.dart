@@ -230,14 +230,12 @@ class PrayerTimesNotifier extends AsyncNotifier<DailyPrayerTimes> {
         final notifyAt = time.subtract(Duration(minutes: offsetMinutes));
 
         if (notifyAt.isAfter(now)) {
-          final delay = notifyAt.difference(now);
-          Future.delayed(delay, () {
-            notifService.showPrayerNotification(
-              id: entry.value,
-              prayerName: entry.key,
-              sound: sound,
-            );
-          });
+          await notifService.schedulePrayerNotification(
+            id: entry.value,
+            prayerName: entry.key,
+            scheduledTime: notifyAt,
+            sound: sound,
+          );
         }
       }
     } catch (_) {

@@ -1,5 +1,7 @@
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:flutter_timezone/flutter_timezone.dart';
 import 'package:timezone/data/latest_all.dart' as tz;
+import 'package:timezone/timezone.dart' as tz;
 
 import '../../features/settings/settings_provider.dart';
 
@@ -20,6 +22,8 @@ class NotificationService {
     if (_initialized) return;
 
     tz.initializeTimeZones();
+    final tzInfo = await FlutterTimezone.getLocalTimezone();
+    tz.setLocalLocation(tz.getLocation(tzInfo.identifier));
 
     const androidSettings =
         AndroidInitializationSettings('@mipmap/ic_launcher');
@@ -51,7 +55,53 @@ class NotificationService {
     _initialized = true;
   }
 
-  /// Show a prayer notification (called by Future.delayed from provider).
+  /// Schedule a prayer notification via the OS alarm system.
+  /// Persists even if the app is killed.
+  Future<void> schedulePrayerNotification({
+    required int id,
+    required String prayerName,
+    required DateTime scheduledTime,
+    required NotificationSound sound,
+  }) async {
+    final androidDetails = AndroidNotificationDetails(
+      'prayer_${sound.id}',
+      'Prayer Times',
+      channelDescription: 'Prayer time notifications',
+      importance: Importance.high,
+      priority: Priority.high,
+      playSound: sound.androidRaw != null,
+      sound: sound.androidRaw != null
+          ? RawResourceAndroidNotificationSound(sound.androidRaw!)
+          : null,
+      enableVibration: true,
+      category: AndroidNotificationCategory.reminder,
+    );
+
+    final iosDetails = DarwinNotificationDetails(
+      presentAlert: true,
+      presentBadge: true,
+      presentSound: true,
+      sound: sound.iosFile,
+    );
+
+    final details = NotificationDetails(
+      android: androidDetails,
+      iOS: iosDetails,
+    );
+
+    final tzTime = tz.TZDateTime.from(scheduledTime, tz.local);
+
+    await _plugin.zonedSchedule(
+      id: id,
+      title: '🕌 $prayerName',
+      body: "It's time for $prayerName prayer",
+      scheduledDate: tzTime,
+      notificationDetails: details,
+      androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
+    );
+  }
+
+  /// Show a prayer notification immediately.
   Future<void> showPrayerNotification({
     required int id,
     required String prayerName,
