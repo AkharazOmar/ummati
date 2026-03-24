@@ -178,6 +178,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get bookmarkSaved => 'Bookmark saved';
 
   @override
+  String get duas => 'Duas';
+
+  @override
+  String get searchDuas => 'Search duas...';
+
+  @override
   String get notifOff => 'Off';
 
   @override

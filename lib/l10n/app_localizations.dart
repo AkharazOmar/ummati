@@ -412,6 +412,18 @@ abstract class AppLocalizations {
   /// **'Bookmark saved'**
   String get bookmarkSaved;
 
+  /// No description provided for @duas.
+  ///
+  /// In en, this message translates to:
+  /// **'Duas'**
+  String get duas;
+
+  /// No description provided for @searchDuas.
+  ///
+  /// In en, this message translates to:
+  /// **'Search duas...'**
+  String get searchDuas;
+
   /// No description provided for @notifOff.
   ///
   /// In en, this message translates to:

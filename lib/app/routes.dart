@@ -11,6 +11,7 @@ import '../features/prayer_times/prayer_times_screen.dart';
 import '../features/qibla/qibla_screen.dart';
 import '../features/quran/quran_screen.dart';
 import '../features/quran/surah_screen.dart';
+import '../features/duas/duas_screen.dart';
 import '../features/settings/settings_screen.dart';
 import '../shared/widgets/bottom_nav_bar.dart';
 
@@ -108,6 +109,14 @@ final GoRouter router = GoRouter(
                   },
                 ),
               ],
+            ),
+          ],
+        ),
+        StatefulShellBranch(
+          routes: [
+            GoRoute(
+              path: '/duas',
+              builder: (context, state) => const DuasScreen(),
             ),
           ],
         ),

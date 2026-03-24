@@ -176,6 +176,12 @@ class AppLocalizationsAr extends AppLocalizations {
   String get bookmarkSaved => 'تم حفظ العلامة';
 
   @override
+  String get duas => 'الأدعية';
+
+  @override
+  String get searchDuas => 'البحث عن دعاء...';
+
+  @override
   String get notifOff => 'إيقاف';
 
   @override

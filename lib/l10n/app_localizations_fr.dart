@@ -179,6 +179,12 @@ class AppLocalizationsFr extends AppLocalizations {
   String get bookmarkSaved => 'Marque-page sauvegardé';
 
   @override
+  String get duas => 'Invocations';
+
+  @override
+  String get searchDuas => 'Rechercher une invocation...';
+
+  @override
   String get notifOff => 'Désactivé';
 
   @override

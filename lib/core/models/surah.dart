@@ -33,12 +33,14 @@ class Ayah {
   final int number;
   final String text;
   final int numberInSurah;
+  final String? phonetic;
   final String? translation;
 
   const Ayah({
     required this.number,
     required this.text,
     required this.numberInSurah,
+    this.phonetic,
     this.translation,
   });
 
@@ -55,6 +57,17 @@ class Ayah {
       number: number,
       text: text,
       numberInSurah: numberInSurah,
+      phonetic: phonetic,
+      translation: translation,
+    );
+  }
+
+  Ayah withPhonetic(String phonetic) {
+    return Ayah(
+      number: number,
+      text: text,
+      numberInSurah: numberInSurah,
+      phonetic: phonetic,
       translation: translation,
     );
   }

@@ -91,10 +91,11 @@ class PrayerApiService {
         .toList();
   }
 
-  /// Fetch the ayahs of a specific surah with translation.
+  /// Fetch the ayahs of a specific surah with transliteration and translation.
   Future<List<Ayah>> getSurahAyahs(int surahNumber, {String? translationEdition}) async {
     final futures = <Future>[
       _dio.get('$_quranBaseUrl/surah/$surahNumber/ar.alafasy'),
+      _dio.get('$_quranBaseUrl/surah/$surahNumber/en.transliteration'),
       if (translationEdition != null)
         _dio.get('$_quranBaseUrl/surah/$surahNumber/$translationEdition'),
     ];
@@ -108,8 +109,18 @@ class PrayerApiService {
         .map((json) => Ayah.fromJson(json as Map<String, dynamic>))
         .toList();
 
-    if (translationEdition != null && responses.length > 1) {
-      final translationData = responses[1].data['data'] as Map<String, dynamic>;
+    // Add phonetic transliteration
+    final phoneticData = responses[1].data['data'] as Map<String, dynamic>;
+    final phoneticAyahs = phoneticData['ayahs'] as List;
+    for (var i = 0; i < ayahs.length && i < phoneticAyahs.length; i++) {
+      final phoneticText = (phoneticAyahs[i] as Map<String, dynamic>)['text'] as String;
+      ayahs[i] = ayahs[i].withPhonetic(phoneticText);
+    }
+
+    // Add translation
+    final translationIndex = translationEdition != null ? 2 : -1;
+    if (translationIndex >= 0 && translationIndex < responses.length) {
+      final translationData = responses[translationIndex].data['data'] as Map<String, dynamic>;
       final translationAyahs = translationData['ayahs'] as List;
       for (var i = 0; i < ayahs.length && i < translationAyahs.length; i++) {
         final translationText = (translationAyahs[i] as Map<String, dynamic>)['text'] as String;

@@ -18,6 +18,7 @@ class ScaffoldWithNavBar extends StatelessWidget {
     return Scaffold(
       body: navigationShell,
       bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
         currentIndex: navigationShell.currentIndex,
         onTap: (index) => navigationShell.goBranch(
           index,
@@ -38,6 +39,11 @@ class ScaffoldWithNavBar extends StatelessWidget {
             icon: const Icon(Icons.menu_book_outlined),
             activeIcon: const Icon(Icons.menu_book),
             label: l10n.quran,
+          ),
+          BottomNavigationBarItem(
+            icon: const Icon(Icons.favorite_outline),
+            activeIcon: const Icon(Icons.favorite),
+            label: l10n.duas,
           ),
           BottomNavigationBarItem(
             icon: const Icon(Icons.settings_outlined),

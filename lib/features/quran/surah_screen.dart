@@ -183,6 +183,20 @@ class _SurahScreenState extends ConsumerState<SurahScreen> {
                       ),
                     ),
 
+                    // Phonetic transliteration
+                    if (ayah.phonetic != null) ...[
+                      const SizedBox(height: 10),
+                      Text(
+                        ayah.phonetic!,
+                        style: TextStyle(
+                          fontSize: 14,
+                          height: 1.5,
+                          fontStyle: FontStyle.italic,
+                          color: UmmatiTheme.primaryGreen.withValues(alpha: 0.7),
+                        ),
+                      ),
+                    ],
+
                     // Translation (if available)
                     if (ayah.translation != null) ...[
                       const SizedBox(height: 12),
