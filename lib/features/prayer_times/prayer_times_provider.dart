@@ -175,7 +175,7 @@ class PrayerTimesNotifier extends AsyncNotifier<DailyPrayerTimes> {
     // Clean old cache entries
     _cleanOldCache(cacheBox, today);
 
-    // Schedule notifications
+    // Schedule notifications via Future.delayed
     await _scheduleNotifications(data);
 
     // Update home screen widget
@@ -198,21 +198,48 @@ class PrayerTimesNotifier extends AsyncNotifier<DailyPrayerTimes> {
     try {
       final notifSettings = ref.read(prayerNotificationSettingsProvider);
       final notifOffsets = ref.read(prayerNotificationOffsetsProvider);
+      final now = DateTime.now();
+
+      const prayerIds = {
+        'Fajr': 0,
+        'Dhuhr': 1,
+        'Asr': 2,
+        'Maghrib': 3,
+        'Isha': 4,
+      };
+
+      final times = {
+        'Fajr': data.fajr.time,
+        'Dhuhr': data.dhuhr.time,
+        'Asr': data.asr.time,
+        'Maghrib': data.maghrib.time,
+        'Isha': data.isha.time,
+      };
 
       final notifService = NotificationService();
       await notifService.initialize();
+      await notifService.cancelAll();
 
-      await notifService.scheduleAllPrayerNotifications(
-        prayerTimes: {
-          'Fajr': data.fajr.time,
-          'Dhuhr': data.dhuhr.time,
-          'Asr': data.asr.time,
-          'Maghrib': data.maghrib.time,
-          'Isha': data.isha.time,
-        },
-        settings: notifSettings,
-        offsets: notifOffsets,
-      );
+      for (final entry in prayerIds.entries) {
+        final soundId = notifSettings[entry.key] ?? 'adhan_makkah';
+        if (soundId == 'none') continue;
+        final sound = soundById(soundId);
+
+        final time = times[entry.key]!;
+        final offsetMinutes = notifOffsets[entry.key] ?? 0;
+        final notifyAt = time.subtract(Duration(minutes: offsetMinutes));
+
+        if (notifyAt.isAfter(now)) {
+          final delay = notifyAt.difference(now);
+          Future.delayed(delay, () {
+            notifService.showPrayerNotification(
+              id: entry.value,
+              prayerName: entry.key,
+              sound: sound,
+            );
+          });
+        }
+      }
     } catch (_) {
       // Notifications are best-effort
     }

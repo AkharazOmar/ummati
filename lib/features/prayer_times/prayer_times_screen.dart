@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -10,11 +12,33 @@ import '../../l10n/app_localizations.dart';
 import '../../shared/widgets/islamic_card.dart';
 import 'prayer_times_provider.dart';
 
-class PrayerTimesScreen extends ConsumerWidget {
+class PrayerTimesScreen extends ConsumerStatefulWidget {
   const PrayerTimesScreen({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<PrayerTimesScreen> createState() => _PrayerTimesScreenState();
+}
+
+class _PrayerTimesScreenState extends ConsumerState<PrayerTimesScreen> {
+  Timer? _refreshTimer;
+
+  @override
+  void initState() {
+    super.initState();
+    // Refresh UI every 55s for countdown updates
+    _refreshTimer = Timer.periodic(const Duration(seconds: 55), (_) {
+      if (mounted) setState(() {});
+    });
+  }
+
+  @override
+  void dispose() {
+    _refreshTimer?.cancel();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
     final prayerTimesAsync = ref.watch(prayerTimesProvider);
 

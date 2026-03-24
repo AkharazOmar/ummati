@@ -198,7 +198,7 @@ class SettingsScreen extends ConsumerWidget {
             ListTile(
               leading: Icon(Icons.timer, color: Colors.orange),
               title: const Text('Test notification (10s)'),
-              subtitle: const Text('Send a test notification in 10 seconds'),
+              subtitle: const Text('Via background service delayed show()'),
               onTap: () async {
                 final notifSettings = ref.read(prayerNotificationSettingsProvider);
                 final soundId = notifSettings['Maghrib'] ?? 'adhan_makkah';
@@ -206,12 +206,9 @@ class SettingsScreen extends ConsumerWidget {
 
                 final service = NotificationService();
                 await service.initialize();
-                await service.schedulePrayerNotification(
-                  id: 98,
-                  prayerName: 'Maghrib',
-                  scheduledTime: DateTime.now().add(const Duration(seconds: 10)),
-                  sound: sound,
-                );
+                Future.delayed(const Duration(seconds: 10), () {
+                  service.showTestNotification(sound: sound);
+                });
 
                 if (context.mounted) {
                   ScaffoldMessenger.of(context).showSnackBar(

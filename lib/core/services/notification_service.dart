@@ -51,42 +51,22 @@ class NotificationService {
     _initialized = true;
   }
 
-  /// Schedule a prayer notification using Future.delayed + show().
-  Future<void> schedulePrayerNotification({
-    required int id,
-    required String prayerName,
-    required DateTime scheduledTime,
-    required NotificationSound sound,
-  }) async {
-    if (sound.isSilent) return;
-
-    final now = DateTime.now();
-    if (scheduledTime.isBefore(now)) return;
-
-    final delay = scheduledTime.difference(now);
-
-    Future.delayed(delay, () {
-      _showPrayerNotification(
-        id: id,
-        prayerName: prayerName,
-        sound: sound,
-      );
-    });
-  }
-
-  Future<void> _showPrayerNotification({
+  /// Show a prayer notification (called by Future.delayed from provider).
+  Future<void> showPrayerNotification({
     required int id,
     required String prayerName,
     required NotificationSound sound,
   }) async {
     final androidDetails = AndroidNotificationDetails(
       'prayer_${sound.id}',
-      'Prayer Times (${sound.id})',
+      'Prayer Times',
       channelDescription: 'Prayer time notifications',
       importance: Importance.high,
       priority: Priority.high,
-      playSound: true,
-      sound: RawResourceAndroidNotificationSound(sound.androidRaw!),
+      playSound: sound.androidRaw != null,
+      sound: sound.androidRaw != null
+          ? RawResourceAndroidNotificationSound(sound.androidRaw!)
+          : null,
       enableVibration: true,
       category: AndroidNotificationCategory.reminder,
     );
@@ -109,40 +89,6 @@ class NotificationService {
       body: "It's time for $prayerName prayer",
       notificationDetails: details,
     );
-  }
-
-  /// Schedule notifications for all prayers.
-  Future<void> scheduleAllPrayerNotifications({
-    required Map<String, DateTime> prayerTimes,
-    required PrayerNotificationSettings settings,
-    required PrayerNotificationOffsets offsets,
-  }) async {
-    await cancelAll();
-
-    const prayerIds = {
-      'Fajr': 0,
-      'Dhuhr': 1,
-      'Asr': 2,
-      'Maghrib': 3,
-      'Isha': 4,
-    };
-
-    for (final entry in prayerIds.entries) {
-      final soundId = settings[entry.key] ?? 'adhan_makkah';
-      final sound = soundById(soundId);
-      final time = prayerTimes[entry.key];
-      if (time == null) continue;
-
-      final offsetMinutes = offsets[entry.key] ?? 0;
-      final scheduledTime = time.subtract(Duration(minutes: offsetMinutes));
-
-      await schedulePrayerNotification(
-        id: entry.value,
-        prayerName: entry.key,
-        scheduledTime: scheduledTime,
-        sound: sound,
-      );
-    }
   }
 
   /// Show an immediate test notification (debug only).
@@ -182,9 +128,5 @@ class NotificationService {
 
   Future<void> cancelAll() async {
     await _plugin.cancelAll();
-  }
-
-  Future<void> cancel(int id) async {
-    await _plugin.cancel(id: id);
   }
 }
