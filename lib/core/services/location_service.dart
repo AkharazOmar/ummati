@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:geolocator/geolocator.dart';
 
 class LocationService {
@@ -30,12 +31,31 @@ class LocationService {
     }
 
     // 2. No cached position — get a fresh fix with low accuracy (fast)
-    return await Geolocator.getCurrentPosition(
-      locationSettings: const LocationSettings(
-        accuracy: LocationAccuracy.low,
-        timeLimit: Duration(seconds: 30),
-      ),
-    );
+    try {
+      return await Geolocator.getCurrentPosition(
+        locationSettings: const LocationSettings(
+          accuracy: LocationAccuracy.low,
+          timeLimit: Duration(seconds: 15),
+        ),
+      );
+    } catch (e) {
+      // 3. In debug mode, fallback to Paris for emulator testing
+      if (kDebugMode) {
+        return Position(
+          latitude: 48.8566,
+          longitude: 2.3522,
+          timestamp: DateTime.now(),
+          accuracy: 0,
+          altitude: 0,
+          altitudeAccuracy: 0,
+          heading: 0,
+          headingAccuracy: 0,
+          speed: 0,
+          speedAccuracy: 0,
+        );
+      }
+      rethrow;
+    }
   }
 
   /// Stream position updates.
