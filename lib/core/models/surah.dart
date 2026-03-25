@@ -35,6 +35,7 @@ class Ayah {
   final int numberInSurah;
   final String? phonetic;
   final String? translation;
+  final String? audioUrl;
 
   const Ayah({
     required this.number,
@@ -42,6 +43,7 @@ class Ayah {
     required this.numberInSurah,
     this.phonetic,
     this.translation,
+    this.audioUrl,
   });
 
   factory Ayah.fromJson(Map<String, dynamic> json) {
@@ -49,6 +51,7 @@ class Ayah {
       number: json['number'] as int,
       text: json['text'] as String,
       numberInSurah: json['numberInSurah'] as int,
+      audioUrl: json['audio'] as String?,
     );
   }
 
@@ -59,6 +62,7 @@ class Ayah {
       numberInSurah: numberInSurah,
       phonetic: phonetic,
       translation: translation,
+      audioUrl: audioUrl,
     );
   }
 
@@ -69,6 +73,7 @@ class Ayah {
       numberInSurah: numberInSurah,
       phonetic: phonetic,
       translation: translation,
+      audioUrl: audioUrl,
     );
   }
 }

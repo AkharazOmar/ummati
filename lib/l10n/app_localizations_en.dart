@@ -268,4 +268,50 @@ class AppLocalizationsEn extends AppLocalizations {
   String verseNumber(int number) {
     return 'Verse $number';
   }
+
+  @override
+  String get play => 'Play';
+
+  @override
+  String get pause => 'Pause';
+
+  @override
+  String get stopAudio => 'Stop';
+
+  @override
+  String get repeatVerse => 'Repeat';
+
+  @override
+  String repeatNTimes(int count) {
+    return '$count times';
+  }
+
+  @override
+  String get noRepeat => 'No repeat';
+
+  @override
+  String get loopRange => 'Loop range';
+
+  @override
+  String loopFrom(int start, int end) {
+    return 'From verse $start to $end';
+  }
+
+  @override
+  String get clearLoop => 'Clear loop';
+
+  @override
+  String get setLoopStart => 'Set as loop start';
+
+  @override
+  String get setLoopEnd => 'Set as loop end';
+
+  @override
+  String get downloadAudio => 'Download audio';
+
+  @override
+  String get downloading => 'Downloading...';
+
+  @override
+  String get audioDownloaded => 'Audio downloaded';
 }

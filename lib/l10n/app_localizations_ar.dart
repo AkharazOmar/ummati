@@ -266,4 +266,50 @@ class AppLocalizationsAr extends AppLocalizations {
   String verseNumber(int number) {
     return 'الآية $number';
   }
+
+  @override
+  String get play => 'تشغيل';
+
+  @override
+  String get pause => 'إيقاف مؤقت';
+
+  @override
+  String get stopAudio => 'إيقاف';
+
+  @override
+  String get repeatVerse => 'تكرار';
+
+  @override
+  String repeatNTimes(int count) {
+    return '$count مرات';
+  }
+
+  @override
+  String get noRepeat => 'بدون تكرار';
+
+  @override
+  String get loopRange => 'تكرار مجموعة آيات';
+
+  @override
+  String loopFrom(int start, int end) {
+    return 'من الآية $start إلى $end';
+  }
+
+  @override
+  String get clearLoop => 'إلغاء التكرار';
+
+  @override
+  String get setLoopStart => 'بداية التكرار';
+
+  @override
+  String get setLoopEnd => 'نهاية التكرار';
+
+  @override
+  String get downloadAudio => 'تحميل الصوت';
+
+  @override
+  String get downloading => 'جاري التحميل...';
+
+  @override
+  String get audioDownloaded => 'تم تحميل الصوت';
 }

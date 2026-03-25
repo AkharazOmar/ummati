@@ -129,5 +129,36 @@
         "type": "int"
       }
     }
-  }
+  },
+  "play": "Lire",
+  "pause": "Pause",
+  "stopAudio": "Arrêter",
+  "repeatVerse": "Répéter",
+  "repeatNTimes": "{count} fois",
+  "@repeatNTimes": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "noRepeat": "Pas de répétition",
+  "loopRange": "Boucle de versets",
+  "loopFrom": "Du verset {start} au {end}",
+  "@loopFrom": {
+    "placeholders": {
+      "start": {
+        "type": "int"
+      },
+      "end": {
+        "type": "int"
+      }
+    }
+  },
+  "clearLoop": "Supprimer la boucle",
+  "setLoopStart": "Début de la boucle",
+  "setLoopEnd": "Fin de la boucle",
+  "downloadAudio": "Télécharger l'audio",
+  "downloading": "Téléchargement...",
+  "audioDownloaded": "Audio téléchargé"
 }

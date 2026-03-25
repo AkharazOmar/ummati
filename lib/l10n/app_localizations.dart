@@ -543,6 +543,90 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Verse {number}'**
   String verseNumber(int number);
+
+  /// No description provided for @play.
+  ///
+  /// In en, this message translates to:
+  /// **'Play'**
+  String get play;
+
+  /// No description provided for @pause.
+  ///
+  /// In en, this message translates to:
+  /// **'Pause'**
+  String get pause;
+
+  /// No description provided for @stopAudio.
+  ///
+  /// In en, this message translates to:
+  /// **'Stop'**
+  String get stopAudio;
+
+  /// No description provided for @repeatVerse.
+  ///
+  /// In en, this message translates to:
+  /// **'Repeat'**
+  String get repeatVerse;
+
+  /// No description provided for @repeatNTimes.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} times'**
+  String repeatNTimes(int count);
+
+  /// No description provided for @noRepeat.
+  ///
+  /// In en, this message translates to:
+  /// **'No repeat'**
+  String get noRepeat;
+
+  /// No description provided for @loopRange.
+  ///
+  /// In en, this message translates to:
+  /// **'Loop range'**
+  String get loopRange;
+
+  /// No description provided for @loopFrom.
+  ///
+  /// In en, this message translates to:
+  /// **'From verse {start} to {end}'**
+  String loopFrom(int start, int end);
+
+  /// No description provided for @clearLoop.
+  ///
+  /// In en, this message translates to:
+  /// **'Clear loop'**
+  String get clearLoop;
+
+  /// No description provided for @setLoopStart.
+  ///
+  /// In en, this message translates to:
+  /// **'Set as loop start'**
+  String get setLoopStart;
+
+  /// No description provided for @setLoopEnd.
+  ///
+  /// In en, this message translates to:
+  /// **'Set as loop end'**
+  String get setLoopEnd;
+
+  /// No description provided for @downloadAudio.
+  ///
+  /// In en, this message translates to:
+  /// **'Download audio'**
+  String get downloadAudio;
+
+  /// No description provided for @downloading.
+  ///
+  /// In en, this message translates to:
+  /// **'Downloading...'**
+  String get downloading;
+
+  /// No description provided for @audioDownloaded.
+  ///
+  /// In en, this message translates to:
+  /// **'Audio downloaded'**
+  String get audioDownloaded;
 }
 
 class _AppLocalizationsDelegate

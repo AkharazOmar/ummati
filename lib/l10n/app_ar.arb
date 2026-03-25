@@ -129,5 +129,36 @@
         "type": "int"
       }
     }
-  }
+  },
+  "play": "تشغيل",
+  "pause": "إيقاف مؤقت",
+  "stopAudio": "إيقاف",
+  "repeatVerse": "تكرار",
+  "repeatNTimes": "{count} مرات",
+  "@repeatNTimes": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "noRepeat": "بدون تكرار",
+  "loopRange": "تكرار مجموعة آيات",
+  "loopFrom": "من الآية {start} إلى {end}",
+  "@loopFrom": {
+    "placeholders": {
+      "start": {
+        "type": "int"
+      },
+      "end": {
+        "type": "int"
+      }
+    }
+  },
+  "clearLoop": "إلغاء التكرار",
+  "setLoopStart": "بداية التكرار",
+  "setLoopEnd": "نهاية التكرار",
+  "downloadAudio": "تحميل الصوت",
+  "downloading": "جاري التحميل...",
+  "audioDownloaded": "تم تحميل الصوت"
 }
