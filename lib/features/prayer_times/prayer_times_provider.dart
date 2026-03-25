@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:geocoding/geocoding.dart' as geocoding;
 import 'package:hive_flutter/hive_flutter.dart';
@@ -230,16 +231,27 @@ class PrayerTimesNotifier extends AsyncNotifier<DailyPrayerTimes> {
         final notifyAt = time.subtract(Duration(minutes: offsetMinutes));
 
         if (notifyAt.isAfter(now)) {
+          // Schedule via OS alarm (survives app kill on most devices)
           await notifService.schedulePrayerNotification(
             id: entry.value,
             prayerName: entry.key,
             scheduledTime: notifyAt,
             sound: sound,
           );
+
+          // Also schedule via Future.delayed (reliable fallback for Samsung)
+          final delay = notifyAt.difference(now);
+          Future.delayed(delay, () {
+            notifService.showPrayerNotification(
+              id: entry.value + 10, // different ID to avoid conflict
+              prayerName: entry.key,
+              sound: sound,
+            );
+          });
         }
       }
-    } catch (_) {
-      // Notifications are best-effort
+    } catch (e, st) {
+      debugPrint('Notification scheduling error: $e\n$st');
     }
   }
 

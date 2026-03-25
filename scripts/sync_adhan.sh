@@ -27,8 +27,14 @@ for file in "$ADHAN_DIR"/*.mp3 "$ADHAN_DIR"/*.wav "$ADHAN_DIR"/*.ogg "$ADHAN_DIR
   name="${filename%.*}"
   ext="${filename##*.}"
 
-  # Android raw resource name: adhan_{name} (no extension, lowercase, no hyphens)
-  raw_name="adhan_$(echo "$name" | tr '[:upper:]' '[:lower:]' | tr '-' '_')"
+  # Android raw resource name: lowercase, no hyphens
+  # If name already starts with "adhan", don't add the prefix again
+  clean_name="$(echo "$name" | tr '[:upper:]' '[:lower:]' | tr '-' '_')"
+  if echo "$clean_name" | grep -q "^adhan"; then
+    raw_name="$clean_name"
+  else
+    raw_name="adhan_${clean_name}"
+  fi
 
   # Copy to Android raw
   cp "$file" "$RAW_DIR/${raw_name}.${ext}"

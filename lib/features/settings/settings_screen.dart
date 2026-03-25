@@ -174,13 +174,15 @@ class SettingsScreen extends ConsumerWidget {
           // --- Debug (only in debug mode) ---
           if (kDebugMode) ...[
             const Divider(),
-            _SectionHeader(title: 'Debug'),
+            const _SectionHeader(title: 'Debug'),
             ListTile(
-              leading: Icon(Icons.notifications_active, color: Colors.orange),
+              leading:
+                  const Icon(Icons.notifications_active, color: Colors.orange),
               title: const Text('Test notification (immediate)'),
               subtitle: const Text('Send a test prayer notification now'),
               onTap: () async {
-                final notifSettings = ref.read(prayerNotificationSettingsProvider);
+                final notifSettings =
+                    ref.read(prayerNotificationSettingsProvider);
                 final soundId = notifSettings['Maghrib'] ?? 'adhan_makkah';
                 final sound = soundById(soundId);
 
@@ -196,23 +198,29 @@ class SettingsScreen extends ConsumerWidget {
               },
             ),
             ListTile(
-              leading: Icon(Icons.timer, color: Colors.orange),
+              leading: const Icon(Icons.timer, color: Colors.orange),
               title: const Text('Test notification (10s)'),
               subtitle: const Text('Via background service delayed show()'),
               onTap: () async {
-                final notifSettings = ref.read(prayerNotificationSettingsProvider);
+                final notifSettings =
+                    ref.read(prayerNotificationSettingsProvider);
                 final soundId = notifSettings['Maghrib'] ?? 'adhan_makkah';
                 final sound = soundById(soundId);
 
                 final service = NotificationService();
                 await service.initialize();
-                Future.delayed(const Duration(seconds: 10), () {
-                  service.showTestNotification(sound: sound);
-                });
+                await service.schedulePrayerNotification(
+                  id: 99,
+                  prayerName: 'Maghrib (test)',
+                  scheduledTime:
+                      DateTime.now().add(const Duration(seconds: 10)),
+                  sound: sound,
+                );
 
                 if (context.mounted) {
                   ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text('Notification dans 10 secondes...')),
+                    const SnackBar(
+                        content: Text('Notification dans 10 secondes...')),
                   );
                 }
               },
@@ -412,8 +420,8 @@ class _CityPickerSheetState extends State<_CityPickerSheet> {
               itemBuilder: (context, index) {
                 final city = filtered[index];
                 return ListTile(
-                  leading: Text(city.country,
-                      style: const TextStyle(fontSize: 24)),
+                  leading:
+                      Text(city.country, style: const TextStyle(fontSize: 24)),
                   title: Text(city.name),
                   onTap: () => widget.onCitySelected(city),
                 );
@@ -612,8 +620,7 @@ class _SoundPickerSheetState extends State<_SoundPickerSheet> {
                         ),
                       ),
                     ),
-                    ...adhanSounds
-                        .map((sound) => _buildSoundTile(l10n, sound)),
+                    ...adhanSounds.map((sound) => _buildSoundTile(l10n, sound)),
                   ],
 
                   // Offset selector
@@ -644,7 +651,9 @@ class _SoundPickerSheetState extends State<_SoundPickerSheet> {
                             selected: isSelected,
                             selectedColor: UmmatiTheme.primaryGreen,
                             labelStyle: TextStyle(
-                              color: isSelected ? Colors.white : UmmatiTheme.darkText,
+                              color: isSelected
+                                  ? Colors.white
+                                  : UmmatiTheme.darkText,
                               fontSize: 13,
                             ),
                             onSelected: (_) {

@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_timezone/flutter_timezone.dart';
 import 'package:timezone/data/latest_all.dart' as tz;
@@ -45,11 +46,12 @@ class NotificationService {
           _onBackgroundNotificationResponse,
     );
 
-    // Request notification permission on Android 13+
+    // Request permissions on Android
     final androidPlugin = _plugin.resolvePlatformSpecificImplementation<
         AndroidFlutterLocalNotificationsPlugin>();
     if (androidPlugin != null) {
       await androidPlugin.requestNotificationsPermission();
+      await androidPlugin.requestExactAlarmsPermission();
     }
 
     _initialized = true;
@@ -91,6 +93,10 @@ class NotificationService {
 
     final tzTime = tz.TZDateTime.from(scheduledTime, tz.local);
 
+    debugPrint('zonedSchedule: id=$id, prayer=$prayerName, '
+        'scheduledTime=$scheduledTime, tzTime=$tzTime, '
+        'tzLocal=${tz.local.name}');
+
     await _plugin.zonedSchedule(
       id: id,
       title: '🕌 $prayerName',
@@ -99,6 +105,8 @@ class NotificationService {
       notificationDetails: details,
       androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
     );
+
+    debugPrint('zonedSchedule: id=$id scheduled OK');
   }
 
   /// Show a prayer notification immediately.

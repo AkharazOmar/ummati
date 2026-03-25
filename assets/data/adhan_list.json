@@ -2,11 +2,11 @@
   {"id": "adhan_abdul_basit", "name": "abdul-basit", "file": "abdul-basit.mp3", "androidRaw": "adhan_abdul_basit"},
   {"id": "adhan_abdul_ghaffar", "name": "abdul-ghaffar", "file": "abdul-ghaffar.mp3", "androidRaw": "adhan_abdul_ghaffar"},
   {"id": "adhan_abdul_hakam", "name": "abdul-hakam", "file": "abdul-hakam.mp3", "androidRaw": "adhan_abdul_hakam"},
-  {"id": "adhan_adhan_alaqsa", "name": "adhan-alaqsa", "file": "adhan-alaqsa.mp3", "androidRaw": "adhan_adhan_alaqsa"},
-  {"id": "adhan_adhan_egypt", "name": "adhan-egypt", "file": "adhan-egypt.mp3", "androidRaw": "adhan_adhan_egypt"},
-  {"id": "adhan_adhan_halab", "name": "adhan-halab", "file": "adhan-halab.mp3", "androidRaw": "adhan_adhan_halab"},
-  {"id": "adhan_adhan_madinah", "name": "adhan-madinah", "file": "adhan-madinah.mp3", "androidRaw": "adhan_adhan_madinah"},
-  {"id": "adhan_adhan_makkah", "name": "adhan-makkah", "file": "adhan-makkah.mp3", "androidRaw": "adhan_adhan_makkah"},
+  {"id": "adhan_alaqsa", "name": "adhan-alaqsa", "file": "adhan-alaqsa.mp3", "androidRaw": "adhan_alaqsa"},
+  {"id": "adhan_egypt", "name": "adhan-egypt", "file": "adhan-egypt.mp3", "androidRaw": "adhan_egypt"},
+  {"id": "adhan_halab", "name": "adhan-halab", "file": "adhan-halab.mp3", "androidRaw": "adhan_halab"},
+  {"id": "adhan_madinah", "name": "adhan-madinah", "file": "adhan-madinah.mp3", "androidRaw": "adhan_madinah"},
+  {"id": "adhan_makkah", "name": "adhan-makkah", "file": "adhan-makkah.mp3", "androidRaw": "adhan_makkah"},
   {"id": "adhan_al_hussaini", "name": "al-hussaini", "file": "al-hussaini.mp3", "androidRaw": "adhan_al_hussaini"},
   {"id": "adhan_bakir_bash", "name": "bakir-bash", "file": "bakir-bash.mp3", "androidRaw": "adhan_bakir_bash"}
 ]
