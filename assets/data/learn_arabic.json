@@ -1,0 +1,783 @@
+{
+  "levels": [
+    {
+      "id": "alphabet",
+      "titleEn": "The Alphabet",
+      "titleFr": "L'alphabet",
+      "titleAr": "الحروف الهجائية",
+      "descEn": "Learn the 28 Arabic letters",
+      "descFr": "Apprendre les 28 lettres arabes",
+      "descAr": "تعلّم الحروف العربية الـ٢٨",
+      "icon": "abc",
+      "lessons": [
+        {
+          "id": "alif_ba_ta",
+          "titleEn": "Alif, Ba, Ta, Tha",
+          "titleFr": "Alif, Ba, Ta, Tha",
+          "titleAr": "ألف، باء، تاء، ثاء",
+          "items": [
+            {
+              "letter": "ا",
+              "name": "Alif",
+              "nameAr": "ألف",
+              "phonetic": "a / aa",
+              "isolated": "ا",
+              "initial": "ا",
+              "medial": "ـا",
+              "final": "ـا",
+              "example": "أَسَد",
+              "exampleMeaning": "lion",
+              "exampleMeaningFr": "lion",
+              "audio": "alif"
+            },
+            {
+              "letter": "ب",
+              "name": "Ba",
+              "nameAr": "باء",
+              "phonetic": "b",
+              "isolated": "ب",
+              "initial": "بـ",
+              "medial": "ـبـ",
+              "final": "ـب",
+              "example": "بَيْت",
+              "exampleMeaning": "house",
+              "exampleMeaningFr": "maison",
+              "audio": "ba"
+            },
+            {
+              "letter": "ت",
+              "name": "Ta",
+              "nameAr": "تاء",
+              "phonetic": "t",
+              "isolated": "ت",
+              "initial": "تـ",
+              "medial": "ـتـ",
+              "final": "ـت",
+              "example": "تُفَّاح",
+              "exampleMeaning": "apple",
+              "exampleMeaningFr": "pomme",
+              "audio": "ta"
+            },
+            {
+              "letter": "ث",
+              "name": "Tha",
+              "nameAr": "ثاء",
+              "phonetic": "th (as in think)",
+              "isolated": "ث",
+              "initial": "ثـ",
+              "medial": "ـثـ",
+              "final": "ـث",
+              "example": "ثَلْج",
+              "exampleMeaning": "snow",
+              "exampleMeaningFr": "neige",
+              "audio": "tha"
+            }
+          ],
+          "quiz": [
+            {"type": "identify", "question": "ب", "options": ["Ba", "Ta", "Tha", "Alif"], "answer": 0},
+            {"type": "identify", "question": "ث", "options": ["Ta", "Tha", "Ba", "Alif"], "answer": 1},
+            {"type": "identify", "question": "ا", "options": ["Ba", "Tha", "Ta", "Alif"], "answer": 3},
+            {"type": "identify", "question": "ت", "options": ["Alif", "Ba", "Ta", "Tha"], "answer": 2}
+          ]
+        },
+        {
+          "id": "jim_ha_kha",
+          "titleEn": "Jim, Ha, Kha",
+          "titleFr": "Jim, Ha, Kha",
+          "titleAr": "جيم، حاء، خاء",
+          "items": [
+            {
+              "letter": "ج",
+              "name": "Jim",
+              "nameAr": "جيم",
+              "phonetic": "j",
+              "isolated": "ج",
+              "initial": "جـ",
+              "medial": "ـجـ",
+              "final": "ـج",
+              "example": "جَمَل",
+              "exampleMeaning": "camel",
+              "exampleMeaningFr": "chameau",
+              "audio": "jim"
+            },
+            {
+              "letter": "ح",
+              "name": "Ha",
+              "nameAr": "حاء",
+              "phonetic": "h (strong, breathy)",
+              "isolated": "ح",
+              "initial": "حـ",
+              "medial": "ـحـ",
+              "final": "ـح",
+              "example": "حِصَان",
+              "exampleMeaning": "horse",
+              "exampleMeaningFr": "cheval",
+              "audio": "ha"
+            },
+            {
+              "letter": "خ",
+              "name": "Kha",
+              "nameAr": "خاء",
+              "phonetic": "kh (as in Bach)",
+              "isolated": "خ",
+              "initial": "خـ",
+              "medial": "ـخـ",
+              "final": "ـخ",
+              "example": "خُبْز",
+              "exampleMeaning": "bread",
+              "exampleMeaningFr": "pain",
+              "audio": "kha"
+            }
+          ],
+          "quiz": [
+            {"type": "identify", "question": "ج", "options": ["Ha", "Kha", "Jim", "Ba"], "answer": 2},
+            {"type": "identify", "question": "خ", "options": ["Jim", "Ha", "Kha", "Ta"], "answer": 2},
+            {"type": "identify", "question": "ح", "options": ["Ha", "Kha", "Jim", "Tha"], "answer": 0}
+          ]
+        },
+        {
+          "id": "dal_ra",
+          "titleEn": "Dal, Dhal, Ra, Zay",
+          "titleFr": "Dal, Dhal, Ra, Zay",
+          "titleAr": "دال، ذال، راء، زاي",
+          "items": [
+            {
+              "letter": "د",
+              "name": "Dal",
+              "nameAr": "دال",
+              "phonetic": "d",
+              "isolated": "د",
+              "initial": "د",
+              "medial": "ـد",
+              "final": "ـد",
+              "example": "دَار",
+              "exampleMeaning": "home",
+              "exampleMeaningFr": "demeure",
+              "audio": "dal"
+            },
+            {
+              "letter": "ذ",
+              "name": "Dhal",
+              "nameAr": "ذال",
+              "phonetic": "dh (as in this)",
+              "isolated": "ذ",
+              "initial": "ذ",
+              "medial": "ـذ",
+              "final": "ـذ",
+              "example": "ذَهَب",
+              "exampleMeaning": "gold",
+              "exampleMeaningFr": "or",
+              "audio": "dhal"
+            },
+            {
+              "letter": "ر",
+              "name": "Ra",
+              "nameAr": "راء",
+              "phonetic": "r (rolled)",
+              "isolated": "ر",
+              "initial": "ر",
+              "medial": "ـر",
+              "final": "ـر",
+              "example": "رَجُل",
+              "exampleMeaning": "man",
+              "exampleMeaningFr": "homme",
+              "audio": "ra"
+            },
+            {
+              "letter": "ز",
+              "name": "Zay",
+              "nameAr": "زاي",
+              "phonetic": "z",
+              "isolated": "ز",
+              "initial": "ز",
+              "medial": "ـز",
+              "final": "ـز",
+              "example": "زَهْرَة",
+              "exampleMeaning": "flower",
+              "exampleMeaningFr": "fleur",
+              "audio": "zay"
+            }
+          ],
+          "quiz": [
+            {"type": "identify", "question": "ر", "options": ["Dal", "Dhal", "Ra", "Zay"], "answer": 2},
+            {"type": "identify", "question": "ذ", "options": ["Dal", "Dhal", "Ra", "Zay"], "answer": 1},
+            {"type": "identify", "question": "ز", "options": ["Dal", "Dhal", "Ra", "Zay"], "answer": 3},
+            {"type": "identify", "question": "د", "options": ["Dal", "Dhal", "Ra", "Zay"], "answer": 0}
+          ]
+        },
+        {
+          "id": "sin_shin_sad_dad",
+          "titleEn": "Sin, Shin, Sad, Dad",
+          "titleFr": "Sin, Shin, Sad, Dad",
+          "titleAr": "سين، شين، صاد، ضاد",
+          "items": [
+            {
+              "letter": "س",
+              "name": "Sin",
+              "nameAr": "سين",
+              "phonetic": "s",
+              "isolated": "س",
+              "initial": "سـ",
+              "medial": "ـسـ",
+              "final": "ـس",
+              "example": "سَمَاء",
+              "exampleMeaning": "sky",
+              "exampleMeaningFr": "ciel",
+              "audio": "sin"
+            },
+            {
+              "letter": "ش",
+              "name": "Shin",
+              "nameAr": "شين",
+              "phonetic": "sh",
+              "isolated": "ش",
+              "initial": "شـ",
+              "medial": "ـشـ",
+              "final": "ـش",
+              "example": "شَمْس",
+              "exampleMeaning": "sun",
+              "exampleMeaningFr": "soleil",
+              "audio": "shin"
+            },
+            {
+              "letter": "ص",
+              "name": "Sad",
+              "nameAr": "صاد",
+              "phonetic": "s (emphatic)",
+              "isolated": "ص",
+              "initial": "صـ",
+              "medial": "ـصـ",
+              "final": "ـص",
+              "example": "صَبْر",
+              "exampleMeaning": "patience",
+              "exampleMeaningFr": "patience",
+              "audio": "sad"
+            },
+            {
+              "letter": "ض",
+              "name": "Dad",
+              "nameAr": "ضاد",
+              "phonetic": "d (emphatic)",
+              "isolated": "ض",
+              "initial": "ضـ",
+              "medial": "ـضـ",
+              "final": "ـض",
+              "example": "ضَوْء",
+              "exampleMeaning": "light",
+              "exampleMeaningFr": "lumière",
+              "audio": "dad"
+            }
+          ],
+          "quiz": [
+            {"type": "identify", "question": "ش", "options": ["Sin", "Shin", "Sad", "Dad"], "answer": 1},
+            {"type": "identify", "question": "ص", "options": ["Sin", "Shin", "Sad", "Dad"], "answer": 2},
+            {"type": "identify", "question": "س", "options": ["Sin", "Shin", "Sad", "Dad"], "answer": 0},
+            {"type": "identify", "question": "ض", "options": ["Sin", "Shin", "Sad", "Dad"], "answer": 3}
+          ]
+        },
+        {
+          "id": "ta_za_ain_ghain",
+          "titleEn": "Ta, Za, Ain, Ghain",
+          "titleFr": "Ta, Za, Ain, Ghain",
+          "titleAr": "طاء، ظاء، عين، غين",
+          "items": [
+            {
+              "letter": "ط",
+              "name": "Ta (emphatic)",
+              "nameAr": "طاء",
+              "phonetic": "t (emphatic)",
+              "isolated": "ط",
+              "initial": "طـ",
+              "medial": "ـطـ",
+              "final": "ـط",
+              "example": "طَيْر",
+              "exampleMeaning": "bird",
+              "exampleMeaningFr": "oiseau",
+              "audio": "tta"
+            },
+            {
+              "letter": "ظ",
+              "name": "Za (emphatic)",
+              "nameAr": "ظاء",
+              "phonetic": "z (emphatic)",
+              "isolated": "ظ",
+              "initial": "ظـ",
+              "medial": "ـظـ",
+              "final": "ـظ",
+              "example": "ظِلّ",
+              "exampleMeaning": "shadow",
+              "exampleMeaningFr": "ombre",
+              "audio": "zza"
+            },
+            {
+              "letter": "ع",
+              "name": "Ain",
+              "nameAr": "عين",
+              "phonetic": "' (deep guttural)",
+              "isolated": "ع",
+              "initial": "عـ",
+              "medial": "ـعـ",
+              "final": "ـع",
+              "example": "عَيْن",
+              "exampleMeaning": "eye",
+              "exampleMeaningFr": "oeil",
+              "audio": "ain"
+            },
+            {
+              "letter": "غ",
+              "name": "Ghain",
+              "nameAr": "غين",
+              "phonetic": "gh (like French r)",
+              "isolated": "غ",
+              "initial": "غـ",
+              "medial": "ـغـ",
+              "final": "ـغ",
+              "example": "غُرَاب",
+              "exampleMeaning": "crow",
+              "exampleMeaningFr": "corbeau",
+              "audio": "ghain"
+            }
+          ],
+          "quiz": [
+            {"type": "identify", "question": "ع", "options": ["Ta", "Za", "Ain", "Ghain"], "answer": 2},
+            {"type": "identify", "question": "غ", "options": ["Ta", "Za", "Ain", "Ghain"], "answer": 3},
+            {"type": "identify", "question": "ط", "options": ["Ta", "Za", "Ain", "Ghain"], "answer": 0},
+            {"type": "identify", "question": "ظ", "options": ["Ta", "Za", "Ain", "Ghain"], "answer": 1}
+          ]
+        },
+        {
+          "id": "fa_qaf_kaf_lam",
+          "titleEn": "Fa, Qaf, Kaf, Lam",
+          "titleFr": "Fa, Qaf, Kaf, Lam",
+          "titleAr": "فاء، قاف، كاف، لام",
+          "items": [
+            {
+              "letter": "ف",
+              "name": "Fa",
+              "nameAr": "فاء",
+              "phonetic": "f",
+              "isolated": "ف",
+              "initial": "فـ",
+              "medial": "ـفـ",
+              "final": "ـف",
+              "example": "فِيل",
+              "exampleMeaning": "elephant",
+              "exampleMeaningFr": "éléphant",
+              "audio": "fa"
+            },
+            {
+              "letter": "ق",
+              "name": "Qaf",
+              "nameAr": "قاف",
+              "phonetic": "q (deep k)",
+              "isolated": "ق",
+              "initial": "قـ",
+              "medial": "ـقـ",
+              "final": "ـق",
+              "example": "قَمَر",
+              "exampleMeaning": "moon",
+              "exampleMeaningFr": "lune",
+              "audio": "qaf"
+            },
+            {
+              "letter": "ك",
+              "name": "Kaf",
+              "nameAr": "كاف",
+              "phonetic": "k",
+              "isolated": "ك",
+              "initial": "كـ",
+              "medial": "ـكـ",
+              "final": "ـك",
+              "example": "كِتَاب",
+              "exampleMeaning": "book",
+              "exampleMeaningFr": "livre",
+              "audio": "kaf"
+            },
+            {
+              "letter": "ل",
+              "name": "Lam",
+              "nameAr": "لام",
+              "phonetic": "l",
+              "isolated": "ل",
+              "initial": "لـ",
+              "medial": "ـلـ",
+              "final": "ـل",
+              "example": "لَيْل",
+              "exampleMeaning": "night",
+              "exampleMeaningFr": "nuit",
+              "audio": "lam"
+            }
+          ],
+          "quiz": [
+            {"type": "identify", "question": "ق", "options": ["Fa", "Qaf", "Kaf", "Lam"], "answer": 1},
+            {"type": "identify", "question": "ل", "options": ["Fa", "Qaf", "Kaf", "Lam"], "answer": 3},
+            {"type": "identify", "question": "ف", "options": ["Fa", "Qaf", "Kaf", "Lam"], "answer": 0},
+            {"type": "identify", "question": "ك", "options": ["Fa", "Qaf", "Kaf", "Lam"], "answer": 2}
+          ]
+        },
+        {
+          "id": "mim_nun_ha_waw_ya",
+          "titleEn": "Mim, Nun, Ha, Waw, Ya",
+          "titleFr": "Mim, Noun, Ha, Waw, Ya",
+          "titleAr": "ميم، نون، هاء، واو، ياء",
+          "items": [
+            {
+              "letter": "م",
+              "name": "Mim",
+              "nameAr": "ميم",
+              "phonetic": "m",
+              "isolated": "م",
+              "initial": "مـ",
+              "medial": "ـمـ",
+              "final": "ـم",
+              "example": "مَاء",
+              "exampleMeaning": "water",
+              "exampleMeaningFr": "eau",
+              "audio": "mim"
+            },
+            {
+              "letter": "ن",
+              "name": "Nun",
+              "nameAr": "نون",
+              "phonetic": "n",
+              "isolated": "ن",
+              "initial": "نـ",
+              "medial": "ـنـ",
+              "final": "ـن",
+              "example": "نَار",
+              "exampleMeaning": "fire",
+              "exampleMeaningFr": "feu",
+              "audio": "nun"
+            },
+            {
+              "letter": "ه",
+              "name": "Ha (light)",
+              "nameAr": "هاء",
+              "phonetic": "h (light breath)",
+              "isolated": "ه",
+              "initial": "هـ",
+              "medial": "ـهـ",
+              "final": "ـه",
+              "example": "هِلَال",
+              "exampleMeaning": "crescent",
+              "exampleMeaningFr": "croissant",
+              "audio": "haa"
+            },
+            {
+              "letter": "و",
+              "name": "Waw",
+              "nameAr": "واو",
+              "phonetic": "w / oo",
+              "isolated": "و",
+              "initial": "و",
+              "medial": "ـو",
+              "final": "ـو",
+              "example": "وَرْد",
+              "exampleMeaning": "rose",
+              "exampleMeaningFr": "rose",
+              "audio": "waw"
+            },
+            {
+              "letter": "ي",
+              "name": "Ya",
+              "nameAr": "ياء",
+              "phonetic": "y / ee",
+              "isolated": "ي",
+              "initial": "يـ",
+              "medial": "ـيـ",
+              "final": "ـي",
+              "example": "يَد",
+              "exampleMeaning": "hand",
+              "exampleMeaningFr": "main",
+              "audio": "ya"
+            }
+          ],
+          "quiz": [
+            {"type": "identify", "question": "م", "options": ["Mim", "Nun", "Ha", "Waw"], "answer": 0},
+            {"type": "identify", "question": "ي", "options": ["Waw", "Ya", "Nun", "Ha"], "answer": 1},
+            {"type": "identify", "question": "ه", "options": ["Mim", "Nun", "Ha", "Ya"], "answer": 2},
+            {"type": "identify", "question": "و", "options": ["Ya", "Waw", "Mim", "Nun"], "answer": 1}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "vowels",
+      "titleEn": "Vowels (Harakaat)",
+      "titleFr": "Les voyelles (Harakaat)",
+      "titleAr": "الحركات",
+      "descEn": "Short vowels, Sukun and Tanwin",
+      "descFr": "Voyelles courtes, Sukun et Tanwin",
+      "descAr": "الفتحة والكسرة والضمة والسكون والتنوين",
+      "icon": "edit_note",
+      "lessons": [
+        {
+          "id": "short_vowels",
+          "titleEn": "Short Vowels",
+          "titleFr": "Voyelles courtes",
+          "titleAr": "الحركات القصيرة",
+          "items": [
+            {
+              "letter": "بَ",
+              "name": "Fatha",
+              "nameAr": "فتحة",
+              "phonetic": "a (as in bat)",
+              "isolated": "ـَ",
+              "example": "بَابَ",
+              "exampleMeaning": "door",
+              "exampleMeaningFr": "porte",
+              "audio": "fatha"
+            },
+            {
+              "letter": "بِ",
+              "name": "Kasra",
+              "nameAr": "كسرة",
+              "phonetic": "i (as in bit)",
+              "isolated": "ـِ",
+              "example": "بِنْت",
+              "exampleMeaning": "girl",
+              "exampleMeaningFr": "fille",
+              "audio": "kasra"
+            },
+            {
+              "letter": "بُ",
+              "name": "Damma",
+              "nameAr": "ضمة",
+              "phonetic": "u (as in put)",
+              "isolated": "ـُ",
+              "example": "كُتُب",
+              "exampleMeaning": "books",
+              "exampleMeaningFr": "livres",
+              "audio": "damma"
+            },
+            {
+              "letter": "بْ",
+              "name": "Sukun",
+              "nameAr": "سكون",
+              "phonetic": "(no vowel)",
+              "isolated": "ـْ",
+              "example": "قَلْب",
+              "exampleMeaning": "heart",
+              "exampleMeaningFr": "coeur",
+              "audio": "sukun"
+            }
+          ],
+          "quiz": [
+            {"type": "identify", "question": "بَ", "options": ["Fatha", "Kasra", "Damma", "Sukun"], "answer": 0},
+            {"type": "identify", "question": "بُ", "options": ["Fatha", "Kasra", "Damma", "Sukun"], "answer": 2},
+            {"type": "identify", "question": "بْ", "options": ["Fatha", "Kasra", "Damma", "Sukun"], "answer": 3},
+            {"type": "identify", "question": "بِ", "options": ["Fatha", "Kasra", "Damma", "Sukun"], "answer": 1}
+          ]
+        },
+        {
+          "id": "tanwin",
+          "titleEn": "Tanwin (Double Vowels)",
+          "titleFr": "Tanwin (voyelles doublées)",
+          "titleAr": "التنوين",
+          "items": [
+            {
+              "letter": "بً",
+              "name": "Fathatan",
+              "nameAr": "فتحتان",
+              "phonetic": "an",
+              "isolated": "ـً",
+              "example": "كِتَابًا",
+              "exampleMeaning": "a book (accusative)",
+              "exampleMeaningFr": "un livre (accusatif)",
+              "audio": "fathatan"
+            },
+            {
+              "letter": "بٍ",
+              "name": "Kasratan",
+              "nameAr": "كسرتان",
+              "phonetic": "in",
+              "isolated": "ـٍ",
+              "example": "كِتَابٍ",
+              "exampleMeaning": "a book (genitive)",
+              "exampleMeaningFr": "un livre (génitif)",
+              "audio": "kasratan"
+            },
+            {
+              "letter": "بٌ",
+              "name": "Dammatan",
+              "nameAr": "ضمتان",
+              "phonetic": "un",
+              "isolated": "ـٌ",
+              "example": "كِتَابٌ",
+              "exampleMeaning": "a book (nominative)",
+              "exampleMeaningFr": "un livre (nominatif)",
+              "audio": "dammatan"
+            }
+          ],
+          "quiz": [
+            {"type": "identify", "question": "بً", "options": ["Fathatan", "Kasratan", "Dammatan"], "answer": 0},
+            {"type": "identify", "question": "بٌ", "options": ["Fathatan", "Kasratan", "Dammatan"], "answer": 2},
+            {"type": "identify", "question": "بٍ", "options": ["Fathatan", "Kasratan", "Dammatan"], "answer": 1}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "connecting",
+      "titleEn": "Connecting Letters",
+      "titleFr": "Relier les lettres",
+      "titleAr": "وصل الحروف",
+      "descEn": "Form syllables and simple words",
+      "descFr": "Former des syllabes et des mots simples",
+      "descAr": "تكوين المقاطع والكلمات البسيطة",
+      "icon": "link",
+      "lessons": [
+        {
+          "id": "two_letter_words",
+          "titleEn": "Two-Letter Words",
+          "titleFr": "Mots de deux lettres",
+          "titleAr": "كلمات من حرفين",
+          "items": [
+            {"letter": "أَبْ", "name": "Ab", "nameAr": "أب", "phonetic": "ab (father)", "example": "أَبْ", "exampleMeaning": "father", "exampleMeaningFr": "père", "audio": "ab"},
+            {"letter": "أُمْ", "name": "Um", "nameAr": "أم", "phonetic": "um (mother)", "example": "أُمْ", "exampleMeaning": "mother", "exampleMeaningFr": "mère", "audio": "um"},
+            {"letter": "مِنْ", "name": "Min", "nameAr": "من", "phonetic": "min (from)", "example": "مِنْ", "exampleMeaning": "from", "exampleMeaningFr": "de", "audio": "min"},
+            {"letter": "فِي", "name": "Fi", "nameAr": "في", "phonetic": "fi (in)", "example": "فِي", "exampleMeaning": "in", "exampleMeaningFr": "dans", "audio": "fi"}
+          ],
+          "quiz": [
+            {"type": "identify", "question": "أَبْ", "options": ["father", "mother", "from", "in"], "answer": 0},
+            {"type": "identify", "question": "فِي", "options": ["father", "mother", "from", "in"], "answer": 3},
+            {"type": "identify", "question": "مِنْ", "options": ["father", "mother", "from", "in"], "answer": 2}
+          ]
+        },
+        {
+          "id": "three_letter_words",
+          "titleEn": "Three-Letter Words",
+          "titleFr": "Mots de trois lettres",
+          "titleAr": "كلمات من ثلاثة حروف",
+          "items": [
+            {"letter": "كَتَبَ", "name": "Kataba", "nameAr": "كتب", "phonetic": "kataba (he wrote)", "example": "كَتَبَ", "exampleMeaning": "he wrote", "exampleMeaningFr": "il a écrit", "audio": "kataba"},
+            {"letter": "قَرَأَ", "name": "Qara'a", "nameAr": "قرأ", "phonetic": "qara'a (he read)", "example": "قَرَأَ", "exampleMeaning": "he read", "exampleMeaningFr": "il a lu", "audio": "qaraa"},
+            {"letter": "عَلِمَ", "name": "Alima", "nameAr": "علم", "phonetic": "'alima (he knew)", "example": "عَلِمَ", "exampleMeaning": "he knew", "exampleMeaningFr": "il a su", "audio": "alima"},
+            {"letter": "سَمِعَ", "name": "Sami'a", "nameAr": "سمع", "phonetic": "sami'a (he heard)", "example": "سَمِعَ", "exampleMeaning": "he heard", "exampleMeaningFr": "il a entendu", "audio": "samia"}
+          ],
+          "quiz": [
+            {"type": "identify", "question": "كَتَبَ", "options": ["he wrote", "he read", "he knew", "he heard"], "answer": 0},
+            {"type": "identify", "question": "قَرَأَ", "options": ["he wrote", "he read", "he knew", "he heard"], "answer": 1},
+            {"type": "identify", "question": "سَمِعَ", "options": ["he wrote", "he read", "he knew", "he heard"], "answer": 3}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tajwid_basics",
+      "titleEn": "Tajwid Basics",
+      "titleFr": "Bases du Tajwid",
+      "titleAr": "أساسيات التجويد",
+      "descEn": "Madd, Shadda, and special rules",
+      "descFr": "Madd, Shadda et règles spéciales",
+      "descAr": "المدّ والشدّة والقواعد الخاصة",
+      "icon": "auto_fix_high",
+      "lessons": [
+        {
+          "id": "shadda",
+          "titleEn": "Shadda (Doubling)",
+          "titleFr": "Shadda (gémination)",
+          "titleAr": "الشدّة",
+          "items": [
+            {"letter": "بَّ", "name": "Shadda", "nameAr": "شدّة", "phonetic": "Doubles the consonant", "example": "رَبَّنَا", "exampleMeaning": "our Lord", "exampleMeaningFr": "notre Seigneur", "audio": "shadda"},
+            {"letter": "مُحَمَّد", "name": "Muhammad", "nameAr": "محمّد", "phonetic": "mu-HAM-mad", "example": "مُحَمَّد", "exampleMeaning": "Muhammad", "exampleMeaningFr": "Muhammad", "audio": "muhammad"},
+            {"letter": "اللَّه", "name": "Allah", "nameAr": "الله", "phonetic": "al-LAAH", "example": "اللَّه", "exampleMeaning": "Allah (God)", "exampleMeaningFr": "Allah (Dieu)", "audio": "allah"}
+          ],
+          "quiz": [
+            {"type": "identify", "question": "What does Shadda do?", "options": ["Removes vowel", "Doubles consonant", "Extends vowel", "Silences letter"], "answer": 1}
+          ]
+        },
+        {
+          "id": "madd",
+          "titleEn": "Madd (Elongation)",
+          "titleFr": "Madd (prolongation)",
+          "titleAr": "المدّ",
+          "items": [
+            {"letter": "بَا", "name": "Madd with Alif", "nameAr": "مد بالألف", "phonetic": "baa (long a)", "example": "كِتَاب", "exampleMeaning": "book", "exampleMeaningFr": "livre", "audio": "madd_alif"},
+            {"letter": "بِي", "name": "Madd with Ya", "nameAr": "مد بالياء", "phonetic": "bee (long i)", "example": "كَبِير", "exampleMeaning": "big", "exampleMeaningFr": "grand", "audio": "madd_ya"},
+            {"letter": "بُو", "name": "Madd with Waw", "nameAr": "مد بالواو", "phonetic": "boo (long u)", "example": "نُور", "exampleMeaning": "light", "exampleMeaningFr": "lumière", "audio": "madd_waw"}
+          ],
+          "quiz": [
+            {"type": "identify", "question": "Which letter extends 'a'?", "options": ["Ya", "Waw", "Alif", "Nun"], "answer": 2},
+            {"type": "identify", "question": "Which letter extends 'u'?", "options": ["Ya", "Waw", "Alif", "Mim"], "answer": 1}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "quran_words",
+      "titleEn": "Quranic Words",
+      "titleFr": "Mots coraniques",
+      "titleAr": "كلمات قرآنية",
+      "descEn": "Most frequent words in the Quran",
+      "descFr": "Les mots les plus fréquents du Coran",
+      "descAr": "أكثر الكلمات شيوعاً في القرآن",
+      "icon": "stars",
+      "lessons": [
+        {
+          "id": "divine_names",
+          "titleEn": "Names of Allah",
+          "titleFr": "Noms d'Allah",
+          "titleAr": "أسماء الله",
+          "items": [
+            {"letter": "اللَّه", "name": "Allah", "nameAr": "الله", "phonetic": "al-laah", "example": "بِسْمِ اللَّه", "exampleMeaning": "In the name of Allah", "exampleMeaningFr": "Au nom d'Allah", "audio": "allah"},
+            {"letter": "الرَّحْمَن", "name": "Ar-Rahman", "nameAr": "الرحمن", "phonetic": "ar-rah-maan", "example": "الرَّحْمَنِ الرَّحِيم", "exampleMeaning": "The Most Gracious, the Most Merciful", "exampleMeaningFr": "Le Tout Miséricordieux, le Très Miséricordieux", "audio": "ar_rahman"},
+            {"letter": "رَبّ", "name": "Rabb", "nameAr": "ربّ", "phonetic": "rabb", "example": "رَبِّ الْعَالَمِين", "exampleMeaning": "Lord of the worlds", "exampleMeaningFr": "Seigneur des mondes", "audio": "rabb"},
+            {"letter": "إِلَه", "name": "Ilah", "nameAr": "إله", "phonetic": "i-laah", "example": "لَا إِلَهَ إِلَّا اللَّه", "exampleMeaning": "There is no god but Allah", "exampleMeaningFr": "Il n'y a de dieu qu'Allah", "audio": "ilah"}
+          ],
+          "quiz": [
+            {"type": "identify", "question": "رَبّ", "options": ["Allah", "Ar-Rahman", "Rabb", "Ilah"], "answer": 2},
+            {"type": "identify", "question": "الرَّحْمَن", "options": ["Allah", "Ar-Rahman", "Rabb", "Ilah"], "answer": 1}
+          ]
+        },
+        {
+          "id": "common_words",
+          "titleEn": "Common Quranic Words",
+          "titleFr": "Mots coraniques courants",
+          "titleAr": "كلمات قرآنية شائعة",
+          "items": [
+            {"letter": "الَّذِين", "name": "Alladhina", "nameAr": "الذين", "phonetic": "al-la-dhee-na", "example": "الَّذِينَ آمَنُوا", "exampleMeaning": "those who believe", "exampleMeaningFr": "ceux qui croient", "audio": "alladhina"},
+            {"letter": "إِنَّ", "name": "Inna", "nameAr": "إنّ", "phonetic": "in-na", "example": "إِنَّ اللَّهَ", "exampleMeaning": "Indeed, Allah", "exampleMeaningFr": "Certes, Allah", "audio": "inna"},
+            {"letter": "عَلَى", "name": "Ala", "nameAr": "على", "phonetic": "'a-laa", "example": "عَلَى كُلِّ شَيْء", "exampleMeaning": "over all things", "exampleMeaningFr": "sur toute chose", "audio": "ala"},
+            {"letter": "قَالَ", "name": "Qala", "nameAr": "قال", "phonetic": "qaa-la", "example": "قَالَ رَبِّي", "exampleMeaning": "he said: my Lord", "exampleMeaningFr": "il a dit : mon Seigneur", "audio": "qala"}
+          ],
+          "quiz": [
+            {"type": "identify", "question": "إِنَّ", "options": ["those who", "indeed", "upon", "he said"], "answer": 1},
+            {"type": "identify", "question": "قَالَ", "options": ["those who", "indeed", "upon", "he said"], "answer": 3}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "short_surahs",
+      "titleEn": "Reading Short Surahs",
+      "titleFr": "Lire les sourates courtes",
+      "titleAr": "قراءة السور القصيرة",
+      "descEn": "Read complete short surahs word by word",
+      "descFr": "Lire des sourates courtes mot par mot",
+      "descAr": "قراءة سور قصيرة كاملة كلمة بكلمة",
+      "icon": "auto_stories",
+      "lessons": [
+        {
+          "id": "al_fatiha",
+          "titleEn": "Al-Fatiha (The Opening)",
+          "titleFr": "Al-Fatiha (L'Ouverture)",
+          "titleAr": "سورة الفاتحة",
+          "items": [
+            {"letter": "بِسْمِ", "name": "Bismi", "nameAr": "بسم", "phonetic": "bis-mi", "example": "بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ", "exampleMeaning": "In the name of Allah, the Most Gracious, the Most Merciful", "exampleMeaningFr": "Au nom d'Allah, le Tout Miséricordieux, le Très Miséricordieux", "audio": "bismi"},
+            {"letter": "الْحَمْدُ", "name": "Al-Hamdu", "nameAr": "الحمد", "phonetic": "al-ham-du", "example": "الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ", "exampleMeaning": "All praise is due to Allah, Lord of the worlds", "exampleMeaningFr": "Louange à Allah, Seigneur des mondes", "audio": "alhamdu"},
+            {"letter": "الرَّحْمَنِ", "name": "Ar-Rahmani", "nameAr": "الرحمن", "phonetic": "ar-rah-maa-ni", "example": "الرَّحْمَنِ الرَّحِيمِ", "exampleMeaning": "The Most Gracious, the Most Merciful", "exampleMeaningFr": "Le Tout Miséricordieux, le Très Miséricordieux", "audio": "ar_rahmani"},
+            {"letter": "مَالِكِ", "name": "Maliki", "nameAr": "مالك", "phonetic": "maa-li-ki", "example": "مَالِكِ يَوْمِ الدِّينِ", "exampleMeaning": "Master of the Day of Judgment", "exampleMeaningFr": "Maître du Jour du Jugement", "audio": "maliki"},
+            {"letter": "إِيَّاكَ", "name": "Iyyaka", "nameAr": "إياك", "phonetic": "iy-yaa-ka", "example": "إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ", "exampleMeaning": "You alone we worship, and You alone we ask for help", "exampleMeaningFr": "C'est Toi seul que nous adorons, et c'est Toi seul dont nous implorons secours", "audio": "iyyaka"},
+            {"letter": "اهْدِنَا", "name": "Ihdina", "nameAr": "اهدنا", "phonetic": "ih-di-naa", "example": "اهْدِنَا الصِّرَاطَ الْمُسْتَقِيمَ", "exampleMeaning": "Guide us to the straight path", "exampleMeaningFr": "Guide-nous dans le droit chemin", "audio": "ihdina"}
+          ],
+          "quiz": [
+            {"type": "identify", "question": "الْحَمْدُ", "options": ["In the name", "All praise", "The Merciful", "Master"], "answer": 1},
+            {"type": "identify", "question": "مَالِكِ", "options": ["In the name", "All praise", "The Merciful", "Master"], "answer": 3},
+            {"type": "identify", "question": "اهْدِنَا", "options": ["Guide us", "We worship", "You alone", "The path"], "answer": 0}
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -160,5 +160,29 @@
   "setLoopEnd": "Fin de la boucle",
   "downloadAudio": "Télécharger l'audio",
   "downloading": "Téléchargement...",
-  "audioDownloaded": "Audio téléchargé"
+  "audioDownloaded": "Audio téléchargé",
+  "learn": "Apprendre",
+  "lessonItems": "éléments",
+  "startQuiz": "Commencer le quiz",
+  "quiz": "Quiz",
+  "identifyThis": "Qu'est-ce que c'est ?",
+  "nextQuestion": "Suivant",
+  "seeResults": "Voir les résultats",
+  "quizPassed": "Bravo !",
+  "quizFailed": "Réessayez",
+  "quizScore": "{score}/{total}",
+  "@quizScore": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "quizPassedDesc": "Vous avez réussi ! La leçon suivante est maintenant débloquée.",
+  "quizFailedDesc": "Il faut au moins 70% pour valider. Révisez la leçon et réessayez.",
+  "continueText": "Continuer",
+  "back": "Retour"
 }

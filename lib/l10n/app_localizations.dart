@@ -627,6 +627,90 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Audio downloaded'**
   String get audioDownloaded;
+
+  /// No description provided for @learn.
+  ///
+  /// In en, this message translates to:
+  /// **'Learn'**
+  String get learn;
+
+  /// No description provided for @lessonItems.
+  ///
+  /// In en, this message translates to:
+  /// **'items'**
+  String get lessonItems;
+
+  /// No description provided for @startQuiz.
+  ///
+  /// In en, this message translates to:
+  /// **'Start Quiz'**
+  String get startQuiz;
+
+  /// No description provided for @quiz.
+  ///
+  /// In en, this message translates to:
+  /// **'Quiz'**
+  String get quiz;
+
+  /// No description provided for @identifyThis.
+  ///
+  /// In en, this message translates to:
+  /// **'What is this?'**
+  String get identifyThis;
+
+  /// No description provided for @nextQuestion.
+  ///
+  /// In en, this message translates to:
+  /// **'Next'**
+  String get nextQuestion;
+
+  /// No description provided for @seeResults.
+  ///
+  /// In en, this message translates to:
+  /// **'See Results'**
+  String get seeResults;
+
+  /// No description provided for @quizPassed.
+  ///
+  /// In en, this message translates to:
+  /// **'Well done!'**
+  String get quizPassed;
+
+  /// No description provided for @quizFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Try again'**
+  String get quizFailed;
+
+  /// No description provided for @quizScore.
+  ///
+  /// In en, this message translates to:
+  /// **'{score}/{total}'**
+  String quizScore(int score, int total);
+
+  /// No description provided for @quizPassedDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'You passed! The next lesson is now unlocked.'**
+  String get quizPassedDesc;
+
+  /// No description provided for @quizFailedDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'You need at least 70% to pass. Review the lesson and try again.'**
+  String get quizFailedDesc;
+
+  /// No description provided for @continueText.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue'**
+  String get continueText;
+
+  /// No description provided for @back.
+  ///
+  /// In en, this message translates to:
+  /// **'Back'**
+  String get back;
 }
 
 class _AppLocalizationsDelegate

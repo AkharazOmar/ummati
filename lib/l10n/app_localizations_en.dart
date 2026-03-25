@@ -314,4 +314,49 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get audioDownloaded => 'Audio downloaded';
+
+  @override
+  String get learn => 'Learn';
+
+  @override
+  String get lessonItems => 'items';
+
+  @override
+  String get startQuiz => 'Start Quiz';
+
+  @override
+  String get quiz => 'Quiz';
+
+  @override
+  String get identifyThis => 'What is this?';
+
+  @override
+  String get nextQuestion => 'Next';
+
+  @override
+  String get seeResults => 'See Results';
+
+  @override
+  String get quizPassed => 'Well done!';
+
+  @override
+  String get quizFailed => 'Try again';
+
+  @override
+  String quizScore(int score, int total) {
+    return '$score/$total';
+  }
+
+  @override
+  String get quizPassedDesc => 'You passed! The next lesson is now unlocked.';
+
+  @override
+  String get quizFailedDesc =>
+      'You need at least 70% to pass. Review the lesson and try again.';
+
+  @override
+  String get continueText => 'Continue';
+
+  @override
+  String get back => 'Back';
 }

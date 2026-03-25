@@ -160,5 +160,29 @@
   "setLoopEnd": "Set as loop end",
   "downloadAudio": "Download audio",
   "downloading": "Downloading...",
-  "audioDownloaded": "Audio downloaded"
+  "audioDownloaded": "Audio downloaded",
+  "learn": "Learn",
+  "lessonItems": "items",
+  "startQuiz": "Start Quiz",
+  "quiz": "Quiz",
+  "identifyThis": "What is this?",
+  "nextQuestion": "Next",
+  "seeResults": "See Results",
+  "quizPassed": "Well done!",
+  "quizFailed": "Try again",
+  "quizScore": "{score}/{total}",
+  "@quizScore": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "quizPassedDesc": "You passed! The next lesson is now unlocked.",
+  "quizFailedDesc": "You need at least 70% to pass. Review the lesson and try again.",
+  "continueText": "Continue",
+  "back": "Back"
 }

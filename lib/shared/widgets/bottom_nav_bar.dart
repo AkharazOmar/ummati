@@ -41,6 +41,11 @@ class ScaffoldWithNavBar extends StatelessWidget {
             label: l10n.quran,
           ),
           BottomNavigationBarItem(
+            icon: const Icon(Icons.school_outlined),
+            activeIcon: const Icon(Icons.school),
+            label: l10n.learn,
+          ),
+          BottomNavigationBarItem(
             icon: const Icon(Icons.favorite_outline),
             activeIcon: const Icon(Icons.favorite),
             label: l10n.duas,

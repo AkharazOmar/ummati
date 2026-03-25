@@ -160,5 +160,29 @@
   "setLoopEnd": "نهاية التكرار",
   "downloadAudio": "تحميل الصوت",
   "downloading": "جاري التحميل...",
-  "audioDownloaded": "تم تحميل الصوت"
+  "audioDownloaded": "تم تحميل الصوت",
+  "learn": "تعلّم",
+  "lessonItems": "عناصر",
+  "startQuiz": "ابدأ الاختبار",
+  "quiz": "اختبار",
+  "identifyThis": "ما هذا؟",
+  "nextQuestion": "التالي",
+  "seeResults": "عرض النتائج",
+  "quizPassed": "أحسنت!",
+  "quizFailed": "حاول مرة أخرى",
+  "quizScore": "{score}/{total}",
+  "@quizScore": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "quizPassedDesc": "لقد نجحت! الدرس التالي أصبح متاحاً.",
+  "quizFailedDesc": "تحتاج إلى ٧٠٪ على الأقل للنجاح. راجع الدرس وحاول مرة أخرى.",
+  "continueText": "متابعة",
+  "back": "رجوع"
 }

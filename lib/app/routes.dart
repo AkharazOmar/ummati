@@ -12,6 +12,10 @@ import '../features/qibla/qibla_screen.dart';
 import '../features/quran/quran_screen.dart';
 import '../features/quran/surah_screen.dart';
 import '../features/duas/duas_screen.dart';
+import '../features/learn/learn_screen.dart';
+import '../features/learn/lesson_screen.dart';
+import '../features/learn/level_screen.dart';
+import '../features/learn/quiz_screen.dart';
 import '../features/settings/settings_screen.dart';
 import '../shared/widgets/bottom_nav_bar.dart';
 
@@ -107,6 +111,67 @@ final GoRouter router = GoRouter(
                       initialAyah: initialAyah,
                     );
                   },
+                ),
+              ],
+            ),
+          ],
+        ),
+        StatefulShellBranch(
+          routes: [
+            GoRoute(
+              path: '/learn',
+              builder: (context, state) => const LearnScreen(),
+              routes: [
+                GoRoute(
+                  path: 'level/:levelId',
+                  parentNavigatorKey: _rootNavigatorKey,
+                  builder: (context, state) {
+                    final levelId = state.pathParameters['levelId']!;
+                    final title =
+                        state.uri.queryParameters['title'] ?? 'Level';
+                    return LevelScreen(
+                        levelId: levelId, levelTitle: title);
+                  },
+                  routes: [
+                    GoRoute(
+                      path: 'lesson/:lessonId',
+                      parentNavigatorKey: _rootNavigatorKey,
+                      builder: (context, state) {
+                        final levelId =
+                            state.pathParameters['levelId']!;
+                        final lessonId =
+                            state.pathParameters['lessonId']!;
+                        final title =
+                            state.uri.queryParameters['title'] ??
+                                'Lesson';
+                        return LessonScreen(
+                          levelId: levelId,
+                          lessonId: lessonId,
+                          lessonTitle: title,
+                        );
+                      },
+                      routes: [
+                        GoRoute(
+                          path: 'quiz',
+                          parentNavigatorKey: _rootNavigatorKey,
+                          builder: (context, state) {
+                            final levelId =
+                                state.pathParameters['levelId']!;
+                            final lessonId =
+                                state.pathParameters['lessonId']!;
+                            final title =
+                                state.uri.queryParameters['title'] ??
+                                    'Quiz';
+                            return QuizScreen(
+                              levelId: levelId,
+                              lessonId: lessonId,
+                              quizTitle: title,
+                            );
+                          },
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
               ],
             ),

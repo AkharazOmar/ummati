@@ -312,4 +312,49 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get audioDownloaded => 'تم تحميل الصوت';
+
+  @override
+  String get learn => 'تعلّم';
+
+  @override
+  String get lessonItems => 'عناصر';
+
+  @override
+  String get startQuiz => 'ابدأ الاختبار';
+
+  @override
+  String get quiz => 'اختبار';
+
+  @override
+  String get identifyThis => 'ما هذا؟';
+
+  @override
+  String get nextQuestion => 'التالي';
+
+  @override
+  String get seeResults => 'عرض النتائج';
+
+  @override
+  String get quizPassed => 'أحسنت!';
+
+  @override
+  String get quizFailed => 'حاول مرة أخرى';
+
+  @override
+  String quizScore(int score, int total) {
+    return '$score/$total';
+  }
+
+  @override
+  String get quizPassedDesc => 'لقد نجحت! الدرس التالي أصبح متاحاً.';
+
+  @override
+  String get quizFailedDesc =>
+      'تحتاج إلى ٧٠٪ على الأقل للنجاح. راجع الدرس وحاول مرة أخرى.';
+
+  @override
+  String get continueText => 'متابعة';
+
+  @override
+  String get back => 'رجوع';
 }
